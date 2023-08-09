@@ -1,0 +1,22 @@
+{
+    "name": "@ios-shortcuts/test-shortcut",
+    "private": true,
+    "version": "1.0.0",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "build": "rollup -c --bundleConfigAsCjs",
+        "clean": "rimraf dist"
+    },
+    "dependencies": {
+        "@ios-shortcuts/scriptable": "*"
+    },
+    "devDependencies": {
+        "@rollup/plugin-typescript": "~11.1.0",
+        "@types/node": "~18.17.0",
+        "rimraf": "~5.0.0",
+        "rollup": "~3.28.0",
+        "tslib": "~2.6.0",
+        "typescript": "~4.9.0"
+    }
+}

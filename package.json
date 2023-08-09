@@ -1,0 +1,14 @@
+{
+    "name": "ios-shortcuts",
+    "private": true,
+    "workspaces": [
+        "packages/*",
+        "apps/*"
+    ],
+    "scripts": {
+        "build": "pnpm run -r build"
+    },
+    "devDependencies": {
+        "typescript": "~4.9.0"
+    }
+}
