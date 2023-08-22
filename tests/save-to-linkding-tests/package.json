@@ -1,0 +1,26 @@
+{
+    "name": "@ios-shortcuts/tests/save-to-linkding",
+    "version": "1.0.0",
+    "main": "dist/index",
+    "types": "dist/index",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "pnpm run compile",
+        "clean": "rimraf ./dist",
+        "compile": "tsc -p tsconfig.build.json",
+        "prepublishOnly": "pnpm run build",
+        "sim": "simulate-scriptable"
+    },
+    "devDependencies": {
+        "@types/node": "^20.4.9",
+        "rimraf": "~5.0.0",
+        "typescript": "~4.9.0"
+    },
+    "dependencies": {
+        "@ios-shortcuts/save-to-linkding": "workspace:^1.0.0",
+        "@ios-shortcuts/scriptable": "workspace:*",
+        "@ios-shortcuts/vite": "workspace:^1.0.0"
+    }
+}

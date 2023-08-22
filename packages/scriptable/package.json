@@ -1,18 +1,26 @@
 {
     "name": "@ios-shortcuts/scriptable",
     "version": "1.0.0",
-    "main": "dist/index",
-    "types": "dist/index",
+    "main": "./dist/index",
+    "types": "./dist/index",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "require": "./dist/index.js",
+            "default": "./dist/index.js"
+        },
+        "./config": "./dist/simulator/config.js"
+    },
     "files": [
         "dist"
     ],
     "scripts": {
-        "build": "pnpm run compile",
+        "build": "tsc -p tsconfig.json",
         "clean": "rimraf ./dist",
-        "compile": "tsc -p tsconfig.build.json",
         "prepublishOnly": "pnpm run build"
     },
     "devDependencies": {
+        "@types/node": "^20.4.9",
         "rimraf": "~5.0.0",
         "typescript": "~4.9.0"
     }

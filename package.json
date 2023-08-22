@@ -6,7 +6,9 @@
         "apps/*"
     ],
     "scripts": {
-        "build": "pnpm run -r build"
+        "build": "pnpm run -r build",
+        "repl": "node -r ./packages/scriptable/dist/simulator/config -i",
+        "simulate": "node -r ./packages/scriptable/dist/simulator/config"
     },
     "devDependencies": {
         "typescript": "~4.9.0"
