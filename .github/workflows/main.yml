@@ -34,3 +34,7 @@ jobs:
         run_install: true
 
     - run: pnpm build
+      
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v3
+      

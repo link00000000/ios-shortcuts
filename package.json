@@ -7,10 +7,12 @@
     ],
     "scripts": {
         "build": "pnpm run -r build",
+        "actions": "act",
         "repl": "node -r ./packages/scriptable/dist/simulator/config -i",
         "simulate": "node -r ./packages/scriptable/dist/simulator/config"
     },
     "devDependencies": {
+        "@dagger.io/dagger": "^0.8.4",
         "typescript": "~4.9.0"
     }
 }
