@@ -27,69 +27,71 @@ export declare class Alert {
     /**
      * Adds an action to the alert.
      *
-     * @param {string} title - Title of the action.
+     * @param title - Title of the action.
      */
     public addAction(title: string): void;
 
     /**
      * Adds a destructive action to the alert.
      *
-     * @param {string} title - Title of the action.     */
+     * @param title - Title of the action.
+     */
     public addDestructiveAction(title: string): void;
 
     /**
      * Adds a cancel action to the alert.
      *
-     * @param {string} title - Title of the action.     */
+     * @param title - Title of the action.
+     */
     public addCancelAction(title: string): void;
 
     /**
      * Adds a text field prompting for user input.
      *
-     * @param {string} placeholder - Optional placeholder that will be displayed when the text field is empty.
-     * @param {string} text - Optional default value for the text field.
+     * @param placeholder - Optional placeholder that will be displayed when the text field is empty.
+     * @param text - Optional default value for the text field.
      *
-     * @returns {TextField} Text field added to the alert.
+     * @returns Text field added to the alert.
      */
     public addTextField(placeholder: string, text: string): TextField;
 
     /**
      * Adds a secure text field prompting for user input.
      *
-     * @param {string} placeholder - Optional placeholder that will be displayed when the text field is empty.
-     * @param {string} text - Optional default value for the text field.
+     * @param placeholder - Optional placeholder that will be displayed when the text field is empty.
+     * @param text - Optional default value for the text field.
      *
-     * @returns {TextField} Text field added to the alert.
+     * @returns Text field added to the alert.
      */
-    public addSecureTextField(placeholder: string, text: string): TextField;
+    public addSecureTextField(placeholder?: string, text?: string): TextField;
 
     /**
      * Retrieves value of a text field.
      *
-     * @param {number} index - Index of text field to retrieve for value.
+     * @param index - Index of text field to retrieve for value.
      *
-     * @returns {string} Value of the text field at the specified index.
+     * @returns Value of the text field at the specified index.
      */
     public textFieldValue(index: number): string;
 
     /**
      * Presents the alert modally.
      *
-     * @returns {Promise<number>} A promise carrying the selected action index when fulfilled.
+     * @returns A promise carrying the selected action index when fulfilled.
      */
     public present(): Promise<number>;
 
     /**
      * Presents the alert modally.
      *
-     * @returns {Promise<number>} A promise carrying the selected action index when fulfilled.
+     * @returns A promise carrying the selected action index when fulfilled.
      */
     public presentAlert(): Promise<number>;
 
     /**
      * Presents the alert as a sheet.
      *
-     * @returns {Promise<number>} A promise carrying the selected action index when fulfilled.
+     * @returns A promise carrying the selected action index when fulfilled.
      */
     public presentSheet(): Promise<number>;
 }

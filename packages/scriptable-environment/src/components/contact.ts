@@ -1,3 +1,5 @@
+import { ContactsContainer } from "./contactsContainer";
+import { ContactsGroup } from "./contactsGroup";
 import { Image } from "./image";
 
 /**
@@ -10,9 +12,9 @@ import { Image } from "./image";
  * }
  */
 export type ContactEmailAddress = {
-    identifier: string,
-    label: string,
-    localizedLabel: string,
+    identifier?: string,
+    label?: string,
+    localizedLabel?: string,
     value: string
 }
 
@@ -26,10 +28,78 @@ export type ContactEmailAddress = {
  * }
  */
 export type ContactPhoneNumber = {
-    identifier: string,
-    label: string,
-    localizedLabel: string,
+    identifier?: string,
+    label?: string,
+    localizedLabel?: string,
     value: string
+}
+
+/**
+ * @example
+ * {
+ *     "identifier": "UUID-ABC-123",
+ *     "label": "Home",
+ *     "localizedLabel": "Home",
+ *     "street": "240  Terry Lane",
+ *     "city": "New York",
+ *     "state": "New York",
+ *     "postalCode": "10001",
+ *     "country": "United States of America"
+ * }
+ */
+export type ContactPostalAddress = {
+    identifier?: string;
+    label: string;
+    localizedLabel: string;
+    street: string;
+    city: string;
+    state: string;
+    postalCode: string;
+    country: string;
+}
+
+/**
+ * @example
+ * {
+ *     "identifier": "UUID-ABC-123",
+ *     "label": "Twitter",
+ *     "localizedLabel": "Twitter",
+ *     "service": "Twitter",
+ *     "url": "https://twitter.com/scriptableapp",
+ *     "userIdentifier": null,
+ *     "username": "scriptableapp"
+ * }
+ */
+export type ContactSocialProfile = {
+    identifier?: string;
+    label: string;
+    localizedLabel: string;
+    service: string;
+    url: string;
+    userIdentifier: null;
+    username: string;
+}
+
+/**
+ * @example
+ * {
+ *     "identifier": "UUID-ABC-123"
+ * }
+ */
+export type ContactUrlAddress = {
+    identifier?: string;
+    // TODO 
+}
+
+/**
+ * @example
+ * {
+ *     "identifier": "UUID-ABC-123"
+ * }
+ */
+export type ContactUrlDate = {
+    identifier?: string;
+    // TODOi 
 }
 
 /**
@@ -96,12 +166,12 @@ export declare class Contact {
     /**
      * Postal addresses.
      */
-    public postalAddresses: [{string;
+    public postalAddresses: ContactPostalAddress[];
 
     /**
      * Social profiles.
      */
-    public socialProfiles: [{string;
+    public socialProfiles: ContactSocialProfile[];
 
     /**
      * Note for the contact.
@@ -111,12 +181,12 @@ export declare class Contact {
     /**
      * URL addresses.
      */
-    public urlAddresses: [{string;
+    public urlAddresses: ContactUrlAddress[];
 
     /**
      * Dates.
      */
-    public dates: [{string;
+    public dates: ContactUrlDate[];
 
     /**
      * Name of the organization associated with the contact.
@@ -136,133 +206,137 @@ export declare class Contact {
     /**
      * Whether or not name prefix is available.
      */
-    public isNamePrefixAvailable: boolean;
+    public readonly isNamePrefixAvailable: boolean;
 
     /**
      * Whether or not given name is available.
      */
-    public isGiveNameAvailable: boolean;
+    public readonly isGiveNameAvailable: boolean;
 
     /**
      * Whether or not middle name is available.
      */
-    public isMiddleNameAvailable: boolean;
+    public readonly isMiddleNameAvailable: boolean;
 
     /**
      * Whether or not family name is available.
      */
-    public isFamilyNameAvailable: boolean;
+    public readonly isFamilyNameAvailable: boolean;
 
     /**
      * Whether or not nickname is available.
      */
-    public isNicknameAvailable: boolean;
+    public readonly isNicknameAvailable: boolean;
 
     /**
      * Whether or not birthday is available.
      */
-    public isBirthdayAvailable: boolean;
+    public readonly isBirthdayAvailable: boolean;
 
     /**
      * Whether or not email addresses are available.
      */
-    public isEmailAddressesAvailable: boolean;
+    public readonly isEmailAddressesAvailable: boolean;
 
     /**
      * Whether or not phone numbers are available.
      */
-    public isPhoneNumbersAvailable: boolean;
+    public readonly isPhoneNumbersAvailable: boolean;
 
     /**
      * Whether or not postal addresses are available.
      */
-    public isPostalAddressesAvailable: boolean;
+    public readonly isPostalAddressesAvailable: boolean;
 
     /**
      * Whether or not social profiles are available.
      */
-    public isSocialProfilesAvailable: boolean;
+    public readonly isSocialProfilesAvailable: boolean;
 
     /**
      * Whether or not image is available.
      */
-    public isImageAvailable: boolean;
+    public readonly isImageAvailable: boolean;
 
     /**
      * Whether or not note is available.
      */
-    public isNoteAvailable: boolean;
+    public readonly isNoteAvailable: boolean;
 
     /**
      * Whether or not URL addresses are available.
      */
-    public isURLAddressesAvailable: boolean;
+    public readonly isURLAddressesAvailable: boolean;
 
     /**
      * Whether or not organization name is available.
      */
-    public isOrganizationNameAvailable: boolean;
+    public readonly isOrganizationNameAvailable: boolean;
 
     /**
      * Whether or not department name is available.
      */
-    public isDepartmentNameAvailable: boolean;
+    public readonly isDepartmentNameAvailable: boolean;
 
     /**
      * Whether or not job title is available.
      */
-    public isJobTitleAvailable: boolean;
+    public readonly isJobTitleAvailable: boolean;
 
     /**
      * Whether or not dates are available.
      */
-    public isDatesAvailable: boolean;
+    public readonly isDatesAvailable: boolean;
 
     /**
-     * Constructs a contact.     */
-    public Contact(): void;
+     * Constructs a contact.
+     */
+    public new(): Contact;
 
     /**
      * Fetches contacts.
      *
-     * @param {ContactsContainer[]} containers - Containers to fetch contacts from.
+     * @param containers - Containers to fetch contacts from.
      *
-     * @returns {Contact[]} Promise that provides the contacts when fulfilled.
+     * @returns Promise that provides the contacts when fulfilled.
      */
-    public all(containers: ContactsContainer[]): Contact[];
+    public static all(containers: ContactsContainer[]): Contact[];
 
     /**
      * Fetches contacts in groups.
      *
-     * @param {ContactsGroup[]} groups - Groups to fetch contacts from.
+     * @param groups - Groups to fetch contacts from.
      *
-     * @returns {Contact[]} Promise that provides the contacts when fulfilled.
+     * @returns Promise that provides the contacts when fulfilled.
      */
-    public inGroups(groups: ContactsGroup[]): Contact[];
+    public static inGroups(groups: ContactsGroup[]): Contact[];
 
     /**
      * Queues a contact to be added.
      *
-     * @param {Contact} contact - Contact to queue to be added.
-     * @param {string} containerIdentifier - Optional. Identifier of container to add the contact to. If null is specified, the contact will be added to the default container.     */
-    public add(contact: Contact, containerIdentifier: string)): void;
+     * @param contact - Contact to queue to be added.
+     * @param containerIdentifier - Optional. Identifier of container to add the contact to. If null is specified, the contact will be added to the default container.
+     */
+    public static add(contact: Contact, containerIdentifier: string): void;
 
     /**
      * Queues an update to a contact.
      *
-     * @param {Contact} contact - Contact to queue to be updated.     */
-    public update(contact: Contact)): void;
+     * @param contact - Contact to queue to be updated.
+     */
+    public static update(contact: Contact): void;
 
     /**
      * Queues a contact to be deleted.
      *
-     * @param {Contact} contact - Contact to queue to be deleted.     */
-    public delete(contact: Contact)): void;
+     * @param contact - Contact to queue to be deleted.
+     */
+    public static delete(contact: Contact): void;
 
     /**
      * Persist queued changes to the address book.
      *
-     * @returns {Promise<void>} Promise that fulfills when the changes have been persisted. The promise carries no value.
+     * @returns Promise that fulfills when the changes have been persisted.
      */
-    public persistChanges(): Promise;
+    public static persistChanges(): Promise<void>;
 }

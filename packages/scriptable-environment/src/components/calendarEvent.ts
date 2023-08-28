@@ -71,97 +71,101 @@ export declare class CalendarEvent {
     /**
      * Adds a recurrence rule.
      *
-     * @param {RecurrenceRule} recurrenceRule - Recurrence rule to add to the reminder.     */
+     * @param recurrenceRule - Recurrence rule to add to the reminder.
+     */
     public addRecurrenceRule(recurrenceRule: RecurrenceRule): void;
 
     /**
-     * Removes all recurrence rules.     */
+     * Removes all recurrence rules.
+     */
     public removeAllRecurrenceRules(): void;
 
     /**
-     * Saves event.     */
+     * Saves event.
+     */
     public save(): void;
 
     /**
-     * Removes event from calendar.     */
+     * Removes event from calendar.
+     */
     public remove(): void;
 
     /**
      * Presents a view for editing the calendar event.
      *
-     * @returns {Promise<CalendarEvent>} Promise that provides the updated event when fulfilled.
+     * @returns Promise that provides the updated event when fulfilled.
      */
     public presentEdit(): Promise<CalendarEvent>;
 
     /**
      * Presents a view for creating a calendar event.
      *
-     * @returns {Promise<CalendarEvent>} Promise that provides the created event when fulfilled.
+     * @returns Promise that provides the created event when fulfilled.
      */
     public presentCreate(): Promise<CalendarEvent>;
 
     /**
      * Events occurring today.
      *
-     * @param {Calendar[]} calendars - Calendars to fetch events for. Defaults to all calendars.
+     * @param calendars - Calendars to fetch events for. Defaults to all calendars.
      *
-     * @returns {CalendarEvent[]} Promise that provides the events when fulfilled.
+     * @returns Promise that provides the events when fulfilled.
      */
     public today(calendars: Calendar[]): CalendarEvent[];
 
     /**
      * Events occurring tomorrow.
      *
-     * @param {Calendar[]} calendars - Calendars to fetch events for. Defaults to all calendars.
+     * @param calendars - Calendars to fetch events for. Defaults to all calendars.
      *
-     * @returns {CalendarEvent[]} Promise that provides the events when fulfilled.
+     * @returns Promise that provides the events when fulfilled.
      */
     public tomorrow(calendars: Calendar[]): CalendarEvent[];
 
     /**
      * Events that occurred yesterday.
      *
-     * @param {Calendar[]} calendars - Calendars to fetch events for. Defaults to all calendars.
+     * @param calendars - Calendars to fetch events for. Defaults to all calendars.
      *
-     * @returns {CalendarEvent[]} Promise that provides the events when fulfilled.
+     * @returns Promise that provides the events when fulfilled.
      */
     public yesterday(calendars: Calendar[]): CalendarEvent[];
 
     /**
      * Events that occur this week.
      *
-     * @param {Calendar[]} calendars - Calendars to fetch events for. Defaults to all calendars.
+     * @param calendars - Calendars to fetch events for. Defaults to all calendars.
      *
-     * @returns {CalendarEvent[]} Promise that provides the events when fulfilled.
+     * @returns Promise that provides the events when fulfilled.
      */
     public thisWeek(calendars: Calendar[]): CalendarEvent[];
 
     /**
      * Events that occur next week.
      *
-     * @param {Calendar[]} calendars - Calendars to fetch events for. Defaults to all calendars.
+     * @param calendars - Calendars to fetch events for. Defaults to all calendars.
      *
-     * @returns {CalendarEvent[]} Promise that provides the events when fulfilled.
+     * @returns Promise that provides the events when fulfilled.
      */
     public nextWeek(calendars: Calendar[]): CalendarEvent[];
 
     /**
      * Events that occurred last week.
      *
-     * @param {Calendar[]} calendars - Calendars to fetch events for. Defaults to all calendars.
+     * @param calendars - Calendars to fetch events for. Defaults to all calendars.
      *
-     * @returns {CalendarEvent[]} Promise that provides the events when fulfilled.
+     * @returns Promise that provides the events when fulfilled.
      */
     public lastWeek(calendars: Calendar[]): CalendarEvent[];
 
     /**
      * Events that occurs between two dates.
      *
-     * @param {Date} startDate - Start date to fetch events for.
-     * @param {Date} endDate - End date to fetch events for.
-     * @param {Calendar[]} calendars - Calendars to fetch events for. Defaults to all calendars.
+     * @param startDate - Start date to fetch events for.
+     * @param endDate - End date to fetch events for.
+     * @param calendars - Calendars to fetch events for. Defaults to all calendars.
      *
-     * @returns {CalendarEvent[]} Promise that provides the events when fulfilled.
+     * @returns Promise that provides the events when fulfilled.
      */
     public between(startDate: Date, endDate: Date, calendars: Calendar[]): CalendarEvent[];
 }

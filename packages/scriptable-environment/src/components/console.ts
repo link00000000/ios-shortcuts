@@ -8,21 +8,21 @@ export declare const console: {
     /**
      * Logs a message to the console.
      *
-     * @param {any} message - Message to log to the console.
+     * @param message - Message to log to the console.
      */
     log(message: any): void;
 
     /**
      * Logs a warning message to the console.
      *
-     * @param {any} message - Message to log to the console.
+     * @param message - Message to log to the console.
      */
     warn(message: any): void;
 
     /**
      * Logs an error message to the console.
      *
-     * @param {any} message - Message to log to the console.
+     * @param message - Message to log to the console.
      */
     error(message: any): void;
 
@@ -31,7 +31,7 @@ export declare const console: {
      *
      * @deprecated Deprecated in version 1.3. Use console.error(message) instead.
      *
-     * @param {any} message - Message to log to the console.
+     * @param message - Message to log to the console.
      */
     logError(message: any): void;
 }

@@ -38,86 +38,88 @@ export declare class Calendar {
     /**
      * Checks if the calendar supports availability.
      *
-     * @param {string} availability - Availability to check against.
+     * @param availability - Availability to check against.
      *
-     * @returns {boolean} True if the calendar supports the availability, otherwise false.
+     * @returns True if the calendar supports the availability, otherwise false.
      */
     public supportsAvailability(availability: string): boolean;
 
     /**
-     * Saves calendar.     */
+     * Saves calendar.
+     */
     public save(): void;
 
     /**
-     * Removes calendar.     */
+     * Removes calendar.
+     */
     public remove(): void;
 
     /**
      * Fetches calendars for reminders.
      *
-     * @returns {Calendar[]} Promise that provides the calendars when fulfilled.
+     * @returns Promise that provides the calendars when fulfilled.
      */
     public static forReminders(): Calendar[];
 
     /**
      * Fetches calendars for events.
      *
-     * @returns {Calendar[]} Promise that provides the calendars when fulfilled.
+     * @returns Promise that provides the calendars when fulfilled.
      */
     public static forEvents(): Calendar[];
 
     /**
      * Fetches a calendar that holds reminders.
      *
-     * @param {string} title - Title of calendar.
+     * @param title - Title of calendar.
      *
-     * @returns {Promise<Calendar>} Promise that provides the calendar when fulfilled.
+     * @returns Promise that provides the calendar when fulfilled.
      */
     public static forRemindersByTitle(title: string): Promise<Calendar>;
 
     /**
      * Fetches a calendar that holds events.
      *
-     * @param {string} title - Title of calendar.
+     * @param title - Title of calendar.
      *
-     * @returns {Promise<Calendar>} Promise that provides the calendar when fulfilled.
+     * @returns Promise that provides the calendar when fulfilled.
      */
     public static forEventsByTitle(title: string): Promise<Calendar>;
 
     /**
      * Create a new calendar that holds reminders.
      *
-     * @returns {Promise<Calendar>} Promise that provides the created calendar when fulfilled.
+     * @returns Promise that provides the created calendar when fulfilled.
      */
     public static createForReminders(title: string): Promise<Calendar>;
 
     /**
      * Find or create a new calendar that holds reminders.
      *
-     * @returns {Promise<Calendar>} Promise that provides the calendar when fulfilled.
+     * @returns Promise that provides the calendar when fulfilled.
      */
     public static findOrCreateForReminders(title: string): Promise<Calendar>;
 
     /**
      * Default calendar for reminders.
      *
-     * @returns {Promise<Calendar>} Promise that provides the calendar when fulfilled.
+     * @returns Promise that provides the calendar when fulfilled.
      */
     public static defaultForReminders(): Promise<Calendar>;
 
     /**
      * Default calendar for events.
      *
-     * @returns {Promise<Calendar>} Promise that provides the calendar when fulfilled.
+     * @returns Promise that provides the calendar when fulfilled.
      */
     public static defaultForEvents(): Promise<Calendar>;
 
     /**
      * Presents a view for picking calendars.
      *
-     * @param {boolean} allowMultiple - Whether to allow picking multiple calenders. Defaults to false.
+     * @param allowMultiple - Whether to allow picking multiple calenders. Defaults to false.
      *
-     * @returns {Calendar[]} Promise that provides the calendars when fulfilled.
+     * @returns Promise that provides the calendars when fulfilled.
      */
     public static presentPicker(allowMultiple: boolean): Calendar[];
 }

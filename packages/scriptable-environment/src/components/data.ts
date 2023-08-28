@@ -1,3 +1,5 @@
+import { Image } from "./image";
+
 /**
  * Raw data representation.
  *
@@ -12,7 +14,7 @@ export declare class Data {
      *
      * @returns {Data} Data representation of string.
      */
-    public fromString(string: string): Data;
+    public static fromString(string: string): Data;
 
     /**
      * Reads data from file path.
@@ -21,7 +23,7 @@ export declare class Data {
      *
      * @returns {Data} Data representation of file.
      */
-    public fromFile(filePath: string): Data;
+    public static fromFile(filePath: string): Data;
 
     /**
      * Creates data from base64 encoded string.
@@ -30,7 +32,7 @@ export declare class Data {
      *
      * @returns {Data} Data representation of string.
      */
-    public fromBase64String(base64String: string): Data;
+    public static fromBase64String(base64String: string): Data;
 
     /**
      * Creates data from JPEG image.
@@ -39,7 +41,7 @@ export declare class Data {
      *
      * @returns {Data} Data representation of image.
      */
-    public fromJPEG(image: Image): Data;
+    public static fromJPEG(image: Image): Data;
 
     /**
      * Creates data from PNG image.
@@ -48,7 +50,7 @@ export declare class Data {
      *
      * @returns {Data} Data representation of image.
      */
-    public fromPNG(image: Image): Data;
+    public static fromPNG(image: Image): Data;
 
     /**
      * Creates a string from the data.

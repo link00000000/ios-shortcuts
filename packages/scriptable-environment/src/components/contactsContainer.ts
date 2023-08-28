@@ -11,26 +11,26 @@ export declare class ContactsContainer {
     /**
      * Identifier of the contacts container.
      */
-    public identifier: string;
+    public readonly identifier: string;
 
     /**
      * Name of the contacts container.
      */
-    public name: string;
+    public readonly name: string;
 
     /**
      * Fetches default contacts container.
      *
      * @returns {Promise<ContactsContainer>} Promise that provides the default contacts container when fulfilled.
      */
-    public default(): Promise<ContactsContainer>;
+    public static default(): Promise<ContactsContainer>;
 
     /**
      * Fetches all contacts containers.
      *
      * @returns {ContactsContainer[]} Promise that provides all contacts containers when fulfilled.
      */
-    public all(): ContactsContainer[];
+    public static all(): ContactsContainer[];
 
     /**
      * Fetches a contacts container.
@@ -39,5 +39,5 @@ export declare class ContactsContainer {
      *
      * @returns {Promise<ContactsContainer>} Promise that provides the contacts container when fulfilled.
      */
-    public withIdentifier(identifier: string): Promise<ContactsContainer>;
+    public static withIdentifier(identifier: string): Promise<ContactsContainer>;
 }
