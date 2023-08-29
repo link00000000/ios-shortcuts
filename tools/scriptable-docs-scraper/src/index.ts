@@ -1,7 +1,22 @@
-import fs from "node:fs/promises";
 import path from "node:path";
-import process from "node:process";
+import arg from "arg";
+import axios from "axios";
+import { Scraper } from "./scraper";
 
-console.dir(process.argv)
+const args = arg({
+    "--out": String,
+    "-o": "--out"
+});
 
-// fs.writeFile(path.join(process.cwd(), "test.txt"), "Hello");
+if (!args["--out"]) {
+    throw new Error("Missing required argument: --out")
+}
+
+const outDir = path.resolve(args["--out"]);
+console.log("Out: " + outDir);
+
+axios.get("https://docs.scriptable.app/alert/").then(response => {
+    const scraper = new Scraper(response.data);
+    const sections = scraper.getArticleSections();
+    console.dir(sections);
+});

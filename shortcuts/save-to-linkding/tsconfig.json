@@ -2,10 +2,6 @@
     "extends": "../../tsconfig.base.json",
 
     "compilerOptions": {
-        "noEmit": false,
-        "sourceMap": false,
-        "declaration": false,
-        "declarationMap": false
     },
 
     "include": [

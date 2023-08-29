@@ -1,0 +1,30 @@
+{
+    "name": "@ios-shortcuts/utils",
+    "version": "1.0.0",
+    "main": "./dist/index",
+    "types": "./dist/index",
+    "exports": {
+        "guard": {
+            "types": "./dist/guard.d.ts",
+            "require": "./dist/guard.js",
+            "default": "./dist/guard.js"
+        },
+        "string": {
+            "types": "./dist/string.d.ts",
+            "require": "./dist/string.js",
+            "default": "./dist/string.js"
+        }
+    },
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "tsc -p tsconfig.json",
+        "clean": "rimraf ./dist",
+        "prepublishOnly": "pnpm run build"
+    },
+    "devDependencies": {
+        "rimraf": "~5.0.0",
+        "typescript": "~4.9.0"
+    }
+}
