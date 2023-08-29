@@ -1,10 +1,6 @@
 {
     "name": "ios-shortcuts",
     "private": true,
-    "workspaces": [
-        "packages/*",
-        "apps/*"
-    ],
     "scripts": {
         "build": "pnpm run -r build",
         "actions": "act",

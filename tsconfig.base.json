@@ -13,6 +13,7 @@
         "types": [],
         "noEmit": true,
         "incremental": true,
+        "noUncheckedIndexedAccess": true,
         "baseUrl": ".",
         "paths": {
             "@ios-shortcuts/*": [
