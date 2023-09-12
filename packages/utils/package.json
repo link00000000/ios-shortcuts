@@ -4,15 +4,10 @@
     "main": "./dist/index",
     "types": "./dist/index",
     "exports": {
-        "guard": {
-            "types": "./dist/guard.d.ts",
-            "require": "./dist/guard.js",
-            "default": "./dist/guard.js"
-        },
-        "string": {
-            "types": "./dist/string.d.ts",
-            "require": "./dist/string.js",
-            "default": "./dist/string.js"
+        ".": {
+            "types": "./dist/index.d.ts",
+            "require": "./dist/index.js",
+            "default": "./dist/index.js"
         }
     },
     "files": [

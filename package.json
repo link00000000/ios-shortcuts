@@ -2,8 +2,12 @@
     "name": "ios-shortcuts",
     "private": true,
     "scripts": {
-        "build": "pnpm run -r build",
         "actions": "act",
+        "build": "pnpm build:shortcuts",
+        "build:packages": "pnpm --filter ./packages/* build",
+        "build:shortcuts": "pnpm --filter ./shortcuts/* build",
+        "build:tools": "pnpm --filter ./tools/* build",
+        "preinstall": "npx only-allow pnpm",
         "repl": "node -r ./packages/scriptable/dist/simulator/config -i",
         "simulate": "node -r ./packages/scriptable/dist/simulator/config"
     },

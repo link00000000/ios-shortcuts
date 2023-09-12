@@ -17,6 +17,6 @@ console.log("Out: " + outDir);
 
 axios.get("https://docs.scriptable.app/alert/").then(response => {
     const scraper = new Scraper(response.data);
-    const sections = scraper.getArticleSections();
-    console.dir(sections);
+    const result = scraper.parse();
+    console.dir(result);
 });

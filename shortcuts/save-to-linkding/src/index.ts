@@ -1,4 +1,4 @@
-import * as scriptable from "@ios-shortcuts/scriptable";
+import "@ios-shortcuts/scriptable-environment";
 
 async function main() {
     const alert = new Alert();
