@@ -1,42 +1,42 @@
 import jsdom from "jsdom";
-import { ArrayUtils, assert, Assert, StringUtils } from "@ios-shortcuts/utils"
+import { ArrayUtils, assert, Assert, ObjectUtils, StringUtils } from "@ios-shortcuts/utils"
 
-interface Class {
-    description: string;
+export interface Class {
+    name: string;
+    description: string[];
 }
 
-interface PropertySignature {
+export interface PropertySignature {
     name: string;
     type: string;
 }
 
-interface Property {
+export interface Property {
     signature: PropertySignature;
     modifiers: string[];
     examples: string[];
     description: string[];
 }
 
-interface MethodParameter {
+export interface MethodParameter {
     name: string;
     type: string;
-    description?: string;
+    description: string[];
 }
 
-interface MethodSignature {
+export interface MethodSignature {
     name: string;
     parameters: MethodParameter[];
     returnType: string | undefined;
     modifiers: string[];
 }
 
-interface Method {
+export interface Method {
     signature: MethodSignature;
-    modifiers: string[];
     description: string[];
 }
 
-interface Article {
+export interface Article {
     class: Class;
     properties: Property[],
     methods: Method[]
@@ -74,7 +74,7 @@ export class Scraper {
 
     private getArticleSections() {
         const article = this.getArticle();
-        const sectionHeaders = ["H1", "H2"];
+        const sectionHeaders = ["H2"];
         const ignoredElements = ["HR"];
 
         const sections: Element[][] = [];
@@ -159,6 +159,9 @@ export class Scraper {
     }
 
     public static parseClass(section: Element[]): Class {
+        const name = section[0]?.childNodes[0]?.textContent?.trim();
+        Assert.String.isNotNullOrEmpty(name);
+
         let description: string[] = [];
         
         // Skip the first element since that is the name
@@ -171,12 +174,12 @@ export class Scraper {
             description.push(textContent);
         }
 
-        return { description: description.join("\n\n") };
+        return { name, description };
     }
 
     public static parseProperty(section: Element[]): Property {
         const description: string[] = [];
-        const modifiers = new Set<string>(["public"]);
+        const modifiers = new Set<string>();
         let signature: PropertySignature | undefined = undefined;
         const examples: string[] = [];
 
@@ -223,9 +226,11 @@ export class Scraper {
 
     private static parsePropertySignature(s: string): PropertySignature
     {
-        const parts = s.split(":").map(x => x.trim());
-        const name = ArrayUtils.getAsserted(parts, 0);
-        const type = Scraper.parseType(ArrayUtils.getAsserted(parts, 1));
+        const partsGroups = s.match(/^(?<name>[^:]+):(?<type>.*)$/)?.groups;
+        Assert.Object.hasValue(partsGroups);
+
+        const name = ObjectUtils.getAsserted<string, typeof partsGroups, string>(partsGroups, "name").trim();
+        const type = Scraper.parseType(ObjectUtils.getAsserted<string, typeof partsGroups, string>(partsGroups, "type").trim());
 
         return { name, type };
     }
@@ -261,7 +266,6 @@ export class Scraper {
 
     public static parseMethod(section: Element[]): Method {
         const description: string[] = [];
-        const modifiers = new Set<string>(["public"]);
 
         let currentMethodSection: "method" | "parameters" | "return" = "method";
         const methodCodeBlocks: string[] = [];
@@ -334,11 +338,18 @@ export class Scraper {
                 }
             }
         }
-
+        
         assert(methodCodeBlocks.length > 0, "Could not find codeblock with method signature");
         const signature = Scraper.parseMethodSignature(methodCodeBlocks[0]!);
 
-        return { signature, description, modifiers: Array.from(modifiers) };
+        for (const parameter of parameters) {
+            let signatureParameter = signature.parameters.find(x => x.name === parameter.name);
+            if (signatureParameter !== undefined) {
+                signatureParameter.description = parameter.description;
+            }
+        }
+
+        return { signature, description };
     }
 
     private static parseMethodSignature(s: string): MethodSignature {
@@ -366,7 +377,7 @@ export class Scraper {
                 const parameterName = ArrayUtils.getAsserted(parameterStringParts, 0);
                 const parameterType = Scraper.parseType(ArrayUtils.getAsserted(parameterStringParts, 1));
 
-                parameters.push({ name: parameterName, type: parameterType });
+                parameters.push({ name: parameterName, type: parameterType, description: [] });
             }
         }
 

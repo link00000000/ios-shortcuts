@@ -2,6 +2,7 @@ import path from "node:path";
 import arg from "arg";
 import axios from "axios";
 import { Scraper } from "./scraper";
+import { TsDocumentWriter } from "./documentWriter";
 
 const args = arg({
     "--out": String,
@@ -15,8 +16,9 @@ if (!args["--out"]) {
 const outDir = path.resolve(args["--out"]);
 console.log("Out: " + outDir);
 
-axios.get("https://docs.scriptable.app/alert/").then(response => {
+axios.get("https://docs.scriptable.app/args/").then(response => {
     const scraper = new Scraper(response.data);
-    const result = scraper.parse();
-    console.dir(result);
+    const article = scraper.parse();
+    const documentContent = TsDocumentWriter.writeDocument(article);
+    console.log(documentContent);
 });
