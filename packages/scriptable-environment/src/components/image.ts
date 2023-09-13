@@ -3,28 +3,27 @@
  *
  * Images objects contains image data. APIs in Scriptable that work with images, eitherby taking an image as input or returning an image, will use this the Image type.
  */
-export declare class Image {
-
+export var Image: {
     /**
      * Size of the image in pixels.
      */
-    public size: Size;
+    readonly size: Size;
 
     /**
      * Creates an image from file.
      *
-     * @param {string} filePath - File path to read image from.
+     * Loads an image from the specified file path. If the image could not be read, thefunction will return null.
      *
-     * @returns {Image} The read image or null if the image could not be read.
+     * @param filePath {string} - File path to read image from.
      */
-    public fromFile(filePath: string): Image;
+    static fromFile(filePath: string): Image;
 
     /**
      * Creates an image from raw data.
      *
-     * @param {Data} data - Data to read image from.
+     * Loads an image from the raw data. If the image could not be read, the function willreturn null.
      *
-     * @returns {Image} The read image or null if the image could not be read.
+     * @param data {Data} - Data to read image from.
      */
-    public fromData(data: Data): Image;
+    static fromData(data: Data): Image;
 }

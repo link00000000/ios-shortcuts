@@ -6,59 +6,73 @@
  * Symbols are referenced by their name. You can find the symbol names in Apple's SF
  * Symbols app for macOS. You can also browse symbol names in the SF Symbols Browserand San Fransymbols apps for iOS.
  */
-export declare class SFSymbol {
-
+export var SFSymbol: {
     /**
      * Convert the symbol to an image.
      */
-    public image: Image;
+    readonly image: Image;
 
     /**
      * Constructs a SF symbol.
      *
-     * @param {string} symbolName - Name of the symbol.
+     * SF symbols are Apple's configurable icons that are designed to look great with theSan Francisco font.
      *
-     * @returns {SFSymbol} Constructed SF symbol or null if no symbol with the name exists.
+     * Symbols are referenced by their name. You can find the symbol names in Apple's SF
+     * Symbols app for macOS. You can also browse symbol names in the SF Symbols Browserand San Fransymbols apps for iOS.
+     *
+     * @param symbolName {string} - Name of the symbol.
      */
-    public named(symbolName: string): SFSymbol;
+    static named(symbolName: string): SFSymbol;
 
     /**
-     * Configures the symbol with the specified font information.     */
-    public applyFont(font: Font)): void;
+     * Configures the symbol with the specified font information.
+     *
+     * @param font {Font}
+     */
+    applyFont(font: Font): void;
 
     /**
-     * Configures the symbol to use an ultra light weight.     */
-    public applyUltraLightWeight(): void;
+     * Configures the symbol to use an ultra light weight.
+     */
+    applyUltraLightWeight(): void;
 
     /**
-     * Configures the symbol to use an thin weight.     */
-    public applyThinWeight(): void;
+     * Configures the symbol to use an thin weight.
+     */
+    applyThinWeight(): void;
 
     /**
-     * Configures the symbol to use an light weight.     */
-    public applyLightWeight(): void;
+     * Configures the symbol to use an light weight.
+     */
+    applyLightWeight(): void;
 
     /**
-     * Configures the symbol to use an regular weight.     */
-    public applyRegularWeight(): void;
+     * Configures the symbol to use an regular weight.
+     */
+    applyRegularWeight(): void;
 
     /**
-     * Configures the symbol to use an medium weight.     */
-    public applyMediumWeight(): void;
+     * Configures the symbol to use an medium weight.
+     */
+    applyMediumWeight(): void;
 
     /**
-     * Configures the symbol to use an semibold weight.     */
-    public applySemiboldWeight(): void;
+     * Configures the symbol to use an semibold weight.
+     */
+    applySemiboldWeight(): void;
 
     /**
-     * Configures the symbol to use an bold weight.     */
-    public applyBoldWeight(): void;
+     * Configures the symbol to use an bold weight.
+     */
+    applyBoldWeight(): void;
 
     /**
-     * Configures the symbol to use an heavy weight.     */
-    public applyHeavyWeight(): void;
+     * Configures the symbol to use an heavy weight.
+     */
+    applyHeavyWeight(): void;
 
     /**
-     * Configures the symbol to use an black weight.     */
-    public applyBlackWeight(): void;
+     * Configures the symbol to use an black weight.
+     */
+    applyBlackWeight(): void;
 }

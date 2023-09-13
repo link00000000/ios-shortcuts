@@ -4,152 +4,127 @@
  * A color can be created using a hex value, e.g. #FF0000 and optionally an alpha orit can be created using the provided system colors.
  */
 export declare class Color {
-
     /**
      * HEX representation.
      */
-    public hex: string;
+    readonly hex: string;
 
     /**
      * Amount of red in the color.
      */
-    public red: number;
+    readonly red: number;
 
     /**
      * Amount of green in the color.
      */
-    public green: number;
+    readonly green: number;
 
     /**
      * Amount of blue in the color.
      */
-    public blue: number;
+    readonly blue: number;
 
     /**
      * Alpha of the color.
      */
-    public alpha: number;
+    readonly alpha: number;
 
     /**
      * Constructs a black color.
-     *
-     * @returns A black color.
      */
-    public black(): Color;
+    static black(): Color;
 
     /**
      * Constructs a dark gray color.
-     *
-     * @returns A dark gray color.
      */
-    public darkGray(): Color;
+    static darkGray(): Color;
 
     /**
      * Constructs a light gray color.
-     *
-     * @returns A light gray color.
      */
-    public lightGray(): Color;
+    static lightGray(): Color;
 
     /**
      * Constructs a white color.
-     *
-     * @returns A white color.
      */
-    public white(): Color;
+    static white(): Color;
 
     /**
      * Constructs a gray color.
-     *
-     * @returns A gray color.
      */
-    public gray(): Color;
+    static gray(): Color;
 
     /**
      * Constructs a red color.
-     *
-     * @returns A red color.
      */
-    public static red(): Color;
+    static red(): Color;
 
     /**
      * Constructs a green color.
-     *
-     * @returns A green color.
      */
-    public static green(): Color;
+    static green(): Color;
 
     /**
      * Constructs a blue color.
-     *
-     * @returns A blue color.
      */
-    public static blue(): Color;
+    static blue(): Color;
 
     /**
      * Constructs a cyan color.
-     *
-     * @returns A cyan color.
      */
-    public static cyan(): Color;
+    static cyan(): Color;
 
     /**
      * Constructs a yellow color.
-     *
-     * @returns A yellow color.
      */
-    public static yellow(): Color;
+    static yellow(): Color;
 
     /**
      * Constructs a magenta color.
-     *
-     * @returns A magenta color.
      */
-    public static magenta(): Color;
+    static magenta(): Color;
 
     /**
      * Constructs a orange color.
-     *
-     * @returns A orange color.
      */
-    public static orange(): Color;
+    static orange(): Color;
 
     /**
      * Constructs a purple color.
-     *
-     * @returns A purple color.
      */
-    public static purple(): Color;
+    static purple(): Color;
 
     /**
      * Constructs a brown color.
-     *
-     * @returns A brown color.
      */
-    public static brown(): Color;
+    static brown(): Color;
 
     /**
      * Constructs a transparent color.
-     *
-     * @returns A transparent color.
      */
-    public static clear(): Color;
+    static clear(): Color;
 
     /**
      * Constructs a color.
      *
-     * @param hex - Hex value.
-     * @param alpha - Alpha value.
+     * Constructs a new color with a hex value and optionally an alpha value. The hex value
+     * may specify the alpha value but this will be ignored if the alpha value parameteris provided. Examples of valid hex values: #ff0000, #00ff0080 
+     * #00f and #ff. The hashtag is optional.
+     *
+     * @param hex {string} - Hex value.
+     * @param alpha {number} - Alpha value.
      */
-    public new(hex: string, alpha: number): void;
+    constructor(hex: string, alpha: number);
 
     /**
      * Creates a dynamic color.
      *
-     * @param lightColor - Color used in light appearance.
-     * @param darkColor - Color used in dark appearance.
+     * The dynamic color will use either its light or dark variant depending the appearanceof the system.
      *
-     * @returns Dynamic color.
+     * Dynamic colors are not supported when used with DrawContext.
+     *
+     * @param lightColor {Color} - Color used in light appearance.
+     * @param darkColor {Color} - Color used in dark appearance.
      */
-    public static dynamic(lightColor: Color, darkColor: Color): Color;
+    static dynamic(lightColor: Color, darkColor: Color): Color;
 }

@@ -3,186 +3,166 @@
  *
  * Reads information about the current device and its screen.
  */
-export declare class Device {
-
+export var Device: {
     /**
      * Name identifying the device.
      *
-     * @returns {string} undefined
+     * You can find and edit the name of your device in the system settings.
      */
-    public name(): string;
+    static name(): string;
 
     /**
      * Name of the operating system:
-     *
-     * @returns {string} undefined
      */
-    public systemName(): string;
+    static systemName(): string;
 
     /**
      * Version of the operating system.
-     *
-     * @returns {string} undefined
      */
-    public systemVersion(): string;
+    static systemVersion(): string;
 
     /**
      * Model of the device, e.g. "iPhone".
-     *
-     * @returns {string} undefined
      */
-    public model(): string;
+    static model(): string;
 
     /**
      * Whether the device is a phone.
      *
-     * @returns {boolean} undefined
+     * You can use this property to choose behavior of a script depending on
+     * whether its running on a phone or a pad.
      */
-    public isPhone(): boolean;
+    static isPhone(): bool;
 
     /**
      * Whether the device is a pad.
      *
-     * @returns {boolean} undefined
+     * You can use this property to choose behavior of a script depending on
+     * whether its running on a phone or a pad.
      */
-    public isPad(): boolean;
+    static isPad(): bool;
 
     /**
      * Size of the screen.
      *
-     * @returns {Size} undefined
+     * The value is measured in points. For an explanation of the relationship between
+     * points and pixels, see the documentation of the screenScale() method.
+     * 
+     * The value takes the device rotation into account, so the value will vary betweenportrait and landscape.
      */
-    public screenSize(): Size;
+    static screenSize(): Size;
 
     /**
      * Resolution of the screen.
      *
-     * @returns {Size} undefined
+     * The value is measured in pixels. The value does not take the rotation of the deviecinto account.
      */
-    public screenResolution(): Size;
+    static screenResolution(): Size;
 
     /**
      * Scale of the screen.
      *
-     * @returns {number} undefined
+     * Standard resolution displays have a scale of 1.0 where one point on the screen equals
+     * one pixel. Retina displays will have a scale factor of 2.0 or 3.0 where one pointon the screen is four or nine pixels, respectively.
      */
-    public screenScale(): number;
+    static screenScale(): number;
 
     /**
      * Brightness of the screen in percentage.
      *
-     * @returns {number} undefined
+     * The value range from 0 to 1. To set the screen brightness, refer to the setScreenBrightness()function.
      */
-    public screenBrightness(): number;
+    static screenBrightness(): number;
 
     /**
      * Whether the device is in portrait with the home button or home indicator at the bottom.
-     *
-     * @returns {boolean} undefined
      */
-    public isInPortrait(): boolean;
+    static isInPortrait(): bool;
 
     /**
      * Whether the device is in portrait but upside down with the home button or home indicatorat the top.
-     *
-     * @returns {boolean} undefined
      */
-    public isInPortraitUpsideDown(): boolean;
+    static isInPortraitUpsideDown(): bool;
 
     /**
      * Whether the device is in landscape with the home button or home indicator on theright side.
-     *
-     * @returns {boolean} undefined
      */
-    public isInLandscapeLeft(): boolean;
+    static isInLandscapeLeft(): bool;
 
     /**
      * Whether the device is in landscape with the home button or home indicator on theleft side.
-     *
-     * @returns {boolean} undefined
      */
-    public isInLandscapeRight(): boolean;
+    static isInLandscapeRight(): bool;
 
     /**
      * Whether the device is lying parallel to the ground with the screen facing upwards.
-     *
-     * @returns {boolean} undefined
      */
-    public isFaceUp(): boolean;
+    static isFaceUp(): bool;
 
     /**
      * Whether the device is lying parallel to the ground with the screen facing downwards.
-     *
-     * @returns {boolean} undefined
      */
-    public isFaceDown(): boolean;
+    static isFaceDown(): bool;
 
     /**
      * Current battery level.
      *
-     * @returns {number} undefined
+     * The value is in percentage ranging between 0 and 1.
      */
-    public batteryLevel(): number;
+    static batteryLevel(): number;
 
     /**
      * Whether the device is being not plugged into power and thus discharging.
-     *
-     * @returns {boolean} undefined
      */
-    public isDischarging(): boolean;
+    static isDischarging(): bool;
 
     /**
      * Whether the device is being charged.
-     *
-     * @returns {boolean} undefined
      */
-    public isCharging(): boolean;
+    static isCharging(): bool;
 
     /**
      * Whether the device is fully charged.
-     *
-     * @returns {boolean} undefined
      */
-    public isFullyCharged(): boolean;
+    static isFullyCharged(): bool;
 
     /**
      * The preferred langauges.
      *
-     * @returns {string[]} undefined
+     * The list is ordered according to the language preferences specified in the systemsettings.
      */
-    public preferredLanguages(): string[];
+    static preferredLanguages(): [string];
 
     /**
      * Identifier for the device locale.
-     *
-     * @returns {string} undefined
      */
-    public locale(): string;
+    static locale(): string;
 
     /**
      * Identifier for the device language.
-     *
-     * @returns {string} undefined
      */
-    public language(): string;
+    static language(): string;
 
     /**
      * Whether the device is using dark appearance.
      *
-     * @returns {boolean} undefined
+     * This API is not supported in widgets.
      */
-    public isUsingDarkAppearance(): boolean;
+    static isUsingDarkAppearance(): bool;
 
     /**
      * The device volume.
      *
-     * @returns {number} undefined
+     * The value range from 0 to 1.
      */
-    public volume(): number;
+    static volume(): number;
 
     /**
      * Sets the brightness of the screen.
      *
-     * @param {number} percentage - Percentage to set the screen brightness to. Value between 0 and 1.     */
-    public setScreenBrightness(percentage: number)): void;
+     * The value range from 0 to 1. To get the screen brightness, refer to the screenBrightness()function.
+     *
+     * @param percentage {number} - Percentage to set the screen brightness to. Value between0 and 1.
+     */
+    static setScreenBrightness(percentage: number): void;
 }

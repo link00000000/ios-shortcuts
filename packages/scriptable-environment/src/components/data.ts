@@ -1,75 +1,66 @@
-import { Image } from "./image";
-
 /**
  * Raw data representation.
  *
  * Raw data representation of strings, files and images.
  */
-export declare class Data {
-
+export var Data: {
     /**
      * Creates data from string.
      *
-     * @param {string} string - String to create data from.
+     * The provided string is assumed to be UTF8 encoded. If the string is not UTF8 encoded,the function will return null.
      *
-     * @returns {Data} Data representation of string.
+     * @param string {string} - String to create data from.
      */
-    public static fromString(string: string): Data;
+    static fromString(string: string): Data;
 
     /**
      * Reads data from file path.
      *
-     * @param {string} filePath - Path of file to read data from.
+     * Reads the raw data of the file at the specified file path.
      *
-     * @returns {Data} Data representation of file.
+     * @param filePath {string} - Path of file to read data from.
      */
-    public static fromFile(filePath: string): Data;
+    static fromFile(filePath: string): Data;
 
     /**
      * Creates data from base64 encoded string.
      *
-     * @param {string} base64String - Base64 encoded string to create data from.
+     * The supplied string must be base64 encoded otherwise the function will return null.
      *
-     * @returns {Data} Data representation of string.
+     * @param base64String {string} - Base64 encoded string to create data from.
      */
-    public static fromBase64String(base64String: string): Data;
+    static fromBase64String(base64String: string): Data;
 
     /**
      * Creates data from JPEG image.
      *
-     * @param {Image} image - JPEG image to convert to data.
-     *
-     * @returns {Data} Data representation of image.
+     * @param image {Image} - JPEG image to convert to data.
      */
-    public static fromJPEG(image: Image): Data;
+    static fromJPEG(image: Image): Data;
 
     /**
      * Creates data from PNG image.
      *
-     * @param {Image} image - PNG image to convert to data.
-     *
-     * @returns {Data} Data representation of image.
+     * @param image {Image} - PNG image to convert to data.
      */
-    public static fromPNG(image: Image): Data;
+    static fromPNG(image: Image): Data;
 
     /**
      * Creates a string from the data.
      *
-     * @returns {string} Data converted to string.
+     * The data is assumed to represent a UTF8 encoded string. If the string is not UTF8encoded string, the function will return null.
      */
-    public toRawString(): string;
+    toRawString(): string;
 
     /**
      * Creates a base64 encoded string.
      *
-     * @returns {string} Base64 encoded string.
+     * Creates a base64 encoded string from the data.
      */
-    public toBase64String(): string;
+    toBase64String(): string;
 
     /**
      * Gets bytes from data.
-     *
-     * @returns {number[]} Array of bytes.
      */
-    public getBytes(): number[];
+    getBytes(): [number];
 }

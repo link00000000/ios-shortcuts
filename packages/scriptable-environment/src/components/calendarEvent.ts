@@ -1,171 +1,180 @@
-import { Calendar } from "./calendar";
-import { RecurrenceRule } from "./recurrenceRule";
-
 /**
  * Manages events in calendars.
  *
  * Used for creating, fetching and removing events from your calendars.
  */
 export declare class CalendarEvent {
-
     /**
      * Identifier of event.
      */
-    public readonly identifier: string;
+    readonly identifier: string;
 
     /**
      * Title of event.
      */
-    public title: string;
+    title: string;
 
     /**
      * Location of event.
      */
-    public location: string;
+    location: string;
 
     /**
      * Notes associated with event.
      */
-    public notes: string;
+    notes: string;
 
     /**
      * Start date of event.
      */
-    public startDate: Date;
+    startDate: Date;
 
     /**
      * End date of event.
      */
-    public endDate: Date;
+    endDate: Date;
 
     /**
      * Whether the event is an all-day event.
      */
-    public isAllDay: boolean;
+    isAllDay: boolean;
 
     /**
      * Attendees associated with the event.
+     *
+     * An array of objects on the following form:
+     *
+     * Note that the property is read-only since iOS does not expose API to modify the attendeesof an event.
+     * @example
+     * {
+     *   "isCurrentUser": false,
+     *   "name": "John Appleseed",
+     *   "status": "accepted",
+     *   "type": "person",
+     *   "role": "required"
+     * }
      */
-    public readonly attendees: any[];
+    readonly attendees: any[];
 
     /**
      * Availability during the event.
+     *
+     * Indicates how the event should be treated for scheduling purposes. The followingvalues are supported:
+     *
+     * Be aware that not all calendars support all of these availabilities and some calendars
+     * may not support availability at all. Use Calendar.supportsAvailability() to checkif a calendar supports a specific availability.
      */
-    public availability: string;
+    availability: string;
 
     /**
      * Time zone of event.
+     *
+     * Geopolitical region identifier that identifies the time zone, e.g. "Europe/Copenhagen","America/New_York" and "Asia/Tokyo".
      */
-    public timeZone: string;
+    timeZone: string;
 
     /**
      * Calendar the event is stored in.
      */
-    public calendar: Calendar;
+    calendar: Calendar;
 
     /**
      * Constructs an event.
+     *
+     * In order to add the event to your calendar, you must call the save() function.
      */
-    public new(): void;
+    constructor();
 
     /**
      * Adds a recurrence rule.
      *
-     * @param recurrenceRule - Recurrence rule to add to the reminder.
+     * Recurrence rules specify when the eventer or reminder should be repeated. See thedocumentation of RecurrenceRule for more information on creating rules.
+     *
+     * @param recurrenceRule {RecurrenceRule} - Recurrence rule to add to the reminder.
      */
-    public addRecurrenceRule(recurrenceRule: RecurrenceRule): void;
+    addRecurrenceRule(recurrenceRule: RecurrenceRule): void;
 
     /**
      * Removes all recurrence rules.
      */
-    public removeAllRecurrenceRules(): void;
+    removeAllRecurrenceRules(): void;
 
     /**
      * Saves event.
+     *
+     * Saves changes to an event, inserting it into the calendar if it is newly created.
      */
-    public save(): void;
+    save(): void;
 
     /**
      * Removes event from calendar.
      */
-    public remove(): void;
+    remove(): void;
 
     /**
      * Presents a view for editing the calendar event.
      *
-     * @returns Promise that provides the updated event when fulfilled.
+     * The presented view supports editing various attributes of the event,
+     * including title, location, dates, recurrence and alerts.
      */
-    public presentEdit(): Promise<CalendarEvent>;
+    presentEdit(): Promise<CalendarEvent>;
 
     /**
      * Presents a view for creating a calendar event.
      *
-     * @returns Promise that provides the created event when fulfilled.
+     * The presented view supports editing various attributes of the event,
+     * including title, location, dates, recurrence and alerts.
      */
-    public presentCreate(): Promise<CalendarEvent>;
+    static presentCreate(): Promise<CalendarEvent>;
 
     /**
      * Events occurring today.
      *
-     * @param calendars - Calendars to fetch events for. Defaults to all calendars.
-     *
-     * @returns Promise that provides the events when fulfilled.
+     * @param calendars {Calendar[]} - Calendars to fetch events for. Defaults to all calendars.
      */
-    public today(calendars: Calendar[]): CalendarEvent[];
+    static today(calendars: Calendar[]): Promise<[CalendarEvent]>;
 
     /**
      * Events occurring tomorrow.
      *
-     * @param calendars - Calendars to fetch events for. Defaults to all calendars.
-     *
-     * @returns Promise that provides the events when fulfilled.
+     * @param calendars {Calendar[]} - Calendars to fetch events for. Defaults to all calendars.
      */
-    public tomorrow(calendars: Calendar[]): CalendarEvent[];
+    static tomorrow(calendars: Calendar[]): Promise<[CalendarEvent]>;
 
     /**
      * Events that occurred yesterday.
      *
-     * @param calendars - Calendars to fetch events for. Defaults to all calendars.
-     *
-     * @returns Promise that provides the events when fulfilled.
+     * @param calendars {Calendar[]} - Calendars to fetch events for. Defaults to all calendars.
      */
-    public yesterday(calendars: Calendar[]): CalendarEvent[];
+    static yesterday(calendars: Calendar[]): Promise<[CalendarEvent]>;
 
     /**
      * Events that occur this week.
      *
-     * @param calendars - Calendars to fetch events for. Defaults to all calendars.
-     *
-     * @returns Promise that provides the events when fulfilled.
+     * @param calendars {Calendar[]} - Calendars to fetch events for. Defaults to all calendars.
      */
-    public thisWeek(calendars: Calendar[]): CalendarEvent[];
+    static thisWeek(calendars: Calendar[]): Promise<[CalendarEvent]>;
 
     /**
      * Events that occur next week.
      *
-     * @param calendars - Calendars to fetch events for. Defaults to all calendars.
-     *
-     * @returns Promise that provides the events when fulfilled.
+     * @param calendars {Calendar[]} - Calendars to fetch events for. Defaults to all calendars.
      */
-    public nextWeek(calendars: Calendar[]): CalendarEvent[];
+    static nextWeek(calendars: Calendar[]): Promise<[CalendarEvent]>;
 
     /**
      * Events that occurred last week.
      *
-     * @param calendars - Calendars to fetch events for. Defaults to all calendars.
-     *
-     * @returns Promise that provides the events when fulfilled.
+     * @param calendars {Calendar[]} - Calendars to fetch events for. Defaults to all calendars.
      */
-    public lastWeek(calendars: Calendar[]): CalendarEvent[];
+    static lastWeek(calendars: Calendar[]): Promise<[CalendarEvent]>;
 
     /**
      * Events that occurs between two dates.
      *
-     * @param startDate - Start date to fetch events for.
-     * @param endDate - End date to fetch events for.
-     * @param calendars - Calendars to fetch events for. Defaults to all calendars.
-     *
-     * @returns Promise that provides the events when fulfilled.
+     * @param startDate {Date} - Start date to fetch events for.
+     * @param endDate {Date} - End date to fetch events for.
+     * @param calendars {Calendar[]} - Calendars to fetch events for. Defaults to all calendars.
      */
-    public between(startDate: Date, endDate: Date, calendars: Calendar[]): CalendarEvent[];
+    static between(startDate: Date, endDate: Date, calendars: Calendar[]): Promise<[CalendarEvent]>;
 }

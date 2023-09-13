@@ -3,11 +3,11 @@
  *
  * If used in a script triggered by a Siri Shortcut, Siri will speak the text.
  */
-export declare class Speech {
-
+export var Speech: {
     /**
      * Speaks a text.
      *
-     * @param {string} text - Text to speak.     */
-    public speak(text: string)): void;
+     * @param text {string} - Text to speak.
+     */
+    static speak(text: string): void;
 }

@@ -27,7 +27,7 @@ export interface MethodParameter {
 export interface MethodSignature {
     name: string;
     parameters: MethodParameter[];
-    returnType: string | undefined;
+    returnType: string;
     modifiers: string[];
 }
 
@@ -359,7 +359,7 @@ export class Scraper {
         const modifiersString = parts.groups?.["modifiers"]?.trim();
         const name = parts.groups?.["name"]?.trim();
         const parametersString = parts.groups?.["parameters"]?.trim();
-        const returnType = parts.groups?.["return_type"]?.trim();
+        const returnType = parts.groups?.["return_type"]?.trim() ?? "void";
 
         Assert.String.isNotNullOrEmpty(name);
 

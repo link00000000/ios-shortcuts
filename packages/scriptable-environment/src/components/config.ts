@@ -3,8 +3,7 @@
  *
  * Contains information about the configuration the script is currently being run under.
  */
-export declare const config: {
-
+export var config: {
     /**
      * Whether the script is running in the app.
      */
@@ -31,14 +30,14 @@ export declare const config: {
     readonly runsInNotification: boolean;
 
     /**
-     * Whether the script was run from the home screen. You can add a script to the home screen from the script settings.
+     * Whether the script was run from the home screen. You can add a script to the homescreen from the script settings.
      */
     readonly runsFromHomeScreen: boolean;
 
     /**
      * The size of the widget the script is running in.
-     * 
-     * @remark The value is `null` when the script is not running in a widget.
+     *
+     * Possible values are: small, medium, large extraLarge and null. The value is nullwhen the script is not running in a widget.
      */
-    readonly widgetFamily: "small" | "medium" | "large" | "extraLarge" | null;
+    readonly widgetFamily: string;
 }

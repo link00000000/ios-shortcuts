@@ -1,5 +1,3 @@
-import { Color } from "./color";
-
 /**
  * Holds reminders and events.
  *
@@ -8,118 +6,125 @@ import { Color } from "./color";
  * or when inserting into a calendar. If you are fetching reminders or events from all
  * calendars, you do not need to pass the calendars when performing the fetch with theReminder or CalendarEvent types.
  */
-export declare class Calendar {
-
+export var Calendar: {
     /**
      * Calendar identifier.
      */
-    public readonly identifier: string;
+    readonly identifier: string;
 
     /**
      * Title of calendar.
      */
-    public title: string;
+    title: string;
 
     /**
      * Whether the calendar is a subscribed calendar.
      */
-    public readonly isSubscribed: boolean;
+    readonly isSubscribed: boolean;
 
     /**
      * Indicates whether items can be added, edited, and deleted in the calendar.
      */
-    public readonly allowsContentModifications: boolean;
+    readonly allowsContentModifications: boolean;
 
     /**
      * Color of calendar.
      */
-    public color: Color;
+    color: Color;
 
     /**
      * Checks if the calendar supports availability.
      *
-     * @param availability - Availability to check against.
+     * The following values are supported:
      *
-     * @returns True if the calendar supports the availability, otherwise false.
+     * Not all calendars support all of these availabilities and some calendars may not
+     * support availability at all. Use this function to check if the calendar supportsa specific availability.
+     *
+     * @param availability {string} - Availability to check against.
      */
-    public supportsAvailability(availability: string): boolean;
+    supportsAvailability(availability: string): bool;
 
     /**
      * Saves calendar.
+     *
+     * Saves changes to the calendar.
      */
-    public save(): void;
+    save(): void;
 
     /**
      * Removes calendar.
+     *
+     * The calendar is removed immediately. This cannot be undone.
      */
-    public remove(): void;
+    remove(): void;
 
     /**
      * Fetches calendars for reminders.
      *
-     * @returns Promise that provides the calendars when fulfilled.
+     * A calendar can only hold either reminders or events. Call this function to fetchall calendars that can hold reminders.
      */
-    public static forReminders(): Calendar[];
+    static forReminders(): Promise<[Calendar]>;
 
     /**
      * Fetches calendars for events.
      *
-     * @returns Promise that provides the calendars when fulfilled.
+     * A calendar can only hold either reminders or events. Call this function to fetchall calendars that can hold events.
      */
-    public static forEvents(): Calendar[];
+    static forEvents(): Promise<[Calendar]>;
 
     /**
      * Fetches a calendar that holds reminders.
      *
-     * @param title - Title of calendar.
-     *
-     * @returns Promise that provides the calendar when fulfilled.
+     * @param title {string} - Title of calendar.
      */
-    public static forRemindersByTitle(title: string): Promise<Calendar>;
+    static forRemindersByTitle(title: string): Promise<Calendar>;
 
     /**
      * Fetches a calendar that holds events.
      *
-     * @param title - Title of calendar.
-     *
-     * @returns Promise that provides the calendar when fulfilled.
+     * @param title {string} - Title of calendar.
      */
-    public static forEventsByTitle(title: string): Promise<Calendar>;
+    static forEventsByTitle(title: string): Promise<Calendar>;
 
     /**
      * Create a new calendar that holds reminders.
      *
-     * @returns Promise that provides the created calendar when fulfilled.
+     * This will create a new list for reminders in the Reminders app. The list is automaticallysaved so there is no need to call save() after creating the list.
+     *
+     * @param title {string}
      */
-    public static createForReminders(title: string): Promise<Calendar>;
+    static createForReminders(title: string): Promise<Calendar>;
 
     /**
      * Find or create a new calendar that holds reminders.
      *
-     * @returns Promise that provides the calendar when fulfilled.
+     * This will attempt to find a calendar for reminders with the specified name. If no
+     * calendar is found, a new calendar is created and the calendar will appear as a reminder
+     * list in the Reminders app. If multiple calendars are found for the specified name,
+     * the first one will be returned.  The list is automatically saved so there is no needto call save() in the case the list was created.
+     *
+     * @param title {string}
      */
-    public static findOrCreateForReminders(title: string): Promise<Calendar>;
+    static findOrCreateForReminders(title: string): Promise<Calendar>;
 
     /**
      * Default calendar for reminders.
      *
-     * @returns Promise that provides the calendar when fulfilled.
+     * A calendar can only hold either reminders or events. Call this function to get thedefault calendar that can hold reminders.
      */
-    public static defaultForReminders(): Promise<Calendar>;
+    static defaultForReminders(): Promise<Calendar>;
 
     /**
      * Default calendar for events.
      *
-     * @returns Promise that provides the calendar when fulfilled.
+     * A calendar can only hold either reminders or events. Call this function to get thedefault calendar that can hold events.
      */
-    public static defaultForEvents(): Promise<Calendar>;
+    static defaultForEvents(): Promise<Calendar>;
 
     /**
      * Presents a view for picking calendars.
      *
-     * @param allowMultiple - Whether to allow picking multiple calenders. Defaults to false.
-     *
-     * @returns Promise that provides the calendars when fulfilled.
+     * @param allowMultiple {boolean} - Whether to allow picking multiple calenders. Defaultsto false.
      */
-    public static presentPicker(allowMultiple: boolean): Calendar[];
+    static presentPicker(allowMultiple: boolean): Promise<[Calendar]>;
 }

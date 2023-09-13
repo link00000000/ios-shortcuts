@@ -5,77 +5,91 @@
  * library. The first time you use the APIs, the app will prompt for access but if you
  * deny the request, all API calls will fail. In that case you must enable access tothe photo library from the system settings.
  */
-export declare class Photos {
-
+export var Photos: {
     /**
      * Presents the photo library for picking an image.
      *
-     * @returns {Promise<Image>} Promise that provide the selected image when fulfilled.
+     * Use this for picking an image from the photo library.
      */
-    public fromLibrary(): Promise<Image>;
+    static fromLibrary(): Promise<Image>;
 
     /**
      * Opens the camera for taking an image.
      *
-     * @returns {Promise<Image>} Promise that provide the captured image when fulfilled.
+     * Use this for taking a new image using the camera.
      */
-    public fromCamera(): Promise<Image>;
+    static fromCamera(): Promise<Image>;
 
     /**
      * Get latest photo.
      *
-     * @returns {Promise<Image>} Promise that provides the photo when fulfilled.
+     * Reads the latest photo from your photo library. If no photo is available, the promisewill be rejected.
      */
-    public latestPhoto(): Promise<Image>;
+    static latestPhoto(): Promise<Image>;
 
     /**
      * Get latest photos.
      *
-     * @param {number} count - Number of photos to fetch.
+     * Reads the latests photos from your photo library. If no photo is available, the promisewill be rejected.
      *
-     * @returns {Image[]} Promise that provides the photos when fulfilled.
+     * @param count {number} - Number of photos to fetch.
      */
-    public latestPhotos(count: number): Image[];
+    static latestPhotos(count: number): Promise<[Image]>;
 
     /**
      * Get latest screenshot.
      *
-     * @returns {Promise<Image>} Promise that provides the screenshot when fulfilled.
+     * Reads the latest screenshot from your photo library. If no screenshot is available,the promise will be rejected.
      */
-    public latestScreenshot(): Promise<Image>;
+    static latestScreenshot(): Promise<Image>;
 
     /**
      * Get latest screenshots.
      *
-     * @param {number} count - Number of screenshots to fetch.
+     * Reads the latests screenshots from your photo library. If no screenshot is available,the promise will be rejected.
      *
-     * @returns {Image[]} Promise that provides the screenshots when fulfilled.
+     * @param count {number} - Number of screenshots to fetch.
      */
-    public latestScreenshots(count: number): Image[];
+    static latestScreenshots(count: number): Promise<[Image]>;
 
     /**
-     * Removes latest photo.     */
-    public removeLatestPhoto(): void;
+     * Removes latest photo.
+     *
+     * Before removing the photo, an alert is shown prompting you to confirm the removal.
+     */
+    static removeLatestPhoto(): void;
 
     /**
      * Removes latest photos.
      *
-     * @param {number} count - Number of photos to remove.     */
-    public removeLatestPhotos(count: number)): void;
+     * Before removing the photos, an alert is shown prompting you to confirm the removal.
+     *
+     * @param count {number} - Number of photos to remove.
+     */
+    static removeLatestPhotos(count: number): void;
 
     /**
-     * Removes latest screenshot.     */
-    public removeLatestScreenshot(): void;
+     * Removes latest screenshot.
+     *
+     * Before removing the screenshot, an alert is shown prompting you to confirm the removal.
+     */
+    static removeLatestScreenshot(): void;
 
     /**
      * Removes latest screenshots.
      *
-     * @param {number} count - Number of screenshots to remove.     */
-    public removeLatestScreenshots(count: number)): void;
+     * Before removing the screenshots, an alert is shown prompting you to confirm the removal.
+     *
+     * @param count {number} - Number of screenshots to remove.
+     */
+    static removeLatestScreenshots(count: number): void;
 
     /**
      * Save an image.
      *
-     * @param {Image} image - The image to save.     */
-    public save(image: Image)): void;
+     * Saves the image to the photo library.
+     *
+     * @param image {Image} - The image to save.
+     */
+    static save(image: Image): void;
 }

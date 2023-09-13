@@ -8,67 +8,75 @@
  * 
  * When exporting a document, the picker will ask you to select a destination to storethe document.
  */
-export declare class DocumentPicker {
-
+export var DocumentPicker: {
     /**
      * Opens a document.
      *
-     * @param {string[]} types - Types of files to select. Specified using UTIs. Defaults to all files.
+     * Presents a document picker for opening a document from the Files app. It is up to
+     * the user to specify which types of files can be opened. Types are specified as UTIs,
+     * e.g. "public.plain-text" or "public.image". If you want to open a file of any file
+     * type, see the openFile function and if you want to open a folder, see the openFolderfunction.
      *
-     * @returns {string[]} Promise that provides paths for the selected documents when fulfilled.
+     * When fulfilled the returned promise will provide the paths for the selected documents.Use an instance of FileManager to read the contents of the files.
+     *
+     * @param types {string[]} - Types of files to select. Specified using UTIs. Defaultsto all files.
      */
-    public open(types: string[]): string[];
+    static open(types: string[]): Promise<[string]>;
 
     /**
      * Opens a file of any file type.
      *
-     * @returns {Promise<string>} Promise that provides paths for the selected files when fulfilled.
+     * Presents a document picker for opening a file from the Files app. The document pickerwill allow the selection of any file.
+     *
+     * When fulfilled the returned promise will provide the paths for the selected files.
      */
-    public openFile(): Promise<string>;
+    static openFile(): Promise<string>;
 
     /**
      * Opens a folder.
      *
-     * @returns {Promise<string>} Promise that provides paths for the selected folders when fulfilled.
+     * Presents a document picker for opening a folder from the Files app.
+     *
+     * When fulfilled the returned promise will provide the paths for the selected files.
      */
-    public openFolder(): Promise<string>;
+    static openFolder(): Promise<string>;
 
     /**
      * Exports a file to a document.
      *
-     * @param {string} path - Path of the file to export.
+     * Exports the file to a document with. A picker prompting for a destination to exportthe document to is presented.
      *
-     * @returns {string[]} Promise that provides paths for the selected file destination when fulfilled.
+     * @param path {string} - Path of the file to export.
      */
-    public export(path: string): string[];
+    static export(path: string): Promise<[string]>;
 
     /**
      * Exports a string to a document.
      *
-     * @param {string} content - Content of the document to export.
-     * @param {string} name - Optional name of the document to export.
+     * Exports a string to a new file. The name of the file can optionally be specified.A picker prompting for a destination to export the document to is presented.
      *
-     * @returns {string[]} Promise that provides the path of the selected destination when fulfilled.
+     * @param content {string} - Content of the document to export.
+     * @param name {string} - Optional name of the document to export.
      */
-    public exportString(content: string, name: string): string[];
+    static exportString(content: string, name: string): Promise<[string]>;
 
     /**
      * Exports an image.
      *
-     * @param {Image} image - Image to export.
-     * @param {string} name - Optional name of the image to export.
+     * Exports an image to a new file. The name of the file can optionally be specified.A picker prompting for a destination to export the document to is presented.
      *
-     * @returns {string[]} Promise that provides the path of the selected destination when fulfilled.
+     * @param image {Image} - Image to export.
+     * @param name {string} - Optional name of the image to export.
      */
-    public exportImage(image: Image, name: string): string[];
+    static exportImage(image: Image, name: string): Promise<[string]>;
 
     /**
      * Exports data.
      *
-     * @param {Data} data - Data to export.
-     * @param {string} name - Optional name of the image to export.
+     * Exports data to a new file. The name of the file can optionally be specified. A pickerprompting for a destination to export the document to is presented.
      *
-     * @returns {string[]} Promise that provides the path of the selected destination when fulfilled.
+     * @param data {Data} - Data to export.
+     * @param name {string} - Optional name of the image to export.
      */
-    public exportData(data: Data, name: string): string[];
+    static exportData(data: Data, name: string): Promise<[string]>;
 }

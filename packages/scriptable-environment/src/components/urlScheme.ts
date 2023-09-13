@@ -29,42 +29,50 @@
  *
  * In addition to the scriptable:// scheme, you can also perform the above actions usingthe universal link open.scriptable.app, e.g. https://open.scriptable.app/run/Example
  */
-export declare class URLScheme {
-
+export var URLScheme: {
     /**
      * Gets all parameters from invocation of URL scheme.
      *
-     * @returns {{string: string}} All query parameters.
+     * @deprecated
+     * Deprecated in version 1.3. Use args.queryParameters instead.
+     *
+     * Gets all the query parameters that were passed in the URL when running this scriptby invoking its URL scheme.
      */
-    public allParameters(): {string: string};
+    static allParameters(): {string: string};
 
     /**
      * Gets a parameters from invocation of URL scheme.
      *
-     * @param {string} name - Name of the query parameter to get the value for.
+     * @deprecated
+     * Deprecated in version 1.3. Use args.queryParameters instead.
      *
-     * @returns {string} Value of query parameter.
+     * Gets the value of a query parameter that was passed in the URL when running thisscript by invoking its URL scheme.
+     *
+     * @param name {string} - Name of the query parameter to get the value for.
      */
-    public parameter(name: string): string;
+    static parameter(name: string): string;
 
     /**
      * URL for opening the script.
      *
-     * @returns {string} URL for opening script.
+     * Gets the URL for opening the current script. When making a request to the returnedURL from another app, e.g. Safari, the script will be opened.
      */
-    public forOpeningScript(): string;
+    static forOpeningScript(): string;
 
     /**
      * URL for opening script settings.
      *
-     * @returns {string} URL for opening script settings.
+     * Gets the URL for opening the settings of the current script. When making a request
+     * to the returned URL from another app, e.g. Safari, the settings of the current scriptwill be opened.
      */
-    public forOpeningScriptSettings(): string;
+    static forOpeningScriptSettings(): string;
 
     /**
      * URL for running script.
      *
-     * @returns {string} URL for opening script settings.
+     * Gets the URL for running the current script. When making a request to the returnedURL from another app, e.g. Safari, the current script will run.
+     *
+     * Get the query parameters using the args.queryParameters.
      */
-    public forRunningScript(): string;
+    static forRunningScript(): string;
 }

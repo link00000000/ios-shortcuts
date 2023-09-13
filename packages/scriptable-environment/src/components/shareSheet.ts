@@ -5,14 +5,14 @@
  * For example sending an item via an email or SMS, saving an item to disk or openingan item in a third party app.
  * Available activites vary depending on the provided items.
  */
-export declare class ShareSheet {
-
+export var ShareSheet: {
     /**
      * Presents the activity picker.
      *
-     * @param {any[]} activityItems - Items to perform activity on.
+     * Presents a share sheet with an array of items to share. The activities included inthe presented sheet will vary based
+     * on the type of item.
      *
-     * @returns {Promise<{string: any}>} Promise carrying a value that tells which activity that was performed, if any. The promise is fulfilled when the sheet is dismissed.
+     * @param activityItems {any[]} - Items to perform activity on.
      */
-    public present(activityItems: any[]): Promise<{string: any}>;
+    static present(activityItems: any[]): Promise<{string: any}>;
 }

@@ -150,7 +150,7 @@ export class TsDocumentWriter {
                 const parameter = method.signature.parameters[i]!;
                 this.document += `${parameter.name}: ${parameter.type}`;
             }
-            this.document += ");";
+            this.document += `): ${method.signature.returnType};`;
             this.endLine();
         }
     }

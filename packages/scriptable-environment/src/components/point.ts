@@ -4,21 +4,21 @@
  * The structure encapsulates a coordinate in a two-dimensional coordinate system.
  */
 export declare class Point {
-
     /**
      * X value.
      */
-    public x: number;
+    x: number;
 
     /**
      * Y value.
      */
-    public y: number;
+    y: number;
 
     /**
      * Constructs a new point.
      *
-     * @param {number} x - X value.
-     * @param {number} y - Y value.     */
-    public Point(x: number, y: number)): void;
+     * @param x {number} - X value.
+     * @param y {number} - Y value.
+     */
+    constructor(x: number, y: number);
 }

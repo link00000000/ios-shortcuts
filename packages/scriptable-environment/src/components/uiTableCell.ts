@@ -4,88 +4,117 @@
  * Cells are shown horizontally in a UITableRow which in turn is shown
  * vertically in a UITable. Cells have content, e.g. a text or an image.
  */
-export declare class UITableCell {
-
+export var UITableCell: {
     /**
      * Relative width of the cell.
+     *
+     * A width weight specifies the relative width of the cell. When computing the absolute
+     * width of the cell, all width weights are taken into account. Consider the followingexample.
+     *
+     * Cell A has a width weight of 50.
+     * Cell B has a width weight of 100.
+     * Cell C has a width wegiht of 150.
+     *
+     * Assume that the row has an absolute width of 100. The width will be distributed among
+     * cells A, B and C. B will be double as wide as A but C will be fifty percent widerthan B and three times as wide as A.
      */
-    public widthWeight: number;
+    widthWeight: number;
 
     /**
-     * Called when the button is tapped.     */
-    public fn(): void;
+     * Called when the button is tapped.
+     *
+     * Buttons cannot be tapped when the table is presented in Siri.
+     */
+    onTap: fn();
 
     /**
      * Whether to dismiss the table when the button is tapped.
+     *
+     * Defaults to false.
      */
-    public dismissOnTap: boolean;
+    dismissOnTap: boolean;
 
     /**
      * Color of the title.
+     *
+     * This only has an effect on cells with a title. By default the color is null, in which
+     * case an appropriate color is automatically chosen based on the theme of the app andthe context the script is running in.
      */
-    public titleColor: Color;
+    titleColor: Color;
 
     /**
      * Color of the subtitle.
+     *
+     * This only has an effect on cells with a subtitle. By default the color is null, in
+     * which case an appropriate color is automatically chosen based on the theme of theapp and the context the script is running in.
      */
-    public subtitleColor: Color;
+    subtitleColor: Color;
 
     /**
      * Font of the title.
      */
-    public titleFont: Font;
+    titleFont: Font;
 
     /**
      * Font of the subtitle.
      */
-    public subtitleFont: Font;
+    subtitleFont: Font;
 
     /**
      * Constructs a text cell.
      *
-     * @param {string} title - Optional title to show in the cell.
-     * @param {string} subtitle - Optional subtitle shown below the title.
+     * Constructs a new cell containing text.
      *
-     * @returns {UITableCell} Constructed cell.
+     * @param title {string} - Optional title to show in the cell.
+     * @param subtitle {string} - Optional subtitle shown below the title.
      */
-    public text(title: string, subtitle: string): UITableCell;
+    static text(title: string, subtitle: string): UITableCell;
 
     /**
      * Constructs an image cell.
      *
-     * @param {Image} image - Image to show in the cell.
+     * Constructs a new cell containing an image.
      *
-     * @returns {UITableCell} Constructed cell.
+     * @param image {Image} - Image to show in the cell.
      */
-    public image(image: Image): UITableCell;
+    static image(image: Image): UITableCell;
 
     /**
      * Constructs an image cell.
      *
-     * @param {string} url - URL to image.
+     * Constructs a new cell that loads the image at the specified URL.
      *
-     * @returns {UITableCell} Constructed cell.
+     * @param url {string} - URL to image.
      */
-    public imageAtURL(url: string): UITableCell;
+    static imageAtURL(url: string): UITableCell;
 
     /**
      * Constructs a button cell.
      *
-     * @param {string} title - Title of the button.
+     * Constructs a new cell that contains a button. Set the onTap property to specify anaction to performed when the button is tapped.
      *
-     * @returns {UITableCell} Constructed cell.
+     * @param title {string} - Title of the button.
      */
-    public button(title: string): UITableCell;
+    static button(title: string): UITableCell;
 
     /**
-     * Left aligns content.     */
-    public leftAligned(): void;
+     * Left aligns content.
+     *
+     * Specifies that content in the cell should be left aligned.
+     */
+    leftAligned(): void;
 
     /**
-     * Center aligns content.     */
-    public centerAligned(): void;
+     * Center aligns content.
+     *
+     * Specifies that content in the cell should be center aligned.
+     */
+    centerAligned(): void;
 
     /**
-     * Right aligns content.     */
-    public rightAligned(): void;
+     * Right aligns content.
+     *
+     * Specifies that content in the cell should be right aligned.
+     */
+    rightAligned(): void;
 }

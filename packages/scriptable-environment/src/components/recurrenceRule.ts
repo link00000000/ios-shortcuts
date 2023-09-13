@@ -3,238 +3,294 @@
  *
  * A recurrence rule specifies how often a reminder or a calendar event should repeat.
  */
-export declare class RecurrenceRule {
-
+export var RecurrenceRule: {
     /**
      * Constructs a daily recurrence rule.
      *
-     * @param {number} interval - Interval at which to repeat the rule.
+     * The interval should have a value greater than 0 and specifies how often the pattern
+     * repeats. For example, an interval of 1 specifies that the rule should repeat everyday and a value of 3 specifies that the rule should repeat every third day.
      *
-     * @returns {RecurrenceRule} Constructed recurrence rule.
+     * @param interval {number} - Interval at which to repeat the rule.
      */
-    public daily(interval: number): RecurrenceRule;
+    static daily(interval: number): RecurrenceRule;
 
     /**
      * Constructs a daily recurrence rule with an end date.
      *
-     * @param {number} interval - Interval at which to repeat the rule.
-     * @param {Date} endDate - Date at which the recurrence rule should end.
+     * The interval should have a value greater than 0 and specifies how often the pattern
+     * repeats. For example, an interval of 1 specifies that the rule should repeat everyday and a value of 3 specifies that the rule should repeat every third day.
      *
-     * @returns {RecurrenceRule} Constructed recurrence rule.
+     * @param interval {number} - Interval at which to repeat the rule.
+     * @param endDate {Date} - Date at which the recurrence rule should end.
      */
-    public dailyEndDate(interval: number, endDate: Date): RecurrenceRule;
+    static dailyEndDate(interval: number, endDate: Date): RecurrenceRule;
 
     /**
      * Constructs a daily recurrence rule with an occurrence count.
      *
-     * @param {number} interval - Interval at which to repeat the rule.
-     * @param {number} occurrenceCount - Number of times the rule should repeat before it ends.
+     * The interval should have a value greater than 0 and specifies how often the pattern
+     * repeats. For example, an interval of 1 specifies that the rule should repeat everyday and a value of 3 specifies that the rule should repeat every third day.
      *
-     * @returns {RecurrenceRule} Constructed recurrence rule.
+     * @param interval {number} - Interval at which to repeat the rule.
+     * @param occurrenceCount {number} - Number of times the rule should repeat before itends.
      */
-    public dailyOccurrenceCount(interval: number, occurrenceCount: number): RecurrenceRule;
+    static dailyOccurrenceCount(interval: number, occurrenceCount: number): RecurrenceRule;
 
     /**
      * Constructs a weekly recurrence rule.
      *
-     * @param {number} interval - Interval at which to repeat the rule.
+     * The interval should have a value greater than 0 and specifies how often the pattern
+     * repeats. For example, an interval of 1 specifies that the rule should repeat everyweek and a value of 3 specifies that the rule should repeat every third week.
      *
-     * @returns {RecurrenceRule} Constructed recurrence rule.
+     * @param interval {number} - Interval at which to repeat the rule.
      */
-    public weekly(interval: number): RecurrenceRule;
+    static weekly(interval: number): RecurrenceRule;
 
     /**
      * Constructs a weekly recurrence rule with an end date.
      *
-     * @param {number} interval - Interval at which to repeat the rule.
-     * @param {Date} endDate - Date at which the recurrence rule should end.
+     * The interval should have a value greater than 0 and specifies how often the pattern
+     * repeats. For example, an interval of 1 specifies that the rule should repeat everyweek and a value of 3 specifies that the rule should repeat every third week.
      *
-     * @returns {RecurrenceRule} Constructed recurrence rule.
+     * @param interval {number} - Interval at which to repeat the rule.
+     * @param endDate {Date} - Date at which the recurrence rule should end.
      */
-    public weeklyEndDate(interval: number, endDate: Date): RecurrenceRule;
+    static weeklyEndDate(interval: number, endDate: Date): RecurrenceRule;
 
     /**
      * Constructs a weekly recurrence rule with an occurrence count.
      *
-     * @param {number} interval - Interval at which to repeat the rule.
-     * @param {number} occurrenceCount - Number of times the rule should repeat before it ends.
+     * The interval should have a value greater than 0 and specifies how often the pattern
+     * repeats. For example, an interval of 1 specifies that the rule should repeat everyweek and a value of 3 specifies that the rule should repeat every third week.
      *
-     * @returns {RecurrenceRule} Constructed recurrence rule.
+     * @param interval {number} - Interval at which to repeat the rule.
+     * @param occurrenceCount {number} - Number of times the rule should repeat before itends.
      */
-    public weeklyOccurrenceCount(interval: number, occurrenceCount: number): RecurrenceRule;
+    static weeklyOccurrenceCount(interval: number, occurrenceCount: number): RecurrenceRule;
 
     /**
      * Constructs a monthly recurrence rule.
      *
-     * @param {number} interval - Interval at which to repeat the rule.
+     * The interval should have a value greater than 0 and specifies how often the pattern
+     * repeats. For example, an interval of 1 specifies that the rule should repeat everymonth and a value of 3 specifies that the rule should repeat every third month.
      *
-     * @returns {RecurrenceRule} Constructed recurrence rule.
+     * @param interval {number} - Interval at which to repeat the rule.
      */
-    public monthly(interval: number): RecurrenceRule;
+    static monthly(interval: number): RecurrenceRule;
 
     /**
      * Constructs a monthly recurrence rule with an end date.
      *
-     * @param {number} interval - Interval at which to repeat the rule.
-     * @param {Date} endDate - Date at which the recurrence rule should end.
+     * The interval should have a value greater than 0 and specifies how often the pattern
+     * repeats. For example, an interval of 1 specifies that the rule should repeat everymonth and a value of 3 specifies that the rule should repeat every third month.
      *
-     * @returns {RecurrenceRule} Constructed recurrence rule.
+     * @param interval {number} - Interval at which to repeat the rule.
+     * @param endDate {Date} - Date at which the recurrence rule should end.
      */
-    public monthlyEndDate(interval: number, endDate: Date): RecurrenceRule;
+    static monthlyEndDate(interval: number, endDate: Date): RecurrenceRule;
 
     /**
      * Constructs a monthly recurrence rule with an occurrence count.
      *
-     * @param {number} interval - Interval at which to repeat the rule.
-     * @param {number} occurrenceCount - Number of times the rule should repeat before it ends.
+     * The interval should have a value greater than 0 and specifies how often the pattern
+     * repeats. For example, an interval of 1 specifies that the rule should repeat everymonth and a value of 3 specifies that the rule should repeat every third month.
      *
-     * @returns {RecurrenceRule} Constructed recurrence rule.
+     * @param interval {number} - Interval at which to repeat the rule.
+     * @param occurrenceCount {number} - Number of times the rule should repeat before itends.
      */
-    public monthlyOccurrenceCount(interval: number, occurrenceCount: number): RecurrenceRule;
+    static monthlyOccurrenceCount(interval: number, occurrenceCount: number): RecurrenceRule;
 
     /**
      * Constructs a yearly recurrence rule.
      *
-     * @param {number} interval - Interval at which to repeat the rule.
+     * The interval should have a value greater than 0 and specifies how often the pattern
+     * repeats. For example, an interval of 1 specifies that the rule should repeat everyyear and a value of 3 specifies that the rule should repeat every third year.
      *
-     * @returns {RecurrenceRule} Constructed recurrence rule.
+     * @param interval {number} - Interval at which to repeat the rule.
      */
-    public yearly(interval: number): RecurrenceRule;
+    static yearly(interval: number): RecurrenceRule;
 
     /**
      * Constructs a yearly recurrence rule with an end date.
      *
-     * @param {number} interval - Interval at which to repeat the rule.
-     * @param {Date} endDate - Date at which the recurrence rule should end.
+     * The interval should have a value greater than 0 and specifies how often the pattern
+     * repeats. For example, an interval of 1 specifies that the rule should repeat everyyear and a value of 3 specifies that the rule should repeat every third year.
      *
-     * @returns {RecurrenceRule} Constructed recurrence rule.
+     * @param interval {number} - Interval at which to repeat the rule.
+     * @param endDate {Date} - Date at which the recurrence rule should end.
      */
-    public yearlyEndDate(interval: number, endDate: Date): RecurrenceRule;
+    static yearlyEndDate(interval: number, endDate: Date): RecurrenceRule;
 
     /**
      * Constructs a yearly recurrence rule with an occurrence count.
      *
-     * @param {number} interval - Interval at which to repeat the rule.
-     * @param {number} occurrenceCount - Number of times the rule should repeat before it ends.
+     * The interval should have a value greater than 0 and specifies how often the pattern
+     * repeats. For example, an interval of 1 specifies that the rule should repeat everyyear and a value of 3 specifies that the rule should repeat every third year.
      *
-     * @returns {RecurrenceRule} Constructed recurrence rule.
+     * @param interval {number} - Interval at which to repeat the rule.
+     * @param occurrenceCount {number} - Number of times the rule should repeat before itends.
      */
-    public yearlyOccurrenceCount(interval: number, occurrenceCount: number): RecurrenceRule;
+    static yearlyOccurrenceCount(interval: number, occurrenceCount: number): RecurrenceRule;
 
     /**
      * Constructs a complex weekly recurrence rule.
      *
-     * @param {number} interval - Interval at which to repeat the rule.
-     * @param {number[]} daysOfTheWeek - Days of the week to repeat the rule. Values range from 1 to 7, with Sunday being 1.
-     * @param {number[]} setPositions - Filters which recurrences to include in the rule's frequency.
+     * The interval should have a value greater than 0 and specifies how often the pattern
+     * repeats. For example, an interval of 1 specifies that the rule should repeat everyweek and a value of 3 specifies that the rule should repeat every third week.
      *
-     * @returns {RecurrenceRule} Constructed recurrence rule.
+     * The setPositions filters which recurrences to include in the rule's frequency. For
+     * example, a yearly recurrence rule that has a daysOfTheWeek value that specifies Monday
+     * through Friday and setPositions contain 2 and -1, occurs only on the second weekdayand last weekday of every year.
+     *
+     * @param interval {number} - Interval at which to repeat the rule.
+     * @param daysOfTheWeek {number[]} - Days of the week to repeat the rule. Values rangefrom 1 to 7, with Sunday being 1.
+     * @param setPositions {number[]} - Filters which recurrences to include in the rule'sfrequency.
      */
-    public complexWeekly(interval: number, daysOfTheWeek: number[], setPositions: number[]): RecurrenceRule;
+    static complexWeekly(interval: number, daysOfTheWeek: number[], setPositions: number[]): RecurrenceRule;
 
     /**
      * Constructs a complex weekly recurrence rule with an end date.
      *
-     * @param {number} interval - Interval at which to repeat the rule.
-     * @param {number[]} daysOfTheWeek - Days of the week to repeat the rule. Values range from 1 to 7, with Sunday being 1.
-     * @param {number[]} setPositions - Filters which recurrences to include in the rule's frequency.
-     * @param {Date} endDate - Date at which the recurrence rule should end.
+     * The interval should have a value greater than 0 and specifies how often the pattern
+     * repeats. For example, an interval of 1 specifies that the rule should repeat everyweek and a value of 3 specifies that the rule should repeat every third week.
      *
-     * @returns {RecurrenceRule} Constructed recurrence rule.
+     * The setPositions filters which recurrences to include in the rule's frequency. For
+     * example, a yearly recurrence rule that has a daysOfTheWeek value that specifies Monday
+     * through Friday and setPositions contain 2 and -1, occurs only on the second weekdayand last weekday of every year.
+     *
+     * @param interval {number} - Interval at which to repeat the rule.
+     * @param daysOfTheWeek {number[]} - Days of the week to repeat the rule. Values rangefrom 1 to 7, with Sunday being 1.
+     * @param setPositions {number[]} - Filters which recurrences to include in the rule'sfrequency.
+     * @param endDate {Date} - Date at which the recurrence rule should end.
      */
-    public complexWeeklyEndDate(interval: number, daysOfTheWeek: number[], setPositions: number[], endDate: Date): RecurrenceRule;
+    static complexWeeklyEndDate(interval: number, daysOfTheWeek: number[], setPositions: number[], endDate: Date): RecurrenceRule;
 
     /**
      * Constructs a complex weekly recurrence rule with an occurrence count.
      *
-     * @param {number} interval - Interval at which to repeat the rule.
-     * @param {number[]} daysOfTheWeek - Days of the week to repeat the rule. Values range from 1 to 7, with Sunday being 1.
-     * @param {number[]} setPositions - Filters which recurrences to include in the rule's frequency.
-     * @param {number} occurrenceCount - Number of times the rule should repeat before it ends.
+     * The interval should have a value greater than 0 and specifies how often the pattern
+     * repeats. For example, an interval of 1 specifies that the rule should repeat everyweek and a value of 3 specifies that the rule should repeat every third week.
      *
-     * @returns {RecurrenceRule} Constructed recurrence rule.
+     * The setPositions filters which recurrences to include in the rule's frequency. For
+     * example, a yearly recurrence rule that has a daysOfTheWeek value that specifies Monday
+     * through Friday and setPositions contain 2 and -1, occurs only on the second weekdayand last weekday of every year.
+     *
+     * @param interval {number} - Interval at which to repeat the rule.
+     * @param daysOfTheWeek {number[]} - Days of the week to repeat the rule. Values rangefrom 1 to 7, with Sunday being 1.
+     * @param setPositions {number[]} - Filters which recurrences to include in the rule'sfrequency.
+     * @param occurrenceCount {number} - Number of times the rule should repeat before itends.
      */
-    public complexWeeklyOccurrenceCount(interval: number, daysOfTheWeek: number[], setPositions: number[], occurrenceCount: number): RecurrenceRule;
+    static complexWeeklyOccurrenceCount(interval: number, daysOfTheWeek: number[], setPositions: number[], occurrenceCount: number): RecurrenceRule;
 
     /**
      * Constructs a complex monthly recurrence rule.
      *
-     * @param {number} interval - Interval at which to repeat the rule.
-     * @param {number[]} daysOfTheWeek - Days of the week to repeat the rule. Values range from 1 to 7, with Sunday being 1.
-     * @param {number[]} daysOfTheMonth - Days of the month to repeat the rule. Values range from 1 to 31 and from -1 to -31.
-     * @param {number[]} setPositions - Filters which recurrences to include in the rule's frequency.
+     * The interval should have a value greater than 0 and specifies how often the pattern
+     * repeats. For example, an interval of 1 specifies that the rule should repeat everymonth and a value of 3 specifies that the rule should repeat every third month.
      *
-     * @returns {RecurrenceRule} Constructed recurrence rule.
+     * The setPositions filters which recurrences to include in the rule's frequency. For
+     * example, a yearly recurrence rule that has a daysOfTheWeek value that specifies Monday
+     * through Friday and setPositions contain 2 and -1, occurs only on the second weekdayand last weekday of every year.
+     *
+     * @param interval {number} - Interval at which to repeat the rule.
+     * @param daysOfTheWeek {number[]} - Days of the week to repeat the rule. Values rangefrom 1 to 7, with Sunday being 1.
+     * @param daysOfTheMonth {number[]} - Days of the month to repeat the rule. Values rangefrom 1 to 31 and from -1 to -31.
+     * @param setPositions {number[]} - Filters which recurrences to include in the rule'sfrequency.
      */
-    public complexMonthly(interval: number, daysOfTheWeek: number[], daysOfTheMonth: number[], setPositions: number[]): RecurrenceRule;
+    static complexMonthly(interval: number, daysOfTheWeek: number[], daysOfTheMonth: number[], setPositions: number[]): RecurrenceRule;
 
     /**
      * Constructs a complex monthly recurrence rule with an end date.
      *
-     * @param {number} interval - Interval at which to repeat the rule.
-     * @param {number[]} daysOfTheWeek - Days of the week to repeat the rule. Values range from 1 to 7, with Sunday being 1.
-     * @param {number[]} daysOfTheMonth - Days of the month to repeat the rule. Values range from 1 to 31 and from -1 to -31.
-     * @param {number[]} setPositions - Filters which recurrences to include in the rule's frequency.
-     * @param {Date} endDate - Date at which the recurrence rule should end.
+     * The interval should have a value greater than 0 and specifies how often the pattern
+     * repeats. For example, an interval of 1 specifies that the rule should repeat everymonth and a value of 3 specifies that the rule should repeat every third month.
      *
-     * @returns {RecurrenceRule} Constructed recurrence rule.
+     * The setPositions filters which recurrences to include in the rule's frequency. For
+     * example, a yearly recurrence rule that has a daysOfTheWeek value that specifies Monday
+     * through Friday and setPositions contain 2 and -1, occurs only on the second weekdayand last weekday of every year.
+     *
+     * @param interval {number} - Interval at which to repeat the rule.
+     * @param daysOfTheWeek {number[]} - Days of the week to repeat the rule. Values rangefrom 1 to 7, with Sunday being 1.
+     * @param daysOfTheMonth {number[]} - Days of the month to repeat the rule. Values rangefrom 1 to 31 and from -1 to -31.
+     * @param setPositions {number[]} - Filters which recurrences to include in the rule'sfrequency.
+     * @param endDate {Date} - Date at which the recurrence rule should end.
      */
-    public complexMonthlyEndDate(interval: number, daysOfTheWeek: number[], daysOfTheMonth: number[], setPositions: number[], endDate: Date): RecurrenceRule;
+    static complexMonthlyEndDate(interval: number, daysOfTheWeek: number[], daysOfTheMonth: number[], setPositions: number[], endDate: Date): RecurrenceRule;
 
     /**
      * Constructs a complex monthly recurrence rule with an occurrence count.
      *
-     * @param {number} interval - Interval at which to repeat the rule.
-     * @param {number[]} daysOfTheWeek - Days of the week to repeat the rule. Values range from 1 to 7, with Sunday being 1.
-     * @param {number[]} daysOfTheMonth - Days of the month to repeat the rule. Values range from 1 to 31 and from -1 to -31.
-     * @param {number[]} setPositions - Filters which recurrences to include in the rule's frequency.
-     * @param {number} occurrenceCount - Number of times the rule should repeat before it ends.
+     * The interval should have a value greater than 0 and specifies how often the pattern
+     * repeats. For example, an interval of 1 specifies that the rule should repeat everymonth and a value of 3 specifies that the rule should repeat every third month.
      *
-     * @returns {RecurrenceRule} Constructed recurrence rule.
+     * The setPositions filters which recurrences to include in the rule's frequency. For
+     * example, a yearly recurrence rule that has a daysOfTheWeek value that specifies Monday
+     * through Friday and setPositions contain 2 and -1, occurs only on the second weekdayand last weekday of every year.
+     *
+     * @param interval {number} - Interval at which to repeat the rule.
+     * @param daysOfTheWeek {number[]} - Days of the week to repeat the rule. Values rangefrom 1 to 7, with Sunday being 1.
+     * @param daysOfTheMonth {number[]} - Days of the month to repeat the rule. Values rangefrom 1 to 31 and from -1 to -31.
+     * @param setPositions {number[]} - Filters which recurrences to include in the rule'sfrequency.
+     * @param occurrenceCount {number} - Number of times the rule should repeat before itends.
      */
-    public complexMonthlyOccurrenceCount(interval: number, daysOfTheWeek: number[], daysOfTheMonth: number[], setPositions: number[], occurrenceCount: number): RecurrenceRule;
+    static complexMonthlyOccurrenceCount(interval: number, daysOfTheWeek: number[], daysOfTheMonth: number[], setPositions: number[], occurrenceCount: number): RecurrenceRule;
 
     /**
      * Constructs a complex yearly recurrence rule.
      *
-     * @param {number} interval - Interval at which to repeat the rule.
-     * @param {number[]} daysOfTheWeek - Days of the week to repeat the rule. Values range from 1 to 7, with Sunday being 1.
-     * @param {number[]} monthsOfTheYear - The months of the year to repeat the rule. Values range from 1 to 12.
-     * @param {number[]} weeksOfTheYear - The weeks of the year to repeat the rule. Values range from 1 to 53 and -1 to -53.
-     * @param {number[]} daysOfTheYear - The days of the year to repeat the rule. Values range from 1 to 366 and -1 to -366.
-     * @param {number[]} setPositions - Filters which recurrences to include in the rule's frequency.
+     * The interval should have a value greater than 0 and specifies how often the pattern
+     * repeats. For example, an interval of 1 specifies that the rule should repeat everyyear and a value of 3 specifies that the rule should repeat every third year.
      *
-     * @returns {RecurrenceRule} Constructed recurrence rule.
+     * The setPositions filters which recurrences to include in the rule's frequency. For
+     * example, a yearly recurrence rule that has a daysOfTheWeek value that specifies Monday
+     * through Friday and setPositions contain 2 and -1, occurs only on the second weekdayand last weekday of every year.
+     *
+     * @param interval {number} - Interval at which to repeat the rule.
+     * @param daysOfTheWeek {number[]} - Days of the week to repeat the rule. Values rangefrom 1 to 7, with Sunday being 1.
+     * @param monthsOfTheYear {number[]} - The months of the year to repeat the rule. Valuesrange from 1 to 12.
+     * @param weeksOfTheYear {number[]} - The weeks of the year to repeat the rule. Valuesrange from 1 to 53 and -1 to -53.
+     * @param daysOfTheYear {number[]} - The days of the year to repeat the rule. Valuesrange from 1 to 366 and -1 to -366.
+     * @param setPositions {number[]} - Filters which recurrences to include in the rule'sfrequency.
      */
-    public complexYearly(interval: number, daysOfTheWeek: number[], monthsOfTheYear: number[], weeksOfTheYear: number[], daysOfTheYear: number[], setPositions: number[]): RecurrenceRule;
+    static complexYearly(interval: number, daysOfTheWeek: number[], monthsOfTheYear: number[], weeksOfTheYear: number[], daysOfTheYear: number[], setPositions: number[]): RecurrenceRule;
 
     /**
      * Constructs a complex yearly recurrence rule with an end date.
      *
-     * @param {number} interval - Interval at which to repeat the rule.
-     * @param {number[]} daysOfTheWeek - Days of the week to repeat the rule. Values range from 1 to 7, with Sunday being 1.
-     * @param {number[]} monthsOfTheYear - The months of the year to repeat the rule. Values range from 1 to 12.
-     * @param {number[]} weeksOfTheYear - The weeks of the year to repeat the rule. Values range from 1 to 53 and -1 to -53.
-     * @param {number[]} daysOfTheYear - The days of the year to repeat the rule. Values range from 1 to 366 and -1 to -366.
-     * @param {number[]} setPositions - Filters which recurrences to include in the rule's frequency.
-     * @param {Date} endDate - Date at which the recurrence rule should end.
+     * The interval should have a value greater than 0 and specifies how often the pattern
+     * repeats. For example, an interval of 1 specifies that the rule should repeat everyyear and a value of 3 specifies that the rule should repeat every third week.
      *
-     * @returns {RecurrenceRule} Constructed recurrence rule.
+     * The setPositions filters which recurrences to include in the rule's frequency. For
+     * example, a yearly recurrence rule that has a daysOfTheWeek value that specifies Monday
+     * through Friday and setPositions contain 2 and -1, occurs only on the second weekdayand last weekday of every year.
+     *
+     * @param interval {number} - Interval at which to repeat the rule.
+     * @param daysOfTheWeek {number[]} - Days of the week to repeat the rule. Values rangefrom 1 to 7, with Sunday being 1.
+     * @param monthsOfTheYear {number[]} - The months of the year to repeat the rule. Valuesrange from 1 to 12.
+     * @param weeksOfTheYear {number[]} - The weeks of the year to repeat the rule. Valuesrange from 1 to 53 and -1 to -53.
+     * @param daysOfTheYear {number[]} - The days of the year to repeat the rule. Valuesrange from 1 to 366 and -1 to -366.
+     * @param setPositions {number[]} - Filters which recurrences to include in the rule'sfrequency.
+     * @param endDate {Date} - Date at which the recurrence rule should end.
      */
-    public complexYearlyEndDate(interval: number, daysOfTheWeek: number[], monthsOfTheYear: number[], weeksOfTheYear: number[], daysOfTheYear: number[], setPositions: number[], endDate: Date): RecurrenceRule;
+    static complexYearlyEndDate(interval: number, daysOfTheWeek: number[], monthsOfTheYear: number[], weeksOfTheYear: number[], daysOfTheYear: number[], setPositions: number[], endDate: Date): RecurrenceRule;
 
     /**
      * Constructs a complex yearly recurrence rule with an occurrence count.
      *
-     * @param {number} interval - Interval at which to repeat the rule.
-     * @param {number[]} daysOfTheWeek - Days of the week to repeat the rule. Values range from 1 to 7, with Sunday being 1.
-     * @param {number[]} monthsOfTheYear - The months of the year to repeat the rule. Values range from 1 to 12.
-     * @param {number[]} weeksOfTheYear - The weeks of the year to repeat the rule. Values range from 1 to 53 and -1 to -53.
-     * @param {number[]} daysOfTheYear - The days of the year to repeat the rule. Values range from 1 to 366 and -1 to -366.
-     * @param {number[]} setPositions - Filters which recurrences to include in the rule's frequency.
-     * @param {number} occurrenceCount - Number of times the rule should repeat before it ends.
+     * The interval should have a value greater than 0 and specifies how often the pattern
+     * repeats. For example, an interval of 1 specifies that the rule should repeat everyyear and a value of 3 specifies that the rule should repeat every third year.
      *
-     * @returns {RecurrenceRule} Constructed recurrence rule.
+     * The setPositions filters which recurrences to include in the rule's frequency. For
+     * example, a yearly recurrence rule that has a daysOfTheWeek value that specifies Monday
+     * through Friday and setPositions contain 2 and -1, occurs only on the second weekdayand last weekday of every year.
+     *
+     * @param interval {number} - Interval at which to repeat the rule.
+     * @param daysOfTheWeek {number[]} - Days of the week to repeat the rule. Values rangefrom 1 to 7, with Sunday being 1.
+     * @param monthsOfTheYear {number[]} - The months of the year to repeat the rule. Valuesrange from 1 to 12.
+     * @param weeksOfTheYear {number[]} - The weeks of the year to repeat the rule. Valuesrange from 1 to 53 and -1 to -53.
+     * @param daysOfTheYear {number[]} - The days of the year to repeat the rule. Valuesrange from 1 to 366 and -1 to -366.
+     * @param setPositions {number[]} - Filters which recurrences to include in the rule'sfrequency.
+     * @param occurrenceCount {number} - Number of times the rule should repeat before itends.
      */
-    public complexYearlyOccurrenceCount(interval: number, daysOfTheWeek: number[], monthsOfTheYear: number[], weeksOfTheYear: number[], daysOfTheYear: number[], setPositions: number[], occurrenceCount: number): RecurrenceRule;
+    static complexYearlyOccurrenceCount(interval: number, daysOfTheWeek: number[], monthsOfTheYear: number[], weeksOfTheYear: number[], daysOfTheYear: number[], setPositions: number[], occurrenceCount: number): RecurrenceRule;
 }

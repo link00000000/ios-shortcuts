@@ -3,323 +3,437 @@
  *
  * A FileManager lets you read files stored on the disk and make changes to them. Pathsto files are supplied as strings.
  */
-export declare class FileManager {
-
+export var FileManager: {
     /**
      * Creates a local FileManager.
      *
-     * @returns {FileManager} Local FileManager.
+     * Creates a file manager for operating with files stored locally.
      */
-    public local(): FileManager;
+    static local(): FileManager;
 
     /**
      * Creates an iCloud FileManager.
      *
-     * @returns {FileManager} iCloud FileManager.
+     * Creates a file manager for operating with files stored in iCloud. iCloud must beenabled on the device in order to use this.
      */
-    public iCloud(): FileManager;
+    static iCloud(): FileManager;
 
     /**
      * Read contents of a file as data.
      *
-     * @param {string} filePath - Path of the file to read.
+     * Reads the contents of the file specified by the file path as raw data. To read thefile as a string see readString(filePath) and to read it as an image see readImage(filePath).
      *
-     * @returns {Data} Contents of the file as a data or null if the file could not be read.
+     * The function will error if the file does not exist or if it exists in iCloud but
+     * has not been download. Use fileExists(filePath) to check if a file exists and downloadFileFromiCloud(filePath)
+     * to download the file. Note that it is always safe to call downloadFileFromiCloud(filePath),even if the file is stored locally on the device.
+     *
+     * @param filePath {string} - Path of the file to read.
      */
-    public read(filePath: string): Data;
+    read(filePath: string): Data;
 
     /**
      * Read contents of a file as string.
      *
-     * @param {string} filePath - Path of the file to read.
+     * The function will error if the file does not exist or if it exists in iCloud but
+     * has not been download. Use fileExists(filePath) to check if a file exists and downloadFileFromiCloud(filePath)
+     * to download the file. Note that it is always safe to call downloadFileFromiCloud(filePath),even if the file is stored locally on the device.
      *
-     * @returns {string} Contents of the file as a string or null if the file could not be read.
+     * @param filePath {string} - Path of the file to read.
      */
-    public readString(filePath: string): string;
+    readString(filePath: string): string;
 
     /**
      * Read contents of a file as an image.
      *
-     * @param {string} filePath - Path of the file to read.
+     * Reads the contents of the file specified by the file path and converts it to an image.
      *
-     * @returns {Image} Contents of the file as an image or null if the file could not be read.
+     * The function will error if the file does not exist or if it exists in iCloud but
+     * has not been download. Use fileExists(filePath) to check if a file exists and downloadFileFromiCloud(filePath)
+     * to download the file. Note that it is always safe to call downloadFileFromiCloud(filePath),even if the file is stored locally on the device.
+     *
+     * @param filePath {string} - Path of the file to read.
      */
-    public readImage(filePath: string): Image;
+    readImage(filePath: string): Image;
 
     /**
      * Write data to a file.
      *
-     * @param {string} filePath - Path of file to write to.
-     * @param {Data} content - Data to write to disk.     */
-    public write(filePath: string, content: Data)): void;
+     * @param filePath {string} - Path of file to write to.
+     * @param content {Data} - Data to write to disk.
+     */
+    write(filePath: string, content: Data): void;
 
     /**
      * Write a string to a file.
      *
-     * @param {string} filePath - Path of file to write to.
-     * @param {string} content - Content to write to disk.     */
-    public writeString(filePath: string, content: string)): void;
+     * Writes the content to the specified file path on disk. If the file does not already
+     * exist, it will be created. If the file already exists the contents of the file willbe overwritten with the new content.
+     *
+     * @param filePath {string} - Path of file to write to.
+     * @param content {string} - Content to write to disk.
+     */
+    writeString(filePath: string, content: string): void;
 
     /**
      * Write an image to a file.
      *
-     * @param {string} filePath - Path of file to write to.
-     * @param {Image} image - Image to write to disk.     */
-    public writeImage(filePath: string, image: Image)): void;
+     * Writes the image to the specified file path on disk. If the file does not already
+     * exist, it will be created. If the file already exists the contents of the file willbe overwritten with the new content.
+     *
+     * @param filePath {string} - Path of file to write to.
+     * @param image {Image} - Image to write to disk.
+     */
+    writeImage(filePath: string, image: Image): void;
 
     /**
      * Removes a file.
      *
-     * @param {string} filePath - Path of file to remove.     */
-    public remove(filePath: string)): void;
+     * Removes the file at the specified path. Use with caution. Removed files cannot berestored.
+     *
+     * @param filePath {string} - Path of file to remove.
+     */
+    remove(filePath: string): void;
 
     /**
      * Moves a file.
      *
-     * @param {string} sourceFilePath - Path of the file to move.
-     * @param {string} destinationFilePath - Path to move the file to.     */
-    public move(sourceFilePath: string, destinationFilePath: string)): void;
+     * Moves the file from the source path to the destination path.
+     * Caution: This operation will replace any existing file at the the destination.
+     *
+     * @param sourceFilePath {string} - Path of the file to move.
+     * @param destinationFilePath {string} - Path to move the file to.
+     */
+    move(sourceFilePath: string, destinationFilePath: string): void;
 
     /**
      * Copies a file.
      *
-     * @param {string} sourceFilePath - Path of the file to copy.
-     * @param {string} destinationFilePath - Path to copy the file to.     */
-    public copy(sourceFilePath: string, destinationFilePath: string)): void;
+     * Copies the file from the source path to the destination path.
+     * 
+     * If a file already exists at the destination file path, the operation will fail andthe file will not be copied.
+     *
+     * @param sourceFilePath {string} - Path of the file to copy.
+     * @param destinationFilePath {string} - Path to copy the file to.
+     */
+    copy(sourceFilePath: string, destinationFilePath: string): void;
 
     /**
      * Checks if the file exists.
      *
-     * @param {string} filePath - File path to examine.
+     * Checks if the file exists at the specified file path. Checking this before moving
+     * or copying to a destination can be a good idea as those operations will replace anyexisting file at the destination file path.
      *
-     * @returns {boolean} True if the file exists otherwise false.
+     * @param filePath {string} - File path to examine.
      */
-    public fileExists(filePath: string): boolean;
+    fileExists(filePath: string): bool;
 
     /**
      * Checks if a path points to a directory.
      *
-     * @param {string} path - Path to examine.
-     *
-     * @returns {boolean} True if the path points to a directory otherwise false.
+     * @param path {string} - Path to examine.
      */
-    public isDirectory(path: string): boolean;
+    isDirectory(path: string): bool;
 
     /**
      * Creates a directory at the specified path.
      *
-     * @param {string} path - Path of directory to create.
-     * @param {boolean} intermediateDirectories - Whether to create all intermediate directories. Defaults to false.     */
-    public createDirectory(path: string, intermediateDirectories: boolean): void;
+     * You can optionally create all intermediate directories.
+     *
+     * @param path {string} - Path of directory to create.
+     * @param intermediateDirectories {boolean} - Whether to create all intermediate directories.Defaults to false.
+     */
+    createDirectory(path: string, intermediateDirectories: boolean): void;
 
     /**
      * Path of temporary directory.
      *
-     * @returns {string} Path to temporary directory.
+     * Used to retrieve the path of a temporary directory on disk. 
+     * 
+     * Data persisted in a temporary directory will generally live shorter than data persistedin the cache directory.
+     *
+     * The operating system may at any time delete files stored in this directory
+     * and therefore you should not rely on it for long time storage.
+     * 
+     * If you need long time storage, see documentsDirectory() or libraryDirectory(). Thisdirectory is not shared between the app, the action extension and Siri.
      */
-    public temporaryDirectory(): string;
+    temporaryDirectory(): string;
 
     /**
      * Path of cache directory.
      *
-     * @returns {string} Path to temporary directory.
+     * Used to retrieve the path of a cache directory on disk. 
+     * The operating system may at any time delete files stored in this directory
+     * and therefore you should not rely on it for long time storage.
+     *
+     * Data persisted in the cache directory will generally live longer than data persistedin a temporary directory.
+     *
+     * If you need long time storage, see documentsDirectory() or libraryDirectory(). Thisdirectory is not shared between the app, the action extension and Siri.
      */
-    public cacheDirectory(): string;
+    cacheDirectory(): string;
 
     /**
      * Path of documents directory.
      *
-     * @returns {string} Path to documents directory.
+     * Used to retrieve the path to the documents directory. Your scripts are stored in
+     * this directory. If you have iCloud enabled, your scripts will be stored in the documents
+     * directory in iCloud otherwise they will be stored in the local documents directory.
+     * The directory can be used for long time storage. Documents stored in this directory
+     * can be accessed using the Files app. Files stored in the local documents directorywill not appear in the Files app.
      */
-    public documentsDirectory(): string;
+    documentsDirectory(): string;
 
     /**
      * Path of library directory.
      *
-     * @returns {string} Path to library directory.
+     * Used to retrieve the path to the library directory. The directory can be used for
+     * long time storage. Documents stored in this directory cannot be accessed using theFiles app.
      */
-    public libraryDirectory(): string;
+    libraryDirectory(): string;
 
     /**
      * Joins two path components.
      *
-     * @param {string} lhsPath - Left-hand side part of the new path.
-     * @param {string} rhsPath - Right-hand side part of the new path.
+     * Joins two paths to created one path. For example to join the path to a directory
+     * with the name of a file. This is the suggested approach for creating new file pathspassed to the read and write functions of a FileManager.
      *
-     * @returns {string} Path with the two path components joined.
+     * @param lhsPath {string} - Left-hand side part of the new path.
+     * @param rhsPath {string} - Right-hand side part of the new path.
      */
-    public joinPath(lhsPath: string, rhsPath: string): string;
+    joinPath(lhsPath: string, rhsPath: string): string;
 
     /**
      * Reads all tags from a file.
      *
-     * @param {string} filePath - Path of file to read tags from.
+     * The tags are read from the file at the specified path. Tags can either be read, addedand removed using the Files app by using the APIs provided by a FileManager.
      *
-     * @returns {string[]} Read tags.
+     * The function will error if the file does not exist or if it exists in iCloud but
+     * has not been download. Use fileExists(filePath) to check if a file exists and downloadFileFromiCloud(filePath)
+     * to download the file. Note that it is always safe to call downloadFileFromiCloud(filePath),even if the file is stored locally on the device.
+     *
+     * @param filePath {string} - Path of file to read tags from.
      */
-    public allTags(filePath: string): string[];
+    allTags(filePath: string): [string];
 
     /**
      * Adds a tag to a file.
      *
-     * @param {string} filePath - Path of file to add the tag to.
-     * @param {string} tag - Tag to add. This can be an existing tag or a new tag.     */
-    public addTag(filePath: string, tag: string)): void;
+     * A tag can only be added to a file once. It is not possible to specify a color for
+     * the tag. You can create the tags using the Files app to specify the color and thenadd them to files afterwards using the FileManager API.
+     *
+     * The function will error if the file does not exist or if it exists in iCloud but
+     * has not been download. Use fileExists(filePath) to check if a file exists and downloadFileFromiCloud(filePath)
+     * to download the file. Note that it is always safe to call downloadFileFromiCloud(filePath),even if the file is stored locally on the device.
+     *
+     * @param filePath {string} - Path of file to add the tag to.
+     * @param tag {string} - Tag to add. This can be an existing tag or a new tag.
+     */
+    addTag(filePath: string, tag: string): void;
 
     /**
      * Removes a tag from a file.
      *
-     * @param {string} filePath - Path of file to remove the tag from.
-     * @param {string} tag - Tag to remove.     */
-    public removeTag(filePath: string, tag: string)): void;
+     * The function will error if the file does not exist or if it exists in iCloud but
+     * has not been download. Use fileExists(filePath) to check if a file exists and downloadFileFromiCloud(filePath)
+     * to download the file. Note that it is always safe to call downloadFileFromiCloud(filePath),even if the file is stored locally on the device.
+     *
+     * @param filePath {string} - Path of file to remove the tag from.
+     * @param tag {string} - Tag to remove.
+     */
+    removeTag(filePath: string, tag: string): void;
 
     /**
      * Reads an extended attribute from a file.
      *
-     * @param {string} filePath - Path of file to read extended attribute from.
-     * @param {string} name - Name of the extended attribute to read.
+     * Extended attributes are metadata that can be stored on a file. Note that extendedattributes are not synced with iCloud.
      *
-     * @returns {string} Value of the extended attribute.
+     * The function will return null if the attribute does not exist.
+     *
+     * The function will error if the file does not exist or if it exists in iCloud but
+     * has not been download. Use fileExists(filePath) to check if a file exists and downloadFileFromiCloud(filePath)
+     * to download the file. Note that it is always safe to call downloadFileFromiCloud(filePath),even if the file is stored locally on the device.
+     *
+     * @param filePath {string} - Path of file to read extended attribute from.
+     * @param name {string} - Name of the extended attribute to read.
      */
-    public readExtendedAttribute(filePath: string, name: string): string;
+    readExtendedAttribute(filePath: string, name: string): string;
 
     /**
      * Writes an extended attribute to a file.
      *
-     * @param {string} filePath - Path of file to add an extended attribute to.
-     * @param {string} value - Value of the extended attribute.
-     * @param {string} name - Name of the extended attribute. This is used to retrieve the value at a later point.     */
-    public writeExtendedAttribute(filePath: string, value: string, name: string)): void;
+     * Extended attributes are metadata that can be stored on a file. Note that extendedattributes are not synced with iCloud.
+     *
+     * The function will error if the file does not exist or if it exists in iCloud but
+     * has not been download. Use fileExists(filePath) to check if a file exists and downloadFileFromiCloud(filePath)
+     * to download the file. Note that it is always safe to call downloadFileFromiCloud(filePath),even if the file is stored locally on the device.
+     *
+     * @param filePath {string} - Path of file to add an extended attribute to.
+     * @param value {string} - Value of the extended attribute.
+     * @param name {string} - Name of the extended attribute. This is used to retrieve thevalue at a later point.
+     */
+    writeExtendedAttribute(filePath: string, value: string, name: string): void;
 
     /**
      * Removes an extended attribute from a file.
      *
-     * @param {string} filePath - Path of file to add an extended attribute to.
-     * @param {string} name - Name of the extended attribute to remove.     */
-    public removeExtendedAttribute(filePath: string, name: string)): void;
+     * Extended attributes are metadata that can be stored on a file. Note that extendedattributes are not synced with iCloud.
+     *
+     * The function will error if the file does not exist or if it exists in iCloud but
+     * has not been download. Use fileExists(filePath) to check if a file exists and downloadFileFromiCloud(filePath)
+     * to download the file. Note that it is always safe to call downloadFileFromiCloud(filePath),even if the file is stored locally on the device.
+     *
+     * @param filePath {string} - Path of file to add an extended attribute to.
+     * @param name {string} - Name of the extended attribute to remove.
+     */
+    removeExtendedAttribute(filePath: string, name: string): void;
 
     /**
      * Reads all extended attributes on a file.
      *
-     * @param {string} filePath - Path of file to read extended attributes from.
+     * Extended attributes are metadata that can be stored on a file. Note that extendedattributes are not synced with iCloud.
      *
-     * @returns {string[]} An array of all extended attributes.
+     * @param filePath {string} - Path of file to read extended attributes from.
      */
-    public allExtendedAttributes(filePath: string): string[];
+    allExtendedAttributes(filePath: string): [string];
 
     /**
      * Gets the UTI of the specified file.
      *
-     * @param {string} filePath - Path of file to get UTI of.
+     * The Uniform Type Identifier is a string that identifies the type of file.
      *
-     * @returns {string} The UTI of the file.
+     * @param filePath {string} - Path of file to get UTI of.
      */
-    public getUTI(filePath: string): string;
+    getUTI(filePath: string): string;
 
     /**
      * Lists content of directory.
      *
-     * @param {string} directoryPath - Path to directory.
+     * Lists all the contents in the specified directory. The returned array contains filenamesto all files and directories in the specified directory.
      *
-     * @returns {string[]} Names of all the files and directories in the specified directory.
+     * @param directoryPath {string} - Path to directory.
      */
-    public listContents(directoryPath: string): string[];
+    listContents(directoryPath: string): [string];
 
     /**
      * Get name of a file.
      *
-     * @param {string} filePath - path of file to get name of.
-     * @param {boolean} includeFileExtension - Whether or not the file extension should be included. Defaults to false.
+     * Takes a file path and returns the name of the file. Also supports getting the nameof a directory.
+     * The returned file name optionally includes the extension of the file.
      *
-     * @returns {string} Name of the file.
+     * @param filePath {string} - path of file to get name of.
+     * @param includeFileExtension {boolean} - Whether or not the file extension shouldbe included. Defaults to false.
      */
-    public fileName(filePath: string, includeFileExtension: boolean): string;
+    fileName(filePath: string, includeFileExtension: boolean): string;
 
     /**
      * Get extension of a file.
      *
-     * @param {string} filePath - Path of file to get extension from.
+     * Takes a file path and returns the extension of the file, e.g. ".jpg" or ".js". Returnsen empty string for directories.
      *
-     * @returns {string} Extension of the file.
+     * @param filePath {string} - Path of file to get extension from.
      */
-    public fileExtension(filePath: string): string;
+    fileExtension(filePath: string): string;
 
     /**
      * Get path to a bookmarked file or folder.
      *
-     * @param {string} name - Name of bookmark to create path for.
+     * Gets the path to a bookmarked file or filder. Use file bookmarks to access filesand folders outside Scriptables documents directory.
      *
-     * @returns {string} Path to the bookmarked file or folder.
+     * You can edit your file bookmarks from Scriptables settings.
+     *
+     * The function will throw an error if the bookmark doesn't exist.
+     *
+     * Please beware that bookmarks created from Scriptables settings only can be used when
+     * running a script in the app and not from the Share Sheet, Siri and Shortcuts. If
+     * you wish to use a bookmark from Siri or the Shortcuts app, the bookmark must be createdusing Scriptables "Create File Bookmark" shortcut action using the Shortcuts app.
+     *
+     * @param name {string} - Name of bookmark to create path for.
      */
-    public bookmarkedPath(name: string): string;
+    bookmarkedPath(name: string): string;
 
     /**
      * Check if a bookmark exists.
      *
-     * @param {string} name - Name of bookmark.
+     * Checks if a file bookmark exists with the specified name.
      *
-     * @returns {boolean} True of a bookmark exists for the specified name, otherwise false.
+     * You can edit your file bookmarks from Scriptables settings.
+     *
+     * Please beware that bookmarks created from Scriptables settings only can be used when
+     * running a script in the app and not from the Share Sheet, Siri and Shortcuts. If
+     * you wish to use a bookmark from Siri or the Shortcuts app, the bookmark must be createdusing Scriptables "Create File Bookmark" shortcut action using the Shortcuts app.
+     *
+     * @param name {string} - Name of bookmark.
      */
-    public bookmarkExists(name: string): boolean;
+    bookmarkExists(name: string): bool;
 
     /**
      * Download file from iCloud if necessary.
      *
-     * @param {string} filePath - Path of file to download from iCloud.
+     * Downloads the file from iCloud if it have not already been downloaded. If you pass
+     * in a path to a file that is not stored in iCloud, the returned promise will be resolvedimmediately making it safe to pass in any file path.
      *
-     * @returns {Promise<void>} Promise that is fulfilled when the file have been downloaded.
+     * @param filePath {string} - Path of file to download from iCloud.
      */
-    public downloadFileFromiCloud(filePath: string): Promise;
+    downloadFileFromiCloud(filePath: string): Promise;
 
     /**
      * Checks if a file is stored in iCloud.
      *
-     * @param {string} filePath - Path of file.
+     * Checks if a file is stored in iCloud or locally on the device. 
+     * 
+     * The function returns false if the file does not exist. Check if a file exists usingfileExists(filePath)
      *
-     * @returns {boolean} True if the file is stored in iCloud otherwise false.
+     * @param filePath {string} - Path of file.
      */
-    public isFileStoredIniCloud(filePath: string): boolean;
+    isFileStoredIniCloud(filePath: string): bool;
 
     /**
      * Checks if a file have been downloaded.
      *
-     * @param {string} filePath - Path of file.
+     * If a file is stored in iCloud and it has not been downloaded, this function returns
+     * false. In that case, the file can be downloaded using downloadFileFromiCloud(filePath.
+     * If the file is not stored in iCloud but rather locally on the device, this functionreturns true.
      *
-     * @returns {boolean} True if the file have been downloaded otherwise false.
+     * The function returns false if the file does not exist. Check if a file exists usingfileExists(filePath)
+     *
+     * @param filePath {string} - Path of file.
      */
-    public isFileDownloaded(filePath: string): boolean;
+    isFileDownloaded(filePath: string): bool;
 
     /**
      * Reads the creation date of a file.
      *
-     * @param {string} filePath - Path of file.
+     * The returned value will be null if the creation date cannot be read.
      *
-     * @returns {Date} The date the file was created.
+     * @param filePath {string} - Path of file.
      */
-    public creationDate(filePath: string): Date;
+    creationDate(filePath: string): Date;
 
     /**
      * Reads the modification date of a file.
      *
-     * @param {string} filePath - Path of file.
+     * The returned value will be null if the modification date cannot be read.
      *
-     * @returns {Date} The date the file was last modified.
+     * @param filePath {string} - Path of file.
      */
-    public modificationDate(filePath: string): Date;
+    modificationDate(filePath: string): Date;
 
     /**
      * Size of the file in kilobytes.
      *
-     * @param {string} filePath - Path of file.
+     * The returned value will be null if the file size cannot be read.
      *
-     * @returns {number} The file size measured in kilobytes.
+     * @param filePath {string} - Path of file.
      */
-    public fileSize(filePath: string): number;
+    fileSize(filePath: string): number;
 
     /**
      * Reads all file bookmarks created in settings.
+     *
+     * File bookmarks are used to bookmark a file or a folder and read or write to it later.File bookmarks are created from Scriptables settings.
+     *
+     * This function returns all file bookmarks as an array of objects that take the followingform.
+     *
+     * The source can either be host for file bookmarks that can be used in the app or siri_shortcutsfor file bookmarks that can be used in Siri and Shortcuts.
      */
-    public {
-      "name": "My Bookmark",
-      "source";
+    allFileBookmarks(): [{string: string}];
 }

@@ -4,36 +4,41 @@
  * The keychain is a secure storage for credentials, keys etc. Use the set() method
  * to add values to the keychain. You can then later use the get() method to retrievethe value.
  */
-export declare class Keychain {
-
+export var Keychain: {
     /**
      * Check if keychain contains a key.
      *
-     * @param {string} key - Key to look up in the keychain.
+     * Checks if the keychain contains the specified key.
      *
-     * @returns {boolean} True if the key exists in the keychain, otherwise false.
+     * @param key {string} - Key to look up in the keychain.
      */
-    public contains(key: string): boolean;
+    static contains(key: string): bool;
 
     /**
      * Add value for a specified key to keychain.
      *
-     * @param {string} key - Key which the value should be assigned to.
-     * @param {string} value - Value to assign to the specified key.     */
-    public set(key: string, value: string)): void;
+     * Adds the value to the keychain, assigning it to the specified key. If the key alreadyexists in the keychain, the value is overwritten.
+     *
+     * Values are securely stored in an encrypted database.
+     *
+     * @param key {string} - Key which the value should be assigned to.
+     * @param value {string} - Value to assign to the specified key.
+     */
+    static set(key: string, value: string): void;
 
     /**
      * Reads a value from the keychain.
      *
-     * @param {string} key - Key to read value for.
+     * Reads the value for the specified key. If the key doesn't exist the method will throwan error. Used the contains method to check if a key exists in the keychain.
      *
-     * @returns {string} Value assigned to the specified key.
+     * @param key {string} - Key to read value for.
      */
-    public get(key: string): string;
+    static get(key: string): string;
 
     /**
      * Remove key from keychain.
      *
-     * @param {string} key - Key to remove from the keychain.     */
-    public remove(key: string)): void;
+     * @param key {string} - Key to remove from the keychain.
+     */
+    static remove(key: string): void;
 }

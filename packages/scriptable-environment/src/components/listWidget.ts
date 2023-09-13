@@ -8,116 +8,153 @@
  * Also note that there are memory limitations when running a script in a widget. Whenusing too much memory the widget will crash and not render correctly.
  */
 export declare class ListWidget {
-
     /**
      * Background color of the widget.
      */
-    public backgroundColor: Color;
+    backgroundColor: Color;
 
     /**
      * Background image.
      */
-    public backgroundImage: Image;
+    backgroundImage: Image;
 
     /**
      * Background gradient.
      */
-    public backgroundGradient: LinearGradient;
+    backgroundGradient: LinearGradient;
 
     /**
      * Spacing between elements.
+     *
+     * Specifies the spacing between elements in the widget. You can also use the addSpacer()function on the widget to add spacing between elements. Defaults to 0.
      */
-    public spacing: number;
+    spacing: number;
 
     /**
      * URL to open.
+     *
+     * The URL will be opened when the widget is tapped. This will override any behavior
+     * defined in the configuration of the widget. E.g. if the widget is configured to runthe script when interacting with the widget but a URL is set the URL will take precedence.
      */
-    public url: string;
+    url: string;
 
     /**
      * Earliest date to refresh the widget.
+     *
+     * The property indicates when the widget can be refreshed again. The widget will not
+     * be refreshed before the date have been reached. It is not guaranteed that the widgetwill refresh at exactly the specified date.
+     *
+     * The refresh rate of a widget is partly up to iOS/iPadOS. For example, a widget may
+     * not refresh if the device is low on battery or the user is rarely looking at thewidget.
+     *
+     * When the property is null the default refresh interval is used. Defaults to null.
      */
-    public refreshAfterDate: Date;
+    refreshAfterDate: Date;
 
     /**
-     * Constructs a new list widget.     */
-    public ListWidget(): void;
+     * Constructs a new list widget.
+     *
+     * A widget showing a list of elements. Pass the widget to Script.setWidget() to displayit on your Home screen.
+     */
+    constructor();
 
     /**
      * Add text to the widget.
      *
-     * @returns {WidgetText} Text element.
+     * Adds a text element to the widget. Use the properties on the returned element tostyle the text.
+     *
+     * @param text {string}
      */
-    public addText(text: string): WidgetText;
+    addText(text: string): WidgetText;
 
     /**
      * Add date to the widget.
      *
-     * @returns {WidgetDate} Date element.
+     * Adds a date element to the widget. Use the properties on the returned element tostyle the date.
+     *
+     * @param date {Date}
      */
-    public addDate(date: Date): WidgetDate;
+    addDate(date: Date): WidgetDate;
 
     /**
      * Add image to the widget.
      *
-     * @returns {WidgetImage} Image element.
+     * Adds an image element to the widget. Use the properties on the returned element tostyle the image.
+     *
+     * @param image {Image}
      */
-    public addImage(image: Image): WidgetImage;
+    addImage(image: Image): WidgetImage;
 
     /**
      * Add spacer.
      *
-     * @param {number} length - Length of the spacer. Pass null to create a spacer with a flexible length.
+     * Adds a spacer to the widget. This can be used to offset the content vertically inthe widget.
      *
-     * @returns {WidgetSpacer} Spacer element.
+     * @param length {number} - Length of the spacer. Pass null to create a spacer witha flexible length.
      */
-    public addSpacer(length: number): WidgetSpacer;
+    addSpacer(length: number): WidgetSpacer;
 
     /**
      * Add stack.
      *
-     * @returns {WidgetStack} Stack element.
+     * Adds a stack to the widget. Stacks layout elements horizontally by default.
      */
-    public addStack(): WidgetStack;
+    addStack(): WidgetStack;
 
     /**
      * Set padding.
      *
-     * @param {number} top - Padding on the top edge.
-     * @param {number} leading - Padding on the leading edge.
-     * @param {number} bottom - Padding on the bottom edge.
-     * @param {number} trailing - Padding on the trailing edge.     */
-    public setPadding(top: number, leading: number, bottom: number, trailing: number)): void;
+     * Sets the padding on each side of the widget.
+     *
+     * @param top {number} - Padding on the top edge.
+     * @param leading {number} - Padding on the leading edge.
+     * @param bottom {number} - Padding on the bottom edge.
+     * @param trailing {number} - Padding on the trailing edge.
+     */
+    setPadding(top: number, leading: number, bottom: number, trailing: number): void;
 
     /**
-     * Use the default padding.     */
-    public useDefaultPadding(): void;
+     * Use the default padding.
+     *
+     * Configure the widget to use the default padding. Any padding previously defined withsetPadding() will be discarded.
+     */
+    useDefaultPadding(): void;
 
     /**
      * Presents a preview of the widget.
      *
-     * @returns {Promise<void>} Promise that is fulfilled when the preview is dismissed.
+     * The widget is presented in its small size.
+     *
+     * Widgets on the Home screen are updated periodically so while working on your widgetyou may want to preview it in the app.
      */
-    public presentSmall(): Promise;
+    presentSmall(): Promise;
 
     /**
      * Presents a preview of the widget.
      *
-     * @returns {Promise<void>} Promise that is fulfilled when the preview is dismissed.
+     * The widget is presented in its medium size.
+     *
+     * Widgets on the Home screen are updated periodically so while working on your widgetyou may want to preview it in the app.
      */
-    public presentMedium(): Promise;
+    presentMedium(): Promise;
 
     /**
      * Presents a preview of the widget.
      *
-     * @returns {Promise<void>} Promise that is fulfilled when the preview is dismissed.
+     * The widget is presented in its large size.
+     *
+     * Widgets on the Home screen are updated periodically so while working on your widgetyou may want to preview it in the app.
      */
-    public presentLarge(): Promise;
+    presentLarge(): Promise;
 
     /**
      * Presents a preview of the widget.
      *
-     * @returns {Promise<void>} Promise that is fulfilled when the preview is dismissed.
+     * The widget is presented in its extra large size.
+     *
+     * Widgets on the Home screen are updated periodically so while working on your widgetyou may want to preview it in the app.
+     *
+     * Please be aware that extra large widgets are only available on iPads running iOS15 and newer.
      */
-    public presentExtraLarge(): Promise;
+    presentExtraLarge(): Promise;
 }

@@ -5,43 +5,50 @@
  * use the API, the application will prompt you to authorize access to your location.
  * If you do not authorize access, the application cannot fetch your location. You canchange this later from the system settings.
  */
-export declare class Location {
-
+export var Location: {
     /**
      * Fetches your location.
      *
-     * @returns {Promise<{string: number}>} Promise providing an object containing information about your location.
+     * Your location is fetched using GPS, WiFi and cellular hardware. The object carried
+     * by the promise includes the latitude, longitude and altitude as well as the horizontaland vertical accuracy measured in meters.
      */
-    public current(): Promise<{string: number}>;
+    static current(): Promise<{string: number}>;
 
     /**
-     * Uses best accuracy. This is default.     */
-    public setAccuracyToBest(): void;
+     * Uses best accuracy. This is default.
+     *
+     * Set this when you want to achieve the best possible accuracy when retrieving yourlocation. This is the default accuracy.
+     */
+    static setAccuracyToBest(): void;
 
     /**
-     * Sets accuracy to within ten meters.     */
-    public setAccuracyToTenMeters(): void;
+     * Sets accuracy to within ten meters.
+     */
+    static setAccuracyToTenMeters(): void;
 
     /**
-     * Sets accuracy to within hundred meters.     */
-    public setAccuracyToHundredMeters(): void;
+     * Sets accuracy to within hundred meters.
+     */
+    static setAccuracyToHundredMeters(): void;
 
     /**
-     * Sets accuracy to within one kilometer.     */
-    public setAccuracyToKilometer(): void;
+     * Sets accuracy to within one kilometer.
+     */
+    static setAccuracyToKilometer(): void;
 
     /**
-     * Sets accuracy to within three kilometers.     */
-    public setAccuracyToThreeKilometers(): void;
+     * Sets accuracy to within three kilometers.
+     */
+    static setAccuracyToThreeKilometers(): void;
 
     /**
      * Performs reverse-geocoding for a location.
      *
-     * @param {number} latitude - Latitude of coordinate to fetch information about.
-     * @param {number} longitude - Longitude of coordinate to fetch information about.
-     * @param {string} locale - Optional. Preferred locale to fetch information in. Uses the default locale of the device if null.
+     * A reverse-geocoding request fetches information about the current location. The datais delivered by Apple's geocoding service.
      *
-     * @returns {[{string: any}]} Promise that carries all available information about the address when resolved.
+     * @param latitude {number} - Latitude of coordinate to fetch information about.
+     * @param longitude {number} - Longitude of coordinate to fetch information about.
+     * @param locale {string} - Optional. Preferred locale to fetch information in. Usesthe default locale of the device if null.
      */
-    public reverseGeocode(latitude: number, longitude: number, locale: string): [{string: any}];
+    static reverseGeocode(latitude: number, longitude: number, locale: string): [{string: any}];
 }

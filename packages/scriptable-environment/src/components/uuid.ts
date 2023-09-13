@@ -3,12 +3,11 @@
  *
  * A universally unique value that can be used to identify items.
  */
-export declare class UUID {
-
+export var UUID: {
     /**
      * Get string value.
      *
-     * @returns {string} String value.
+     * Used for getting the string value of a UUID.
      */
-    public string(): string;
+    static string(): string;
 }

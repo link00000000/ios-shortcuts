@@ -6,80 +6,100 @@
  * in a UITable in the order they are added to the table. Rows contain cells which areshown horizontally in the order they are added to the row.
  */
 export declare class UITableRow {
-
     /**
      * Spacing between cells.
+     *
+     * Specifies the horizontal spacing between cells in the row.
      */
-    public cellSpacing: number;
+    cellSpacing: number;
 
     /**
      * Height of the row.
+     *
+     * The height of the row defaults to 44.
      */
-    public height: number;
+    height: number;
 
     /**
      * Whether the cell is a header.
+     *
+     * Headers are highlighted cells that helps users understand context. Defaults to false.
      */
-    public isHeader: boolean;
+    isHeader: boolean;
 
     /**
      * Whether to dismiss the table when the row is selected.
+     *
+     * This property will only have an effect if the row is selectable, i.e. onSelect hasa value. Otherwise it is ignored.
+     *
+     * Defaults to true.
      */
-    public dismissOnSelect: boolean;
+    dismissOnSelect: boolean;
 
     /**
-     * Called when the row is selected.     */
-    public fn(): void;
+     * Called when the row is selected.
+     *
+     * Called when the row is selected when the table is presented. If this has no value,the row cannot be selected. Defaults to null.
+     *
+     * Rows cannot be tapped when the tables is presented in Siri.
+     */
+    onSelect: fn();
 
     /**
      * Background color.
      */
-    public backgroundColor: Color;
+    backgroundColor: Color;
 
     /**
-     * Constructs a row.     */
-    public UITableRow(): void;
+     * Constructs a row.
+     *
+     * Rows are shown vertically in a UITable. A row contains cells which are displayedhorizontally.
+     */
+    constructor();
 
     /**
      * Adds a cell.
      *
-     * @param {UITableCell} cell - Cell to add to the row.     */
-    public addCell(cell: UITableCell)): void;
+     * Adds a cell to the row. Note that cells are shown in the order they are added tothe row.
+     *
+     * @param cell {UITableCell} - Cell to add to the row.
+     */
+    addCell(cell: UITableCell): void;
 
     /**
      * Adds a text cell.
      *
-     * @param {string} title - Optional title to show in the cell.
-     * @param {string} subtitle - Optional subtitle shown below the title in the cell.
+     * Constructs a new cell containing the specified string and adds it to the row.
      *
-     * @returns {UITableCell} Constructed cell.
+     * @param title {string} - Optional title to show in the cell.
+     * @param subtitle {string} - Optional subtitle shown below the title in the cell.
      */
-    public addText(title: string, subtitle: string): UITableCell;
+    addText(title: string, subtitle: string): UITableCell;
 
     /**
      * Adds an image cell.
      *
-     * @param {Image} image - Image to show in the cell.
+     * Constructs a new cell containing the specified image and adds it to the row.
      *
-     * @returns {UITableCell} Cosntructed cell.
+     * @param image {Image} - Image to show in the cell.
      */
-    public addImage(image: Image): UITableCell;
+    addImage(image: Image): UITableCell;
 
     /**
      * Adds an image cell.
      *
-     * @param {string} url - URL to image.
+     * Constructs a new cell that loads the image at the specified url and adds the cellto the row.
      *
-     * @returns {UITableCell} Cosntructed cell.
+     * @param url {string} - URL to image.
      */
-    public addImageAtURL(url: string): UITableCell;
+    addImageAtURL(url: string): UITableCell;
 
     /**
      * Adds a button cell.
      *
-     * @param {string} title - Title of the button.
+     * Constructs a new cell that contains a button. Set the onTap property to specify anaction to performed when the button is tapped.
      *
-     * @returns {UITableCell} Cosntructed cell.
+     * @param title {string} - Title of the button.
      */
-    public addButton(title: string): UITableCell;
+    addButton(title: string): UITableCell;
 }

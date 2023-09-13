@@ -1,107 +1,3 @@
-import { ContactsContainer } from "./contactsContainer";
-import { ContactsGroup } from "./contactsGroup";
-import { Image } from "./image";
-
-/**
- * @example
- * {
- *     "identifier": "UUID-ABC-123",
- *     "label": "Home",
- *     "localizedLabel": "Home",
- *     "value": "my@example.com"
- * }
- */
-export type ContactEmailAddress = {
-    identifier?: string,
-    label?: string,
-    localizedLabel?: string,
-    value: string
-}
-
-/**
- * @example
- * {
- *     "identifier": "UUID-ABC-123",
- *     "label": "Home",
- *     "localizedLabel": "Home",
- *     "value": "(111)234-5678"
- * }
- */
-export type ContactPhoneNumber = {
-    identifier?: string,
-    label?: string,
-    localizedLabel?: string,
-    value: string
-}
-
-/**
- * @example
- * {
- *     "identifier": "UUID-ABC-123",
- *     "label": "Home",
- *     "localizedLabel": "Home",
- *     "street": "240  Terry Lane",
- *     "city": "New York",
- *     "state": "New York",
- *     "postalCode": "10001",
- *     "country": "United States of America"
- * }
- */
-export type ContactPostalAddress = {
-    identifier?: string;
-    label: string;
-    localizedLabel: string;
-    street: string;
-    city: string;
-    state: string;
-    postalCode: string;
-    country: string;
-}
-
-/**
- * @example
- * {
- *     "identifier": "UUID-ABC-123",
- *     "label": "Twitter",
- *     "localizedLabel": "Twitter",
- *     "service": "Twitter",
- *     "url": "https://twitter.com/scriptableapp",
- *     "userIdentifier": null,
- *     "username": "scriptableapp"
- * }
- */
-export type ContactSocialProfile = {
-    identifier?: string;
-    label: string;
-    localizedLabel: string;
-    service: string;
-    url: string;
-    userIdentifier: null;
-    username: string;
-}
-
-/**
- * @example
- * {
- *     "identifier": "UUID-ABC-123"
- * }
- */
-export type ContactUrlAddress = {
-    identifier?: string;
-    // TODO 
-}
-
-/**
- * @example
- * {
- *     "identifier": "UUID-ABC-123"
- * }
- */
-export type ContactUrlDate = {
-    identifier?: string;
-    // TODOi 
-}
-
 /**
  * Contact in the address book.
  *
@@ -112,231 +8,359 @@ export type ContactUrlDate = {
  * A contact may be in only one container. A CardDAV account usually has a single containerwhereas an Exchange account may have multiple containers.
  */
 export declare class Contact {
-
     /**
      * Uniquely identifies the contact on the device.
      */
-    public readonly identifier: string;
+    readonly identifier: string;
 
     /**
      * Name prefix.
      */
-    public namePrefix: string;
+    namePrefix: string;
 
     /**
      * Given name.
      */
-    public givenName: string;
+    givenName: string;
 
     /**
      * Middle name.
      */
-    public middleName: string;
+    middleName: string;
 
     /**
      * Family name.
      */
-    public familyName: string;
+    familyName: string;
 
     /**
      * Nickname.
      */
-    public nickname: string;
+    nickname: string;
 
     /**
      * Birthday.
      */
-    public birthday: Date;
+    birthday: Date;
 
     /**
      * Profile picture.
      */
-    public image: Image;
+    image: Image;
 
     /**
      * Email addresses.
+     *
+     * An array of objects on the following form:
+     *
+     * The identifier uniquely identifies the email address on this device. The label isa description of the email address and the value holds the email address itself.
+     *
+     * When updating this property, you must set the entire array of email addresses that
+     * you would like to store on the contact. Each value in the array must have the "value"key. The other keys are optional.
+     * @example
+     * {
+     *   "identifier": "UUID-ABC-123",
+     *   "label": "Home",
+     *   "localizedLabel": "Home",
+     *   "value": "[email protected]"
+     * }
      */
-    public emailAddresses: ContactEmailAddress[]
+    emailAddresses: {string: string}/* TODO: Check type */[];
 
     /**
      * Phone numbers.
+     *
+     * An array of objects on the following form:
+     *
+     * The identifier uniquely identifies the phone number on this device. The label isa description of the phone number and the value holds the phone number itself.
+     *
+     * When updating this property, you must set the entire array of phone numbers that
+     * you would like to store on the contact. Each value in the array must have the "value"key. The other keys are optional.
+     * @example
+     * {
+     *   "identifier": "UUID-ABC-123",
+     *   "label": "Home",
+     *   "localizedLabel": "Home",
+     *   "value": "(111)234-5678"
+     * }
      */
-    public phoneNumbers: ContactPhoneNumber[];
+    phoneNumbers: {string: string}/* TODO: Check type */[];
 
     /**
      * Postal addresses.
+     *
+     * An array of objects on the following form:
+     *
+     * The identifier uniquely identifies the pstal address on this device. The label isa description of the phone number and the value holds the phone number itself.
+     *
+     * When updating this property, you must set the entire array of postal addresses thatyou would like to store on the contact. The "identifier" key is optional.
+     * @example
+     * {
+     *   "identifier": "UUID-ABC-123",
+     *   "label": "Home",
+     *   "localizedLabel": "Home",
+     *   "street": "240  Terry Lane",
+     *   "city": "New York",
+     *   "state": "New York",
+     *   "postalCode": "10001",
+     *   "country": "United States of America"
+     * }
      */
-    public postalAddresses: ContactPostalAddress[];
+    postalAddresses: {string: string}/* TODO: Check type */[];
 
     /**
      * Social profiles.
+     *
+     * An array of objects on the following form:
+     *
+     * The identifier uniquely identifies the social profile on this device. The label is
+     * a description of the social profile, the service is the social profile's service
+     * name, the URL contains a link to the social profile, the userIdentifier is the identifierof the social profile and the username is the name for the social profile.
+     *
+     * When updating this property, you must set the entire array of social profiles thatyou would like to store on the contact. The "identifier" key is optional.
+     * @example
+     * {
+     *   "identifier": "UUID-ABC-123",
+     *   "label": "Twitter",
+     *   "localizedLabel": "Twitter",
+     *   "service": "Twitter",
+     *   "url": "https://twitter.com/scriptableapp",
+     *   "userIdentifier": null,
+     *   "username": "scriptableapp"
+     * }
      */
-    public socialProfiles: ContactSocialProfile[];
+    socialProfiles: {string: string}/* TODO: Check type */[];
 
     /**
      * Note for the contact.
+     *
+     * For security reasons, a contact's notes cannot be accessed in Siri, the Shortcutsapp and in a notification.
      */
-    public note: string;
+    note: string;
 
     /**
      * URL addresses.
+     *
+     * When updating this property, you must set the entire array of URL addresses thatyou would like to store on the contact. The "identifier" key is optional.
      */
-    public urlAddresses: ContactUrlAddress[];
+    urlAddresses: {string: string}/* TODO: Check type */[];
 
     /**
      * Dates.
+     *
+     * When updating this property, you must set the entire array of dates that you wouldlike to store on the contact. The "identifier" key is optional.
      */
-    public dates: ContactUrlDate[];
+    dates: {string: any}/* TODO: Check type */[];
 
     /**
      * Name of the organization associated with the contact.
      */
-    public organizationName: string;
+    organizationName: string;
 
     /**
      * Name of the department associated with the contact.
      */
-    public departmentName: string;
+    departmentName: string;
 
     /**
      * The contact's job title.
      */
-    public jobTitle: string;
+    jobTitle: string;
 
     /**
      * Whether or not name prefix is available.
+     *
+     * The namePrefix property may not be available if the container does not support it.In that case any value set on the property will be ignored.
      */
-    public readonly isNamePrefixAvailable: boolean;
+    readonly isNamePrefixAvailable: boolean;
 
     /**
      * Whether or not given name is available.
+     *
+     * The givenName property may not be available if the container does not support it.In that case any value set on the property will be ignored.
      */
-    public readonly isGiveNameAvailable: boolean;
+    readonly isGiveNameAvailable: boolean;
 
     /**
      * Whether or not middle name is available.
+     *
+     * The middleName property may not be available if the container does not support it.In that case any value set on the property will be ignored.
      */
-    public readonly isMiddleNameAvailable: boolean;
+    readonly isMiddleNameAvailable: boolean;
 
     /**
      * Whether or not family name is available.
+     *
+     * The familyName property may not be available if the container does not support it.In that case any value set on the property will be ignored.
      */
-    public readonly isFamilyNameAvailable: boolean;
+    readonly isFamilyNameAvailable: boolean;
 
     /**
      * Whether or not nickname is available.
+     *
+     * The nickname property may not be available if the container does not support it.In that case any value set on the property will be ignored.
      */
-    public readonly isNicknameAvailable: boolean;
+    readonly isNicknameAvailable: boolean;
 
     /**
      * Whether or not birthday is available.
+     *
+     * The birthday property may not be available if the container does not support it.In that case any value set on the property will be ignored.
      */
-    public readonly isBirthdayAvailable: boolean;
+    readonly isBirthdayAvailable: boolean;
 
     /**
      * Whether or not email addresses are available.
+     *
+     * The emailAddresses property may not be available if the container does not supportit. In that case any value set on the property will be ignored.
      */
-    public readonly isEmailAddressesAvailable: boolean;
+    readonly isEmailAddressesAvailable: boolean;
 
     /**
      * Whether or not phone numbers are available.
+     *
+     * The phoneNumbers property may not be available if the container does not supportit. In that case any value set on the property will be ignored.
      */
-    public readonly isPhoneNumbersAvailable: boolean;
+    readonly isPhoneNumbersAvailable: boolean;
 
     /**
      * Whether or not postal addresses are available.
+     *
+     * The postalAddresses property may not be available if the container does not supportit. In that case any value set on the property will be ignored.
      */
-    public readonly isPostalAddressesAvailable: boolean;
+    readonly isPostalAddressesAvailable: boolean;
 
     /**
      * Whether or not social profiles are available.
+     *
+     * The socialProfiles property may not be available if the container does not supportit. In that case any value set on the property will be ignored.
      */
-    public readonly isSocialProfilesAvailable: boolean;
+    readonly isSocialProfilesAvailable: boolean;
 
     /**
      * Whether or not image is available.
+     *
+     * The image property may not be available if the container does not support it. Inthat case any value set on the property will be ignored.
      */
-    public readonly isImageAvailable: boolean;
+    readonly isImageAvailable: boolean;
 
     /**
      * Whether or not note is available.
+     *
+     * The note property may not be available if the container does not support it. In thatcase any value set on the property will be ignored.
      */
-    public readonly isNoteAvailable: boolean;
+    readonly isNoteAvailable: boolean;
 
     /**
      * Whether or not URL addresses are available.
+     *
+     * The urlAddresses property may not be available if the container does not supportit. In that case any value set on the property will be ignored.
      */
-    public readonly isURLAddressesAvailable: boolean;
+    readonly isURLAddressesAvailable: boolean;
 
     /**
      * Whether or not organization name is available.
+     *
+     * The organizationName property may not be available if the container does not supportit. In that case any value set on the property will be ignored.
      */
-    public readonly isOrganizationNameAvailable: boolean;
+    readonly isOrganizationNameAvailable: boolean;
 
     /**
      * Whether or not department name is available.
+     *
+     * The departmentName property may not be available if the container does not supportit. In that case any value set on the property will be ignored.
      */
-    public readonly isDepartmentNameAvailable: boolean;
+    readonly isDepartmentNameAvailable: boolean;
 
     /**
      * Whether or not job title is available.
+     *
+     * The jobTitle property may not be available if the container does not support it.In that case any value set on the property will be ignored.
      */
-    public readonly isJobTitleAvailable: boolean;
+    readonly isJobTitleAvailable: boolean;
 
     /**
      * Whether or not dates are available.
+     *
+     * The date property may not be available if the container does not support it. In thatcase any value set on the property will be ignored.
      */
-    public readonly isDatesAvailable: boolean;
+    readonly isDatesAvailable: boolean;
 
     /**
      * Constructs a contact.
+     *
+     * In order to add the contact to your address book, you must queue it for insertion
+     * using Contact.add(). When you're done making changes to the address book you shouldcall Contact.persistChanges() to persist the changes.
      */
-    public new(): Contact;
+    constructor();
 
     /**
      * Fetches contacts.
      *
-     * @param containers - Containers to fetch contacts from.
+     * Fetches the contacts in the specified containers. A contact can be in only one container.
      *
-     * @returns Promise that provides the contacts when fulfilled.
+     * @param containers {ContactsContainer[]} - Containers to fetch contacts from.
      */
-    public static all(containers: ContactsContainer[]): Contact[];
+    static all(containers: ContactsContainer[]): Promise<[Contact]>;
 
     /**
      * Fetches contacts in groups.
      *
-     * @param groups - Groups to fetch contacts from.
+     * Fetches the contacts in the specified contacts groups. A contact may belong to manygroups.
      *
-     * @returns Promise that provides the contacts when fulfilled.
+     * @param groups {ContactsGroup[]} - Groups to fetch contacts from.
      */
-    public static inGroups(groups: ContactsGroup[]): Contact[];
+    static inGroups(groups: ContactsGroup[]): Promise<[Contact]>;
 
     /**
      * Queues a contact to be added.
      *
-     * @param contact - Contact to queue to be added.
-     * @param containerIdentifier - Optional. Identifier of container to add the contact to. If null is specified, the contact will be added to the default container.
+     * After you have created a contact, you must queue the contact to be added to the addressbook and invoke Contact.persistChanges() to persist the changes to the address book.
+     *
+     * For performance reasons, it is best to batch changes to the address book. Therefore
+     * you should queue all updates, insertions and removals of contacts and contacts groups
+     * to as large batches as possible and then call Contact.persistChanges() when you wantto persist the changes to the address book.
+     *
+     * @param contact {Contact} - Contact to queue to be added.
+     * @param containerIdentifier {string} - Optional. Identifier of container to add thecontact to. If null is specified, the contact will be added to the default container.
      */
-    public static add(contact: Contact, containerIdentifier: string): void;
+    static add(contact: Contact, containerIdentifier: string): void;
 
     /**
      * Queues an update to a contact.
      *
-     * @param contact - Contact to queue to be updated.
+     * After you have updated one or more properties on a contact, you must queue the contact
+     * to be updated and invoke Contact.persistChanges() to persist the changes to the addressbook.
+     *
+     * For performance reasons, it is best to batch changes to the address book. Therefore
+     * you should queue all updates, insertions and removals of contacts and contacts groups
+     * to as large batches as possible and then call Contact.persistChanges() when you wantto persist the changes to the address book.
+     *
+     * @param contact {Contact} - Contact to queue to be updated.
      */
-    public static update(contact: Contact): void;
+    static update(contact: Contact): void;
 
     /**
      * Queues a contact to be deleted.
      *
-     * @param contact - Contact to queue to be deleted.
+     * To delete a contact, you must queue the contact for deletion and invoke Contact.persistChanges()to persist the changes to the address book.
+     *
+     * For performance reasons, it is best to batch changes to the address book. Therefore
+     * you should queue all updates, insertions and removals of contacts and contacts groups
+     * to as large batches as possible and then call Contact.persistChanges() when you wantto persist the changes to the address book.
+     *
+     * @param contact {Contact} - Contact to queue to be deleted.
      */
-    public static delete(contact: Contact): void;
+    static delete(contact: Contact): void;
 
     /**
      * Persist queued changes to the address book.
      *
-     * @returns Promise that fulfills when the changes have been persisted.
+     * Call this function to persist changes queued with Contact.add(), Contact.update()and Contact.delete().
+     *
+     * For performance reasons, it is best to batch changes to the address book. Therefore
+     * you should queue all updates, insertions and removals of contacts and contacts groups
+     * to as large batches as possible and then call Contact.persistChanges() when you wantto persist the changes to the address book.
      */
-    public static persistChanges(): Promise<void>;
+    static persistChanges(): Promise;
 }

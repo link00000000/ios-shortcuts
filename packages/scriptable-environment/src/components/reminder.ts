@@ -4,342 +4,330 @@
  * Used for creating, fetching and removing reminders from your calendars.
  */
 export declare class Reminder {
-
     /**
      * Identifier of reminder.
      */
-    public identifier: string;
+    readonly identifier: string;
 
     /**
      * Title of reminder.
      */
-    public title: string;
+    title: string;
 
     /**
      * Notes associated with reminder.
      */
-    public notes: string;
+    notes: string;
 
     /**
      * Whether the reminder is completed.
      */
-    public isCompleted: boolean;
+    isCompleted: boolean;
 
     /**
      * Whether the reminder is overdue.
      */
-    public isOverdue: boolean;
+    readonly isOverdue: boolean;
 
     /**
      * Priority of reminder.
+     *
+     * Specifies the prirority of the reminder with 0 representing an undefined priority,1 the highest priority, and 9 the lowest priority.
      */
-    public priority: number;
+    priority: number;
 
     /**
      * Due date of reminder.
      */
-    public dueDate: Date;
+    dueDate: Date;
 
     /**
      * Whether the due date includes a time.
+     *
+     * When this is true, assignments to the dueDate property will include a time, whenthis is false, the time component of the date will be ignored. Defaults to true.
      */
-    public dueDateIncludesTime: boolean;
+    dueDateIncludesTime: boolean;
 
     /**
      * Completion date of reminder.
      */
-    public completionDate: Date;
+    readonly completionDate: Date;
 
     /**
      * Creation date of reminder.
      */
-    public creationDate: Date;
+    readonly creationDate: Date;
 
     /**
      * Calendar the reminder is stored in.
      */
-    public calendar: Calendar;
+    calendar: Calendar;
 
     /**
-     * Constructs a reminder.     */
-    public Reminder(): void;
+     * Constructs a reminder.
+     *
+     * In order to add the reminder to your calendar, you must call the save() function.
+     */
+    constructor();
 
     /**
      * Adds a recurrence rule.
      *
-     * @param {RecurrenceRule} recurrenceRule - Recurrence rule to add to the reminder.     */
-    public addRecurrenceRule(recurrenceRule: RecurrenceRule)): void;
+     * Recurrence rules specify when the reminder should be repeated. See the documentationof RecurrenceRule for more information on creating rules.
+     *
+     * @param recurrenceRule {RecurrenceRule} - Recurrence rule to add to the reminder.
+     */
+    addRecurrenceRule(recurrenceRule: RecurrenceRule): void;
 
     /**
-     * Removes all recurrence rules.     */
-    public removeAllRecurrenceRules(): void;
+     * Removes all recurrence rules.
+     */
+    removeAllRecurrenceRules(): void;
 
     /**
-     * Saves reminder.     */
-    public save(): void;
+     * Saves reminder.
+     *
+     * Saves changes to a reminder, inserting it into the calendar if it is newly created.
+     */
+    save(): void;
 
     /**
-     * Removes reminder from calendar.     */
-    public remove(): void;
+     * Removes reminder from calendar.
+     */
+    remove(): void;
 
     /**
      * Fetches the schedule of reminders.
      *
-     * @param {Calendar[]} calendars - Calendars to fetch reminders for. Defaults to all calendars.
+     * The fetched result contains reminders that are due today and reminders that are overdue.This is similar to the reminders shown in the Reminders apps "Scheduled" list.
+     * For performance reasons iOS limits fetched results to events within a four year timespan.
      *
-     * @returns {Reminder[]} Promise that provides the reminders when fulfilled.
+     * @param calendars {Calendar[]} - Calendars to fetch reminders for. Defaults to allcalendars.
      */
-    public scheduled(calendars: Calendar[]): Reminder[];
+    static scheduled(calendars: Calendar[]): Promise<[Reminder]>;
 
     /**
      * Fetches all reminders.
      *
-     * @param {Calendar[]} calendars - Calendars to fetch reminders for. Defaults to all calendars.
+     * For performance reasons iOS limits fetched results to events within a four year timespan.
      *
-     * @returns {Reminder[]} Promise that provides the reminders when fulfilled.
+     * @param calendars {Calendar[]} - Calendars to fetch reminders for. Defaults to allcalendars.
      */
-    public all(calendars: Calendar[]): Reminder[];
+    static all(calendars: Calendar[]): Promise<[Reminder]>;
 
     /**
      * Fetches all completed reminders.
      *
-     * @param {Calendar[]} calendars - Calendars to fetch reminders for. Defaults to all calendars.
+     * For performance reasons iOS limits fetched results to events within a four year timespan.
      *
-     * @returns {Reminder[]} Promise that provides the reminders when fulfilled.
+     * @param calendars {Calendar[]} - Calendars to fetch reminders for. Defaults to allcalendars.
      */
-    public allCompleted(calendars: Calendar[]): Reminder[];
+    static allCompleted(calendars: Calendar[]): Promise<[Reminder]>;
 
     /**
      * Fetches all incomplete reminders.
      *
-     * @param {Calendar[]} calendars - Calendars to fetch reminders for. Defaults to all calendars.
+     * For performance reasons iOS limits fetched results to events within a four year timespan.
      *
-     * @returns {Reminder[]} Promise that provides the reminders when fulfilled.
+     * @param calendars {Calendar[]} - Calendars to fetch reminders for. Defaults to allcalendars.
      */
-    public allIncomplete(calendars: Calendar[]): Reminder[];
+    static allIncomplete(calendars: Calendar[]): Promise<[Reminder]>;
 
     /**
      * Fetches all reminders due today.
      *
-     * @param {Calendar[]} calendars - Calendars to fetch reminders for. Defaults to all calendars.
-     *
-     * @returns {Reminder[]} Promise that provides the reminders when fulfilled.
+     * @param calendars {Calendar[]} - Calendars to fetch reminders for. Defaults to allcalendars.
      */
-    public allDueToday(calendars: Calendar[]): Reminder[];
+    static allDueToday(calendars: Calendar[]): Promise<[Reminder]>;
 
     /**
      * Fetches completed reminders due today.
      *
-     * @param {Calendar[]} calendars - Calendars to fetch reminders for. Defaults to all calendars.
-     *
-     * @returns {Reminder[]} Promise that provides the reminders when fulfilled.
+     * @param calendars {Calendar[]} - Calendars to fetch reminders for. Defaults to allcalendars.
      */
-    public completedDueToday(calendars: Calendar[]): Reminder[];
+    static completedDueToday(calendars: Calendar[]): Promise<[Reminder]>;
 
     /**
      * Fetches incomplete reminders due today.
      *
-     * @param {Calendar[]} calendars - Calendars to fetch reminders for. Defaults to all calendars.
-     *
-     * @returns {Reminder[]} Promise that provides the reminders when fulfilled.
+     * @param calendars {Calendar[]} - Calendars to fetch reminders for. Defaults to allcalendars.
      */
-    public incompleteDueToday(calendars: Calendar[]): Reminder[];
+    static incompleteDueToday(calendars: Calendar[]): Promise<[Reminder]>;
 
     /**
      * Fetches all reminders due tomorrow.
      *
-     * @param {Calendar[]} calendars - Calendars to fetch reminders for. Defaults to all calendars.
-     *
-     * @returns {Reminder[]} Promise that provides the reminders when fulfilled.
+     * @param calendars {Calendar[]} - Calendars to fetch reminders for. Defaults to allcalendars.
      */
-    public allDueTomorrow(calendars: Calendar[]): Reminder[];
+    static allDueTomorrow(calendars: Calendar[]): Promise<[Reminder]>;
 
     /**
      * Fetches completed reminders due tomorrow.
      *
-     * @param {Calendar[]} calendars - Calendars to fetch reminders for. Defaults to all calendars.
-     *
-     * @returns {Reminder[]} Promise that provides the reminders when fulfilled.
+     * @param calendars {Calendar[]} - Calendars to fetch reminders for. Defaults to allcalendars.
      */
-    public completedDueTomorrow(calendars: Calendar[]): Reminder[];
+    static completedDueTomorrow(calendars: Calendar[]): Promise<[Reminder]>;
 
     /**
      * Fetches incomplete reminders due tomorrow.
      *
-     * @param {Calendar[]} calendars - Calendars to fetch reminders for. Defaults to all calendars.
-     *
-     * @returns {Reminder[]} Promise that provides the reminders when fulfilled.
+     * @param calendars {Calendar[]} - Calendars to fetch reminders for. Defaults to allcalendars.
      */
-    public incompleteDueTomorrow(calendars: Calendar[]): Reminder[];
+    static incompleteDueTomorrow(calendars: Calendar[]): Promise<[Reminder]>;
 
     /**
      * Fetches all reminders due yesterday.
      *
-     * @param {Calendar[]} calendars - Calendars to fetch reminders for. Defaults to all calendars.
-     *
-     * @returns {Reminder[]} Promise that provides the reminders when fulfilled.
+     * @param calendars {Calendar[]} - Calendars to fetch reminders for. Defaults to allcalendars.
      */
-    public allDueYesterday(calendars: Calendar[]): Reminder[];
+    static allDueYesterday(calendars: Calendar[]): Promise<[Reminder]>;
 
     /**
      * Fetches completed reminders due yesterday.
      *
-     * @param {Calendar[]} calendars - Calendars to fetch reminders for. Defaults to all calendars.
-     *
-     * @returns {Reminder[]} Promise that provides the reminders when fulfilled.
+     * @param calendars {Calendar[]} - Calendars to fetch reminders for. Defaults to allcalendars.
      */
-    public completedDueYesterday(calendars: Calendar[]): Reminder[];
+    static completedDueYesterday(calendars: Calendar[]): Promise<[Reminder]>;
 
     /**
      * Fetches incomplete reminders due yesterday.
      *
-     * @param {Calendar[]} calendars - Calendars to fetch reminders for. Defaults to all calendars.
-     *
-     * @returns {Reminder[]} Promise that provides the reminders when fulfilled.
+     * @param calendars {Calendar[]} - Calendars to fetch reminders for. Defaults to allcalendars.
      */
-    public incompleteDueYesterday(calendars: Calendar[]): Reminder[];
+    static incompleteDueYesterday(calendars: Calendar[]): Promise<[Reminder]>;
 
     /**
      * Fetches all reminders due this week.
      *
-     * @param {Calendar[]} calendars - Calendars to fetch reminders for. Defaults to all calendars.
-     *
-     * @returns {Reminder[]} Promise that provides the reminders when fulfilled.
+     * @param calendars {Calendar[]} - Calendars to fetch reminders for. Defaults to allcalendars.
      */
-    public allDueThisWeek(calendars: Calendar[]): Reminder[];
+    static allDueThisWeek(calendars: Calendar[]): Promise<[Reminder]>;
 
     /**
      * Fetches completed reminders due this week.
      *
-     * @param {Calendar[]} calendars - Calendars to fetch reminders for. Defaults to all calendars.
-     *
-     * @returns {Reminder[]} Promise that provides the reminders when fulfilled.
+     * @param calendars {Calendar[]} - Calendars to fetch reminders for. Defaults to allcalendars.
      */
-    public completedDueThisWeek(calendars: Calendar[]): Reminder[];
+    static completedDueThisWeek(calendars: Calendar[]): Promise<[Reminder]>;
 
     /**
      * Fetches incomplete reminders due this week.
      *
-     * @param {Calendar[]} calendars - Calendars to fetch reminders for. Defaults to all calendars.
-     *
-     * @returns {Reminder[]} Promise that provides the reminders when fulfilled.
+     * @param calendars {Calendar[]} - Calendars to fetch reminders for. Defaults to allcalendars.
      */
-    public incompleteDueThisWeek(calendars: Calendar[]): Reminder[];
+    static incompleteDueThisWeek(calendars: Calendar[]): Promise<[Reminder]>;
 
     /**
      * Fetches all reminders due next week.
      *
-     * @param {Calendar[]} calendars - Calendars to fetch reminders for. Defaults to all calendars.
-     *
-     * @returns {Reminder[]} Promise that provides the reminders when fulfilled.
+     * @param calendars {Calendar[]} - Calendars to fetch reminders for. Defaults to allcalendars.
      */
-    public allDueNextWeek(calendars: Calendar[]): Reminder[];
+    static allDueNextWeek(calendars: Calendar[]): Promise<[Reminder]>;
 
     /**
      * Fetches completed reminders due next week.
      *
-     * @param {Calendar[]} calendars - Calendars to fetch reminders for. Defaults to all calendars.
-     *
-     * @returns {Reminder[]} Promise that provides the reminders when fulfilled.
+     * @param calendars {Calendar[]} - Calendars to fetch reminders for. Defaults to allcalendars.
      */
-    public completedDueNextWeek(calendars: Calendar[]): Reminder[];
+    static completedDueNextWeek(calendars: Calendar[]): Promise<[Reminder]>;
 
     /**
      * Fetches incomplete reminders due next week.
      *
-     * @param {Calendar[]} calendars - Calendars to fetch reminders for. Defaults to all calendars.
-     *
-     * @returns {Reminder[]} Promise that provides the reminders when fulfilled.
+     * @param calendars {Calendar[]} - Calendars to fetch reminders for. Defaults to allcalendars.
      */
-    public incompleteDueNextWeek(calendars: Calendar[]): Reminder[];
+    static incompleteDueNextWeek(calendars: Calendar[]): Promise<[Reminder]>;
 
     /**
      * Fetches all reminders due last week.
      *
-     * @param {Calendar[]} calendars - Calendars to fetch reminders for. Defaults to all calendars.
-     *
-     * @returns {Reminder[]} Promise that provides the reminders when fulfilled.
+     * @param calendars {Calendar[]} - Calendars to fetch reminders for. Defaults to allcalendars.
      */
-    public allDueLastWeek(calendars: Calendar[]): Reminder[];
+    static allDueLastWeek(calendars: Calendar[]): Promise<[Reminder]>;
 
     /**
      * Fetches completed reminders due last week.
      *
-     * @param {Calendar[]} calendars - Calendars to fetch reminders for. Defaults to all calendars.
-     *
-     * @returns {Reminder[]} Promise that provides the reminders when fulfilled.
+     * @param calendars {Calendar[]} - Calendars to fetch reminders for. Defaults to allcalendars.
      */
-    public completedDueLastWeek(calendars: Calendar[]): Reminder[];
+    static completedDueLastWeek(calendars: Calendar[]): Promise<[Reminder]>;
 
     /**
      * Fetches incomplete reminders due last week.
      *
-     * @param {Calendar[]} calendars - Calendars to fetch reminders for. Defaults to all calendars.
-     *
-     * @returns {Reminder[]} Promise that provides the reminders when fulfilled.
+     * @param calendars {Calendar[]} - Calendars to fetch reminders for. Defaults to allcalendars.
      */
-    public incompleteDueLastWeek(calendars: Calendar[]): Reminder[];
+    static incompleteDueLastWeek(calendars: Calendar[]): Promise<[Reminder]>;
 
     /**
      * Fetches reminders completed today.
      *
-     * @param {Calendar[]} calendars - Calendars to fetch reminders for. Defaults to all calendars.
+     * Note that this does not take the due date into account. This will return all remindersthat you have completed today.
      *
-     * @returns {Reminder[]} Promise that provides the reminders when fulfilled.
+     * @param calendars {Calendar[]} - Calendars to fetch reminders for. Defaults to allcalendars.
      */
-    public completedToday(calendars: Calendar[]): Reminder[];
+    static completedToday(calendars: Calendar[]): Promise<[Reminder]>;
 
     /**
      * Fetches reminders completed this week.
      *
-     * @param {Calendar[]} calendars - Calendars to fetch reminders for. Defaults to all calendars.
+     * Note that this does not take the due date into account. This will return all remindersthat you have completed this week.
      *
-     * @returns {Reminder[]} Promise that provides the reminders when fulfilled.
+     * @param calendars {Calendar[]} - Calendars to fetch reminders for. Defaults to allcalendars.
      */
-    public completedThisWeek(calendars: Calendar[]): Reminder[];
+    static completedThisWeek(calendars: Calendar[]): Promise<[Reminder]>;
 
     /**
      * Fetches reminders completed last week.
      *
-     * @param {Calendar[]} calendars - Calendars to fetch reminders for. Defaults to all calendars.
+     * Note that this does not take the due date into account. This will return all remindersthat you have completed last week.
      *
-     * @returns {Reminder[]} Promise that provides the reminders when fulfilled.
+     * @param calendars {Calendar[]} - Calendars to fetch reminders for. Defaults to allcalendars.
      */
-    public completedLastWeek(calendars: Calendar[]): Reminder[];
+    static completedLastWeek(calendars: Calendar[]): Promise<[Reminder]>;
 
     /**
      * Fetches due reminders.
      *
-     * @param {Calendar[]} calendars - Calendars to fetch reminders for. Defaults to all calendars.
+     * Fetches reminders that are due within the time interval constituted by
+     * the start and end dates.
      *
-     * @returns {Reminder[]} Promise that provides the reminders when fulfilled.
+     * @param startDate {Date}
+     * @param endDate {Date}
+     * @param calendars {Calendar[]} - Calendars to fetch reminders for. Defaults to allcalendars.
      */
-    public allDueBetween(startDate: Date, endDate: Date, calendars: Calendar[]): Reminder[];
+    static allDueBetween(startDate: Date, endDate: Date, calendars: Calendar[]): Promise<[Reminder]>;
 
     /**
      * Fetches completed reminders.
      *
-     * @param {Calendar[]} calendars - Calendars to fetch reminders for. Defaults to all calendars.
+     * Fetches reminders that are completed and that were due within the time interval constitutedby the start and end dates.
      *
-     * @returns {Reminder[]} Promise that provides the reminders when fulfilled.
+     * @param startDate {Date}
+     * @param endDate {Date}
+     * @param calendars {Calendar[]} - Calendars to fetch reminders for. Defaults to allcalendars.
      */
-    public completedDueBetween(startDate: Date, endDate: Date, calendars: Calendar[]): Reminder[];
+    static completedDueBetween(startDate: Date, endDate: Date, calendars: Calendar[]): Promise<[Reminder]>;
 
     /**
      * Fetches incomplete reminders.
      *
-     * @param {Calendar[]} calendars - Calendars to fetch reminders for. Defaults to all calendars.
+     * Fetches reminders that are incomplete and that were due within the time intervalconstituted by the start and end dates.
      *
-     * @returns {Reminder[]} Promise that provides the reminders when fulfilled.
+     * @param startDate {Date}
+     * @param endDate {Date}
+     * @param calendars {Calendar[]} - Calendars to fetch reminders for. Defaults to allcalendars.
      */
-    public incompleteDueBetween(startDate: Date, endDate: Date, calendars: Calendar[]): Reminder[];
+    static incompleteDueBetween(startDate: Date, endDate: Date, calendars: Calendar[]): Promise<[Reminder]>;
 
     /**
      * Fetches completed reminders.
      *
-     * @param {Calendar[]} calendars - Calendars to fetch reminders for. Defaults to all calendars.
+     * Fetches reminders that were completed within the time interval constituted by thestart and end dates.
      *
-     * @returns {Reminder[]} Promise that provides the reminders when fulfilled.
+     * @param startDate {Date}
+     * @param endDate {Date}
+     * @param calendars {Calendar[]} - Calendars to fetch reminders for. Defaults to allcalendars.
      */
-    public completedBetween(startDate: Date, endDate: Date, calendars: Calendar[]): Reminder[];
+    static completedBetween(startDate: Date, endDate: Date, calendars: Calendar[]): Promise<[Reminder]>;
 }

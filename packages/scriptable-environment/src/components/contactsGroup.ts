@@ -1,6 +1,3 @@
-import { Contact } from "./contact";
-import { ContactsContainer } from "./contactsContainer";
-
 /**
  * Group of contacts.
  *
@@ -8,64 +5,94 @@ import { ContactsContainer } from "./contactsContainer";
  * to a single contacts container but may belong to zero or more contacts groups. Forexample, an iCloud account has only one container but may have many groups.
  */
 export declare class ContactsGroup {
-
     /**
      * Identifier of the contacts group.
      */
-    public readonly identifier: string;
+    readonly identifier: string;
 
     /**
      * Name of the contacts group.
      */
-    public name: string;
+    name: string;
 
     /**
      * Constructs a contacts group.
+     *
+     * In order to add the group to your address book, you must queue it for insertion using
+     * ContactsGroup.add(). When you're done making changes to the address book you shouldcall Contact.persistChanges() to persist the changes.
      */
-    public ContactsGroup(): void;
+    constructor();
 
     /**
      * Fetches contacts groups.
      *
-     * @param {ContactsContainer[]} containers - Container to fetch contacts groups from.
+     * Fetches the contacts groups in the specified containers. A group can be in only onecontainer.
      *
-     * @returns {ContactsGroup[]} Promise that provides the contacts groups when fulfilled.
+     * @param containers {ContactsContainer[]} - Container to fetch contacts groups from.
      */
-    public static all(containers: ContactsContainer[]): ContactsGroup[];
+    static all(containers: ContactsContainer[]): Promise<[ContactsGroup]>;
 
     /**
      * Adds a contact to the group.
      *
-     * @param {Contact} contact - Contact to add to the group.
+     * In order to persist the change, you should call Contact.persistChanges(). It is important
+     * that the contact is added to the address book. To add the contact to the address
+     * book, you should queue it for insertion using Contact.add() before persisting thechanges.
+     *
+     * @param contact {Contact} - Contact to add to the group.
      */
-    public addMember(contact: Contact): void;
+    addMember(contact: Contact): void;
 
     /**
      * Removes a contact from the group.
      *
-     * @param {Contact} contact - Contact to add to the group.
+     * In order to persist the change, you should call Contact.persistChanges().
+     * 
+     * It is important that the contact is added to the address book. To add the contact
+     * to the address book, you should queue it for insertion using Contact.add() beforepersisting the changes.
+     *
+     * @param contact {Contact} - Contact to add to the group.
      */
-    public removeMember(contact: Contact): void;
+    removeMember(contact: Contact): void;
 
     /**
      * Queues a contacts group to be added.
      *
-     * @param {ContactsGroup} group - Contacts group to queue to be added.
-     * @param {string} containerIdentifier - Optional. Identifier of container to add the contacts group to. If null is specified, the group will be added to the default container.
+     * After you have created a group, you must queue the group to be added to the addressbook and invoke Contact.persistChanges() to persist the changes to the address book.
+     *
+     * For performance reasons, it is best to batch changes to the address book. Therefore
+     * you should queue all updates, insertions and removals of contacts and contacts groups
+     * to as large batches as possible and then call Contact.persistChanges() when you wantto persist the changes to the address book.
+     *
+     * @param group {ContactsGroup} - Contacts group to queue to be added.
+     * @param containerIdentifier {string} - Optional. Identifier of container to add thecontacts group to. If null is specified, the group will be added to the default container.
      */
-    public static add(group: ContactsGroup, containerIdentifier: string): void;
+    static add(group: ContactsGroup, containerIdentifier: string): void;
 
     /**
      * Queues an update to a contacts group.
      *
-     * @param {ContactsGroup} group - Contacts group to queue to be updated.
+     * After you have updated one or more properties on a contacts group, you must queue
+     * the group to be updated and invoke Contact.persistChanges() to persist the changesto the address book.
+     *
+     * For performance reasons, it is best to batch changes to the address book. Therefore
+     * you should queue all updates, insertions and removals of contacts and contacts groups
+     * to as large batches as possible and then call Contact.persistChanges() when you wantto persist the changes to the address book.
+     *
+     * @param group {ContactsGroup} - Contacts group to queue to be updated.
      */
-    public static update(group: ContactsGroup): void;
+    static update(group: ContactsGroup): void;
 
     /**
      * Queues a contacts group to be deleted.
      *
-     * @param {ContactsGroup} group - Contacts group to queue to be deleted.
+     * To delete a contacts group, you must queue the group for deletion and invoke Contact.persistChanges()to persist the changes to the address book.
+     *
+     * For performance reasons, it is best to batch changes to the address book. Therefore
+     * you should queue all updates, insertions and removals of contacts and contacts groups
+     * to as large batches as possible and then call Contact.persistChanges() when you wantto persist the changes to the address book.
+     *
+     * @param group {ContactsGroup} - Contacts group to queue to be deleted.
      */
-    public static delete(group: ContactsGroup): void;
+    static delete(group: ContactsGroup): void;
 }
