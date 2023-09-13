@@ -1,3 +1,5 @@
+import { UITableRow } from "./uiTableRow";
+
 /**
  * Renders a table.
  *
@@ -55,5 +57,5 @@ export declare class UITable {
      *
      * @param fullscreen {boolean} - Optional. Set to true to present the web view in fullscreen.This only has an effect when used within the app. Defaults to false.
      */
-    present(fullscreen: boolean): Promise;
+    present(fullscreen: boolean): Promise<void>;
 }

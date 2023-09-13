@@ -4,7 +4,7 @@
  * The keychain is a secure storage for credentials, keys etc. Use the set() method
  * to add values to the keychain. You can then later use the get() method to retrievethe value.
  */
-export var Keychain: {
+export declare class Keychain {
     /**
      * Check if keychain contains a key.
      *
@@ -12,7 +12,7 @@ export var Keychain: {
      *
      * @param key {string} - Key to look up in the keychain.
      */
-    static contains(key: string): bool;
+    static contains(key: string): boolean;
 
     /**
      * Add value for a specified key to keychain.

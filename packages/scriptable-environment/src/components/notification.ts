@@ -142,14 +142,14 @@ export declare class Notification {
      * When a new notification is constructed, it must be scheduled, otherwise it will not
      * be delivered. If an existing notification is modified, it must also be scheduledagain for the changes to take effect.
      */
-    schedule(): Promise;
+    schedule(): Promise<void>;
 
     /**
      * Removes the notification.
      *
      * Removes all future triggers of the notification.
      */
-    remove(): Promise;
+    remove(): Promise<void>;
 
     /**
      * Sets the notification to be triggered on a date and time.
@@ -218,14 +218,14 @@ export declare class Notification {
      *
      * Use with caution. This removes all notifications scheduled across all of your scriptsand the action cannot be undone.
      */
-    static removeAllPending(): Promise;
+    static removeAllPending(): Promise<void>;
 
     /**
      * Removes all delivered notifications.
      *
      * Removes all notifications that have been scheduled from Scriptable and that are stilldisplayed in the Notification Center of iOS.
      */
-    static removeAllDelivered(): Promise;
+    static removeAllDelivered(): Promise<void>;
 
     /**
      * Removes pending notifications.
@@ -235,7 +235,7 @@ export declare class Notification {
      *
      * @param identifiers {string[]}
      */
-    static removePending(identifiers: string[]): Promise;
+    static removePending(identifiers: string[]): Promise<void>;
 
     /**
      * Removes delivered notifications.
@@ -244,7 +244,7 @@ export declare class Notification {
      *
      * @param identifiers {string[]}
      */
-    static removeDelivered(identifiers: string[]): Promise;
+    static removeDelivered(identifiers: string[]): Promise<void>;
 
     /**
      * Resets the current notification.

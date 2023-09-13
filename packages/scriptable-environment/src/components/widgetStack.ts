@@ -1,9 +1,18 @@
+import { Color } from "./color";
+import { Image } from "./image";
+import { LinearGradient } from "./linearGradient";
+import { Size } from "./size";
+import { WidgetDate } from "./widgetDate";
+import { WidgetImage } from "./widgetImage";
+import { WidgetSpacer } from "./widgetSpacer";
+import { WidgetText } from "./widgetText";
+
 /**
  * Stack element shown in widget.
  *
  * Shows a stack in the widget.
  */
-export var WidgetStack: {
+export declare class WidgetStack {
     /**
      * Background color of the widget.
      */

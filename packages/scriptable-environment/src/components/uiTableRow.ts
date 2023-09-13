@@ -1,3 +1,7 @@
+import { Color } from "./color";
+import { Image } from "./image";
+import { UITableCell } from "./uiTableCell";
+
 /**
  * Row in a UITable.
  *
@@ -43,7 +47,7 @@ export declare class UITableRow {
      *
      * Rows cannot be tapped when the tables is presented in Siri.
      */
-    onSelect: fn();
+    onSelect: () => void;
 
     /**
      * Background color.

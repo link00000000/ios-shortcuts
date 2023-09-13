@@ -1,3 +1,11 @@
+import { Color } from "./color";
+import { Font } from "./font";
+import { Image } from "./image";
+import { Path } from "./path";
+import { Point } from "./point";
+import { Rect } from "./rect";
+import { Size } from "./size";
+
 /**
  * Context for drawing images.
  *

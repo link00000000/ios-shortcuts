@@ -1,3 +1,12 @@
+import { Color } from "./color";
+import { Image } from "./image";
+import { LinearGradient } from "./linearGradient";
+import { WidgetDate } from "./widgetDate";
+import { WidgetImage } from "./widgetImage";
+import { WidgetSpacer } from "./widgetSpacer";
+import { WidgetStack } from "./widgetStack";
+import { WidgetText } from "./widgetText";
+
 /**
  * Widget showing a list of elements.
  *
@@ -127,7 +136,7 @@ export declare class ListWidget {
      *
      * Widgets on the Home screen are updated periodically so while working on your widgetyou may want to preview it in the app.
      */
-    presentSmall(): Promise;
+    presentSmall(): Promise<void>;
 
     /**
      * Presents a preview of the widget.
@@ -136,7 +145,7 @@ export declare class ListWidget {
      *
      * Widgets on the Home screen are updated periodically so while working on your widgetyou may want to preview it in the app.
      */
-    presentMedium(): Promise;
+    presentMedium(): Promise<void>;
 
     /**
      * Presents a preview of the widget.
@@ -145,7 +154,7 @@ export declare class ListWidget {
      *
      * Widgets on the Home screen are updated periodically so while working on your widgetyou may want to preview it in the app.
      */
-    presentLarge(): Promise;
+    presentLarge(): Promise<void>;
 
     /**
      * Presents a preview of the widget.
@@ -156,5 +165,5 @@ export declare class ListWidget {
      *
      * Please be aware that extra large widgets are only available on iPads running iOS15 and newer.
      */
-    presentExtraLarge(): Promise;
+    presentExtraLarge(): Promise<void>;
 }

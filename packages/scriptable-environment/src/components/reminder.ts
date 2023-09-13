@@ -1,3 +1,6 @@
+import { Calendar } from "./calendar";
+import { RecurrenceRule } from "./recurrenceRule";
+
 /**
  * Manages reminders in calendars.
  *

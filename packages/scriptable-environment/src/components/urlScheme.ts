@@ -29,7 +29,7 @@
  *
  * In addition to the scriptable:// scheme, you can also perform the above actions usingthe universal link open.scriptable.app, e.g. https://open.scriptable.app/run/Example
  */
-export var URLScheme: {
+export declare class URLScheme {
     /**
      * Gets all parameters from invocation of URL scheme.
      *

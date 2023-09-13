@@ -1,9 +1,12 @@
+import { Data } from "./data";
+import { Image } from "./image";
+
 /**
  * Read and write files on disk.
  *
  * A FileManager lets you read files stored on the disk and make changes to them. Pathsto files are supplied as strings.
  */
-export var FileManager: {
+export declare class FileManager {
     /**
      * Creates a local FileManager.
      *
@@ -125,14 +128,14 @@ export var FileManager: {
      *
      * @param filePath {string} - File path to examine.
      */
-    fileExists(filePath: string): bool;
+    fileExists(filePath: string): boolean;
 
     /**
      * Checks if a path points to a directory.
      *
      * @param path {string} - Path to examine.
      */
-    isDirectory(path: string): bool;
+    isDirectory(path: string): boolean;
 
     /**
      * Creates a directory at the specified path.
@@ -363,7 +366,7 @@ export var FileManager: {
      *
      * @param name {string} - Name of bookmark.
      */
-    bookmarkExists(name: string): bool;
+    bookmarkExists(name: string): boolean;
 
     /**
      * Download file from iCloud if necessary.
@@ -373,7 +376,7 @@ export var FileManager: {
      *
      * @param filePath {string} - Path of file to download from iCloud.
      */
-    downloadFileFromiCloud(filePath: string): Promise;
+    downloadFileFromiCloud(filePath: string): Promise<void>;
 
     /**
      * Checks if a file is stored in iCloud.
@@ -384,7 +387,7 @@ export var FileManager: {
      *
      * @param filePath {string} - Path of file.
      */
-    isFileStoredIniCloud(filePath: string): bool;
+    isFileStoredIniCloud(filePath: string): boolean;
 
     /**
      * Checks if a file have been downloaded.
@@ -397,7 +400,7 @@ export var FileManager: {
      *
      * @param filePath {string} - Path of file.
      */
-    isFileDownloaded(filePath: string): bool;
+    isFileDownloaded(filePath: string): boolean;
 
     /**
      * Reads the creation date of a file.

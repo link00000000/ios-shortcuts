@@ -6,7 +6,7 @@
  * a single container whereas Exchange accounts may have multiple containers. A container
  * may have multiple groups. While a single contact can only belong to one container,a contact may belong to many groups.
  */
-export var ContactsContainer: {
+export declare class ContactsContainer {
     /**
      * Identifier of the contacts container.
      */

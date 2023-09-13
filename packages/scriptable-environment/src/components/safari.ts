@@ -3,7 +3,7 @@
  *
  * Presents a website either in-app or by leaving the app an opening the Safari app.
  */
-export var Safari: {
+export declare class Safari {
     /**
      * Presents a website in-app.
      *
@@ -12,7 +12,7 @@ export var Safari: {
      * @param url {string} - URL of website to present.
      * @param fullscreen {boolean} - Optional. Set to true to display the web view in fullsceen.This only has an effect when used within the app. Defaults to true.
      */
-    static openInApp(url: string, fullscreen: boolean): Promise;
+    static openInApp(url: string, fullscreen: boolean): Promise<void>;
 
     /**
      * Presents a website.

@@ -1,3 +1,6 @@
+import { Point } from "./point";
+import { Rect } from "./rect";
+
 /**
  * A path describes a shape.
  *

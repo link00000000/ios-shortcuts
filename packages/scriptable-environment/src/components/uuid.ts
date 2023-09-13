@@ -3,7 +3,7 @@
  *
  * A universally unique value that can be used to identify items.
  */
-export var UUID: {
+export declare class UUID {
     /**
      * Get string value.
      *

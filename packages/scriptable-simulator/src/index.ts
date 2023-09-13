@@ -1,5 +1,2 @@
-import "@ios-shortcuts/scriptable"
-import { Alert, TextField } from "@ios-shortcuts/scriptable";
+import "@ios-shortcuts/scriptable-environment";
 
-globalThis.Alert = Alert;
-// globalThis.TextField = TextField;

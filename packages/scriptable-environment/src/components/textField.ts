@@ -1,3 +1,6 @@
+import { Color } from "./color";
+import { Font } from "./font";
+
 /**
  * Text field in an alert.
  *
@@ -5,7 +8,7 @@
  *
  * You do not create create instances of this. Instead you should add a text field toan Alert using the addTextField() and addSecureTextField() on the alert.
  */
-export var TextField: {
+export declare class TextField {
     /**
      * Text in the text field.
      */

@@ -1,9 +1,12 @@
+import { Image } from "./image";
+import { Notification } from "./notification";
+
 /**
  * Arguments passed to the script.
  *
  * Arguments are passed to the script when the script is executed from a share sheet.You can specify the types of arguments a script supports from the script settings.
  */
-export var args: {
+export declare var args: {
     /**
      * Number of arguments supplied by a share sheet.
      *

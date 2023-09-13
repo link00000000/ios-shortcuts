@@ -1,3 +1,7 @@
+import { ContactsContainer } from "./contactsContainer";
+import { ContactsGroup } from "./contactsGroup";
+import { Image } from "./image";
+
 /**
  * Contact in the address book.
  *
@@ -362,5 +366,5 @@ export declare class Contact {
      * you should queue all updates, insertions and removals of contacts and contacts groups
      * to as large batches as possible and then call Contact.persistChanges() when you wantto persist the changes to the address book.
      */
-    static persistChanges(): Promise;
+    static persistChanges(): Promise<void>;
 }

@@ -1,3 +1,6 @@
+import { Data } from "./data";
+import { Image } from "./image";
+
 /**
  * Presents a document picker.
  *
@@ -8,7 +11,7 @@
  * 
  * When exporting a document, the picker will ask you to select a destination to storethe document.
  */
-export var DocumentPicker: {
+export declare class DocumentPicker {
     /**
      * Opens a document.
      *

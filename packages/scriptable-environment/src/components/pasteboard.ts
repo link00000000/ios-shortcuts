@@ -1,9 +1,11 @@
+import { Image } from "./image";
+
 /**
  * Copy and paste strings or images.
  *
  * Copy and paste strings and images to and from the pasteboard.
  */
-export var Pasteboard: {
+export declare class Pasteboard {
     /**
      * Copies a string to the pasteboard.
      *

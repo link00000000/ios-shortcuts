@@ -1,3 +1,6 @@
+import { Data } from "./data";
+import { Image } from "./image";
+
 /**
  * Sends a mail.
  *
@@ -63,7 +66,7 @@ export declare class Mail {
      *
      * Presents a screen from which the mail can be sent. The mail will not be sent untilyou have confirmed it from the presented screen.
      */
-    send(): Promise;
+    send(): Promise<void>;
 
     /**
      * Adds an image attachment to the mail.

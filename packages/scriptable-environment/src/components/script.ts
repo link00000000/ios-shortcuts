@@ -3,7 +3,7 @@
  *
  * Allows for accessing information about the script that is currently being run andcontrolling selected parts of the script execution.
  */
-export var Script: {
+export declare class Script {
     /**
      * Name of the script.
      */

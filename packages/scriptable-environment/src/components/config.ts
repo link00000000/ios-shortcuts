@@ -3,7 +3,7 @@
  *
  * Contains information about the configuration the script is currently being run under.
  */
-export var config: {
+export declare var config: {
     /**
      * Whether the script is running in the app.
      */

@@ -5,7 +5,7 @@
  * For example sending an item via an email or SMS, saving an item to disk or openingan item in a third party app.
  * Available activites vary depending on the provided items.
  */
-export var ShareSheet: {
+export declare class ShareSheet {
     /**
      * Presents the activity picker.
      *

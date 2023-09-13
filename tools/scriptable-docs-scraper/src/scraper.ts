@@ -359,7 +359,7 @@ export class Scraper {
         const modifiersString = parts.groups?.["modifiers"]?.trim();
         const name = parts.groups?.["name"]?.trim();
         const parametersString = parts.groups?.["parameters"]?.trim();
-        const returnType = parts.groups?.["return_type"]?.trim() ?? "void";
+        const returnType = Scraper.parseType(parts.groups?.["return_type"]?.trim() ?? "void");
 
         Assert.String.isNotNullOrEmpty(name);
 

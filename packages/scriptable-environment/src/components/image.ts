@@ -1,9 +1,12 @@
+import { Data } from "./data";
+import { Size } from "./size";
+
 /**
  * Manages image data.
  *
  * Images objects contains image data. APIs in Scriptable that work with images, eitherby taking an image as input or returning an image, will use this the Image type.
  */
-export var Image: {
+export declare class Image {
     /**
      * Size of the image in pixels.
      */

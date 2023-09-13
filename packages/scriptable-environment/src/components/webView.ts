@@ -1,3 +1,6 @@
+import { Request } from "./request";
+import { Size } from "./size";
+
 /**
  * Presents websites and evaluates JavaScript on websites.
  *
@@ -14,7 +17,7 @@ export declare class WebView {
      *
      * By default all requests are allowed.
      */
-    shouldAllowRequest: fn(Request) -> boolean;
+    shouldAllowRequest: (request: Request) => boolean;
 
     /**
      * Constructs web view.
@@ -32,7 +35,7 @@ export declare class WebView {
      * not guaranteed to be respected and is only used when the script is run with Sirior in the Shortcuts app.
      * @param fullscreen {boolean} - Optional. Set to true to present the web view in fullscreen.This only has an effect when used within the app. Defaults to false.
      */
-    static loadHTML(html: string, baseURL: string, preferredSize: Size, fullscreen: boolean): Promise;
+    static loadHTML(html: string, baseURL: string, preferredSize: Size, fullscreen: boolean): Promise<void>;
 
     /**
      * Loads a file and renders it.
@@ -54,7 +57,7 @@ export declare class WebView {
      * not guaranteed to be respected and is only used when the script is run with Sirior in the Shortcuts app.
      * @param fullscreen {boolean} - Optional. Set to true to present the web view in fullscreen.This only has an effect when used within the app. Defaults to false.
      */
-    static loadFile(fileURL: string, preferredSize: Size, fullscreen: boolean): Promise;
+    static loadFile(fileURL: string, preferredSize: Size, fullscreen: boolean): Promise<void>;
 
     /**
      * Loads URL in web view and presents the web view.
@@ -66,7 +69,7 @@ export declare class WebView {
      * not guaranteed to be respected and is only used when the script is run with Sirior in the Shortcuts app.
      * @param fullscreen {boolean} - Optional. Set to true to present the web view in fullscreen.This only has an effect when used within the app. Defaults to false.
      */
-    static loadURL(url: string, preferredSize: Size, fullscreen: boolean): Promise;
+    static loadURL(url: string, preferredSize: Size, fullscreen: boolean): Promise<void>;
 
     /**
      * Loads URL in web view.
@@ -75,7 +78,7 @@ export declare class WebView {
      *
      * @param url {string} - URL to load into the web view.
      */
-    loadURL(url: string): Promise;
+    loadURL(url: string): Promise<void>;
 
     /**
      * Loads request in web view.
@@ -84,7 +87,7 @@ export declare class WebView {
      *
      * @param request {Request} - Request to load into the web view.
      */
-    loadRequest(request: Request): Promise;
+    loadRequest(request: Request): Promise<void>;
 
     /**
      * Loads HTML in web view.
@@ -94,7 +97,7 @@ export declare class WebView {
      * @param html {string} - HTML to load into the web view.
      * @param baseURL {string} - Optional. Base URL used to resolve relative URLs in theHTML.
      */
-    loadHTML(html: string, baseURL: string): Promise;
+    loadHTML(html: string, baseURL: string): Promise<void>;
 
     /**
      * Loads file in the web view.
@@ -105,7 +108,7 @@ export declare class WebView {
      *
      * @param fileURL {string} - URL of the file to load and render.
      */
-    loadFile(fileURL: string): Promise;
+    loadFile(fileURL: string): Promise<void>;
 
     /**
      * Evaluates JavaScript in the web view.
@@ -138,7 +141,7 @@ export declare class WebView {
      *
      * @param fullscreen {boolean} - Set to true to present the web view in fullscreen.Defaults to false.
      */
-    present(fullscreen: boolean): Promise;
+    present(fullscreen: boolean): Promise<void>;
 
     /**
      * Waits for the web view to load.

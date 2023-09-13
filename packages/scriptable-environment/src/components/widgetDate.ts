@@ -1,3 +1,7 @@
+import { Color } from "./color";
+import { Font } from "./font";
+import { Point } from "./point";
+
 /**
  * Date element shown in a widget.
  *
@@ -5,7 +9,7 @@
  *
  * You do not create instances of this element directly. Instead you should call addDate()on an instance of a ListWidget.
  */
-export var WidgetDate: {
+export declare class WidgetDate {
     /**
      * Date to show in a widget.
      */

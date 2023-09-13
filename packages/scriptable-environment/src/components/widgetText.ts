@@ -1,9 +1,13 @@
+import { Color } from "./color";
+import { Font } from "./font";
+import { Point } from "./point";
+
 /**
  * Text element shown in a widget.
  *
  * A text shown in a widget. You do not create instances of this element directly. Insteadyou should call addText() on an instance of a ListWidget.
  */
-export var WidgetText: {
+export declare class WidgetText {
     /**
      * Text to show in a widget.
      */

@@ -5,7 +5,7 @@
  * use the API, the application will prompt you to authorize access to your location.
  * If you do not authorize access, the application cannot fetch your location. You canchange this later from the system settings.
  */
-export var Location: {
+export declare class Location {
     /**
      * Fetches your location.
      *

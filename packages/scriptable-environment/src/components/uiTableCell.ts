@@ -1,10 +1,14 @@
+import { Color } from "./color";
+import { Font } from "./font";
+import { Image } from "./image";
+
 /**
  * Cell in a UITableRow.
  *
  * Cells are shown horizontally in a UITableRow which in turn is shown
  * vertically in a UITable. Cells have content, e.g. a text or an image.
  */
-export var UITableCell: {
+export declare class UITableCell {
     /**
      * Relative width of the cell.
      *
@@ -25,7 +29,7 @@ export var UITableCell: {
      *
      * Buttons cannot be tapped when the table is presented in Siri.
      */
-    onTap: fn();
+    onTap: () => void;
 
     /**
      * Whether to dismiss the table when the button is tapped.

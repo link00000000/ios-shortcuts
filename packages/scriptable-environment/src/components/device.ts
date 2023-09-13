@@ -1,9 +1,11 @@
+import { Size } from "./size";
+
 /**
  * Provides information about the device.
  *
  * Reads information about the current device and its screen.
  */
-export var Device: {
+export declare class Device {
     /**
      * Name identifying the device.
      *
@@ -32,7 +34,7 @@ export var Device: {
      * You can use this property to choose behavior of a script depending on
      * whether its running on a phone or a pad.
      */
-    static isPhone(): bool;
+    static isPhone(): boolean;
 
     /**
      * Whether the device is a pad.
@@ -40,7 +42,7 @@ export var Device: {
      * You can use this property to choose behavior of a script depending on
      * whether its running on a phone or a pad.
      */
-    static isPad(): bool;
+    static isPad(): boolean;
 
     /**
      * Size of the screen.
@@ -77,32 +79,32 @@ export var Device: {
     /**
      * Whether the device is in portrait with the home button or home indicator at the bottom.
      */
-    static isInPortrait(): bool;
+    static isInPortrait(): boolean;
 
     /**
      * Whether the device is in portrait but upside down with the home button or home indicatorat the top.
      */
-    static isInPortraitUpsideDown(): bool;
+    static isInPortraitUpsideDown(): boolean;
 
     /**
      * Whether the device is in landscape with the home button or home indicator on theright side.
      */
-    static isInLandscapeLeft(): bool;
+    static isInLandscapeLeft(): boolean;
 
     /**
      * Whether the device is in landscape with the home button or home indicator on theleft side.
      */
-    static isInLandscapeRight(): bool;
+    static isInLandscapeRight(): boolean;
 
     /**
      * Whether the device is lying parallel to the ground with the screen facing upwards.
      */
-    static isFaceUp(): bool;
+    static isFaceUp(): boolean;
 
     /**
      * Whether the device is lying parallel to the ground with the screen facing downwards.
      */
-    static isFaceDown(): bool;
+    static isFaceDown(): boolean;
 
     /**
      * Current battery level.
@@ -114,17 +116,17 @@ export var Device: {
     /**
      * Whether the device is being not plugged into power and thus discharging.
      */
-    static isDischarging(): bool;
+    static isDischarging(): boolean;
 
     /**
      * Whether the device is being charged.
      */
-    static isCharging(): bool;
+    static isCharging(): boolean;
 
     /**
      * Whether the device is fully charged.
      */
-    static isFullyCharged(): bool;
+    static isFullyCharged(): boolean;
 
     /**
      * The preferred langauges.
@@ -148,7 +150,7 @@ export var Device: {
      *
      * This API is not supported in widgets.
      */
-    static isUsingDarkAppearance(): bool;
+    static isUsingDarkAppearance(): boolean;
 
     /**
      * The device volume.

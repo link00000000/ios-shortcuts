@@ -1,3 +1,5 @@
+import { Color } from "./color";
+
 /**
  * Holds reminders and events.
  *
@@ -6,7 +8,7 @@
  * or when inserting into a calendar. If you are fetching reminders or events from all
  * calendars, you do not need to pass the calendars when performing the fetch with theReminder or CalendarEvent types.
  */
-export var Calendar: {
+export declare class Calendar {
     /**
      * Calendar identifier.
      */
@@ -42,7 +44,7 @@ export var Calendar: {
      *
      * @param availability {string} - Availability to check against.
      */
-    supportsAvailability(availability: string): bool;
+    supportsAvailability(availability: string): boolean;
 
     /**
      * Saves calendar.

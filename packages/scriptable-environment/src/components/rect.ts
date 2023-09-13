@@ -1,3 +1,6 @@
+import { Point } from "./point";
+import { Size } from "./size";
+
 /**
  * Structure representing a rectangle.
  *

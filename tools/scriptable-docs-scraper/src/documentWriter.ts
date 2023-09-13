@@ -7,7 +7,7 @@ export class TsDocumentWriter {
     public static writeDocument(article: Article) {
         const writer = new TsDocumentWriter();
 
-        const delcarationType = article.methods.some(x => x.signature.modifiers.some(y => y === "new")) ? "class" : "var";
+        const delcarationType = article.class.name.charAt(0) === article.class.name.charAt(0).toUpperCase() ? "class" : "var";
         writer.beginWriteDeclaration(article.class, delcarationType);
 
         for (let i = 0; i < article.properties.length; ++i) {
@@ -47,7 +47,7 @@ export class TsDocumentWriter {
                 this.document += `export declare class ${cls.name} {`;
                 break;
             case "var":
-                this.document += `export var ${cls.name}: {`
+                this.document += `export declare var ${cls.name}: {`
         }
         this.endLine();
         

@@ -6,7 +6,7 @@
  * Symbols are referenced by their name. You can find the symbol names in Apple's SF
  * Symbols app for macOS. You can also browse symbol names in the SF Symbols Browserand San Fransymbols apps for iOS.
  */
-export var SFSymbol: {
+export declare class SFSymbol {
     /**
      * Convert the symbol to an image.
      */

@@ -30,9 +30,9 @@ export declare class Timer {
      *
      * Schedules the timer using its configuration. The supplied function is called whenthe timer fires. To stop the timer from firing, call the invalidate() function.
      *
-     * @param callback {fn(} - The callback to be called when the timer fires.
+     * @param callback {() => void} - The callback to be called when the timer fires.
      */
-    schedule(callback: fn(): void;
+    schedule(callback: () => void): void;
 
     /**
      * Stops the timer from firing.
@@ -48,7 +48,7 @@ export declare class Timer {
      *
      * @param timeInterval {number} - The time interval to fire the timer at.
      * @param repeats {boolean} - Whether the timer should repeat or not.
-     * @param callback {fn(} - The callback to be called when the timer fires.
+     * @param callback {() => void} - The callback to be called when the timer fires.
      */
-    static schedule(timeInterval: number, repeats: boolean, callback: fn(): void;
+    static schedule(timeInterval: number, repeats: boolean, callback: () => void): void;
 }

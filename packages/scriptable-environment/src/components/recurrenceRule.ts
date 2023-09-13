@@ -3,7 +3,7 @@
  *
  * A recurrence rule specifies how often a reminder or a calendar event should repeat.
  */
-export var RecurrenceRule: {
+export declare class RecurrenceRule {
     /**
      * Constructs a daily recurrence rule.
      *

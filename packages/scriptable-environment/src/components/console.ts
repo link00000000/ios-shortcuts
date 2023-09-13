@@ -3,7 +3,7 @@
  *
  * The console can be used to log information when running your script. The log maybe useful when debugging your script, e.g. to examine values of variables.
  */
-export var console: {
+export declare var console: {
     /**
      * Logs a message to the console.
      *
@@ -13,7 +13,7 @@ export var console: {
      *
      * @param message {any} - Message to log to the console.
      */
-    static log(message: any): void;
+    log(message: any): void;
 
     /**
      * Logs a warning message to the console.
@@ -24,7 +24,7 @@ export var console: {
      *
      * @param message {any} - Message to log to the console.
      */
-    static warn(message: any): void;
+    warn(message: any): void;
 
     /**
      * Logs an error message to the console.
@@ -35,7 +35,7 @@ export var console: {
      *
      * @param message {any} - Message to log to the console.
      */
-    static error(message: any): void;
+    error(message: any): void;
 
     /**
      * Logs an error message to the console.
@@ -49,5 +49,5 @@ export var console: {
      *
      * @param message {any} - Message to log to the console.
      */
-    static logError(message: any): void;
+    logError(message: any): void;
 }

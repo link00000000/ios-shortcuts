@@ -3,7 +3,7 @@
  *
  * If used in a script triggered by a Siri Shortcut, Siri will speak the text.
  */
-export var Speech: {
+export declare class Speech {
     /**
      * Speaks a text.
      *

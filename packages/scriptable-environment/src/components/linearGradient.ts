@@ -1,3 +1,6 @@
+import { Color } from "./color";
+import { Point } from "./point";
+
 /**
  * Linear gradient.
  *

@@ -1,3 +1,6 @@
+import { Contact } from "./contact";
+import { ContactsContainer } from "./contactsContainer";
+
 /**
  * Group of contacts.
  *

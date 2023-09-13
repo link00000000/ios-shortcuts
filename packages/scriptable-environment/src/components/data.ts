@@ -1,9 +1,11 @@
+import { Image } from "./image";
+
 /**
  * Raw data representation.
  *
  * Raw data representation of strings, files and images.
  */
-export var Data: {
+export declare class Data {
     /**
      * Creates data from string.
      *

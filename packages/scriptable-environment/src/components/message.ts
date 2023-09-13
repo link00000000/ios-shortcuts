@@ -1,3 +1,6 @@
+import { Data } from "./data";
+import { Image } from "./image";
+
 /**
  * Sends a message.
  *
@@ -30,7 +33,7 @@ export declare class Message {
      *
      * Presents a screen from which the message can be sent. The message will not be sentuntil you have confirmed it from the presented screen.
      */
-    send(): Promise;
+    send(): Promise<void>;
 
     /**
      * Adds an image attachment to the message.

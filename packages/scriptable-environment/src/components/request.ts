@@ -1,3 +1,6 @@
+import { Data } from "./data";
+import { Image } from "./image";
+
 /**
  * Performs HTTP requests.
  *
@@ -51,7 +54,7 @@ export declare class Request {
      * can return another request to redirect to. Returning null will stop the redirect.
      * Note that onRedirect will only be invoked on the initial request. Consecutive redirectsshould be handled on the initial request.
      */
-    onRedirect: fn(Request) -> Request;
+    onRedirect: (request: Request) => Request;
 
     /**
      * Response of the request.

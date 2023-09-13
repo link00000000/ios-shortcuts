@@ -4,7 +4,7 @@
  * Presents an interface that lets you dictate a text. You can specify the locale of
  * the text you want to dictate when calling the start() function. Dictation must manuallybe stopped from the presented interface when you are finished dictating.
  */
-export var Dictation: {
+export declare class Dictation {
     /**
      * Starts dictation.
      *

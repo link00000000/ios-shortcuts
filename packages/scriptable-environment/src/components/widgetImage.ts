@@ -1,9 +1,13 @@
+import { Color } from "./color";
+import { Image } from "./image";
+import { Size } from "./size";
+
 /**
  * Image element shown in widget.
  *
  * An image shown in a widget. You do not create instances of this element directly.Instead you should call addImage() on an instance of a ListWidget.
  */
-export var WidgetImage: {
+export declare class WidgetImage {
     /**
      * Image to show in widget.
      */

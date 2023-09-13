@@ -21,7 +21,7 @@
  * The circle.js module exports the functions area and circumference. You can add any
  * function or object to the exports of a module to make them available when the moduleis imported with importModule.
  */
-export var module: {
+export declare var module: {
     /**
      * Path to file containing the module.
      *

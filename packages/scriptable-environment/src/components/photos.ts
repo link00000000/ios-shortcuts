@@ -1,3 +1,5 @@
+import { Image } from "./image";
+
 /**
  * Provides access to your photo library.
  *
@@ -5,7 +7,7 @@
  * library. The first time you use the APIs, the app will prompt for access but if you
  * deny the request, all API calls will fail. In that case you must enable access tothe photo library from the system settings.
  */
-export var Photos: {
+export declare class Photos {
     /**
      * Presents the photo library for picking an image.
      *
