@@ -7,7 +7,7 @@
         "dist"
     ],
     "scripts": {
-        "build": "tsc -p tsconfig.json",
+        "build": "tsc --project tsconfig.build.json",
         "clean": "rimraf ./dist",
         "dev": "ts-node ./src/index.ts --out ./out",
         "start": "ts-node ./src/index.ts"

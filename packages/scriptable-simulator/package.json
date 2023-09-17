@@ -10,7 +10,7 @@
         "dist"
     ],
     "scripts": {
-        "build": "tsc -p tsconfig.json",
+        "build": "tsc --project tsconfig.build.json",
         "clean": "rimraf ./dist",
         "prepublishOnly": "pnpm run build"
     },

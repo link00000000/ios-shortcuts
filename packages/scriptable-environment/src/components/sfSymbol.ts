@@ -1,3 +1,6 @@
+import { Font } from "./font";
+import { Image } from "./image";
+
 /**
  * Representation of a SF symbol.
  *

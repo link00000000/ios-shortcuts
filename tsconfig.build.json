@@ -5,6 +5,7 @@
         "lib": ["es6"],
         "sourceMap": true,
         "strict": true,
+        "moduleResolution": "node",
         "declaration": true,
         "declarationMap": true,
         "noEmitOnError": true,
@@ -13,13 +14,12 @@
         "types": [],
         "noEmit": false,
         "incremental": true,
-        "noUncheckedIndexedAccess": true,
-        "baseUrl": ".",
-        "paths": {
-            "@ios-shortcuts/*": [
-                "packages/*/src"
-            ]
-        }
+        "noUncheckedIndexedAccess": true
+        // "paths": {
+        //     "@ios/*": [
+        //         "packages/*/src"
+        //     ]
+        // }
     },
     "exclude": [
         "node_modules",

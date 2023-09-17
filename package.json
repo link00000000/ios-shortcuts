@@ -8,8 +8,8 @@
         "build:shortcuts": "pnpm --filter ./shortcuts/* build",
         "build:tools": "pnpm --filter ./tools/* build",
         "preinstall": "npx only-allow pnpm",
-        "repl": "node -r ./packages/scriptable/dist/simulator/config -i",
-        "simulate": "node -r ./packages/scriptable/dist/simulator/config"
+        "repl": "node -r ./packages/scriptable-simulator/dist -i",
+        "simulate": "node -r ./packages/scriptable-simulator/dist"
     },
     "devDependencies": {
         "@dagger.io/dagger": "^0.8.4",

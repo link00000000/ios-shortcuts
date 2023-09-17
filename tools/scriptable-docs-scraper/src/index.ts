@@ -1,7 +1,6 @@
 import path from "node:path";
 import fs from "node:fs/promises";
 import arg from "arg";
-import axios from "axios";
 import { Scraper } from "./scraper";
 import { TsDocumentWriter } from "./documentWriter";
 import { ArticleFetcher } from "./articleFetcher";
