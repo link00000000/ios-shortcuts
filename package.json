@@ -13,7 +13,6 @@
         "simulate": "node -r ./packages/scriptable-simulator/dist"
     },
     "devDependencies": {
-        "@dagger.io/dagger": "^0.8.4",
         "typescript": "~4.9.0"
     }
 }
