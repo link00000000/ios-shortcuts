@@ -59,7 +59,7 @@ importers:
 
   tools/scriptable-docs-scraper:
     specifiers:
-      '@ios-shortcuts/utils': workspace:^
+      '@ios-shortcuts/utils': workspace:*
       '@types/jsdom': ^21.1.2
       '@types/node': ^20.4.9
       arg: ^5.0.2
