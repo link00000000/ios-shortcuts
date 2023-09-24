@@ -120,13 +120,13 @@ export { type XMLParser } from "./components/xmlParser";
 
 declare global {
     export var Alert: typeof AlertComponent;
-    export var Args: typeof ArgsComponent;
+    export var args: typeof ArgsComponent;
     export var Calendar: typeof CalendarComponent;
     export var CalendarEvent: typeof CalendarEventComponent;
     export var CallbackUrl: typeof CallbackUrlComponent;
     export var Color: typeof ColorComponent;
-    export var Config: typeof ConfigComponent;
-    export var Console: typeof ConsoleComponent;
+    export var config: typeof ConfigComponent;
+    export var console: typeof ConsoleComponent;
     export var Contact: typeof ContactComponent;
     export var ContactsContainer: typeof ContactsContainerComponent;
     export var ContactsGroup: typeof ContactsGroupComponent;
@@ -146,7 +146,7 @@ declare global {
     export var Location: typeof LocationComponent;
     export var Mail: typeof MailComponent;
     export var Message: typeof MessageComponent;
-    export var Module: typeof ModuleComponent;
+    export var module: typeof ModuleComponent;
     export var Notification: typeof NotificationComponent;
     export var Pasteboard: typeof PasteboardComponent;
     export var Path: typeof PathComponent;
