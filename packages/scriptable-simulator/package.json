@@ -1,6 +1,5 @@
 {
     "name": "@ios-shortcuts/scriptable-simulator",
-    "version": "1.0.0",
     "main": "./dist/index",
     "types": "./dist/index",
     "exports": {
@@ -11,8 +10,7 @@
     ],
     "scripts": {
         "build": "tsc --project tsconfig.build.json",
-        "clean": "rimraf ./dist",
-        "prepublishOnly": "pnpm run build"
+        "clean": "rimraf ./dist"
     },
     "devDependencies": {
         "@types/node": "^20.4.9",

@@ -1,6 +1,5 @@
 {
     "name": "@ios-shortcuts/utils",
-    "version": "1.0.0",
     "main": "./dist/index",
     "types": "./dist/index",
     "exports": {
@@ -14,9 +13,8 @@
         "dist"
     ],
     "scripts": {
-        "build": "tsc -p tsconfig.json",
-        "clean": "rimraf ./dist",
-        "prepublishOnly": "pnpm run build"
+        "build": "tsc --project tsconfig.build.json",
+        "clean": "rimraf ./dist"
     },
     "devDependencies": {
         "rimraf": "~5.0.0",
