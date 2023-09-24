@@ -11,7 +11,9 @@ export abstract class TemplateRenderer<TTemplateVariables extends Record<string,
     public abstract render(variables: TTemplateVariables): void;
 
     protected async writeTemplateToFile(filePath: string, template: string) {
-        await fs.mkdir(path.resolve(filePath, ".."), { recursive: true });
-        await fs.writeFile(filePath, template);
+        const absoluteFilePath = path.resolve(this.outputDirectory, filePath);
+
+        await fs.mkdir(path.resolve(absoluteFilePath, ".."), { recursive: true });
+        await fs.writeFile(absoluteFilePath, template);
     }
 }
