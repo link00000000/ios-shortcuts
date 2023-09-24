@@ -14,8 +14,18 @@ export class ShortcutTemplateRenderer extends TemplateRenderer<TemplateVariables
         await this.writeTemplateToFile("src/index.ts", `
 import "@ios-shortcuts/scriptable-environment";
 
-console.log("Hello, world!");
-        `);
+console.log("Package name: " + __PACKAGE_NAME__);
+console.log("Package version: " + __PACKAGE_VERSION__);
+       `);
+
+        await this.writeTemplateToFile("@types/webpack.global.d.ts", `
+export {}
+
+declare global {
+    export var __PACKAGE_NAME__: string;
+    export var __PACKAGE_VERSION__: "development" | string & {}; // string & {} so that Typescript will recommend using specified string literals before any other string
+}
+       `);
 
 
         await this.writeTemplateToFile("package.json", `
@@ -52,7 +62,8 @@ console.log("Hello, world!");
     },
 
     "include": [
-        "src/**/*"
+        "src/**/*",
+        "@types/**/*"
     ]
 }
        `);
@@ -63,27 +74,37 @@ console.log("Hello, world!");
 
     "include": [
         "src/**/*"
+        "@types/**/*"
     ]
 }
        `);
 
        await this.writeTemplateToFile("webpack.config.js", `
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
+const { DefinePlugin } = require("webpack");
 
-module.exports = {
+module.exports = (env) => ({
     entry: "./src/index.ts",
-    mode: "development",
+    mode: env.production ? "production" : "development",
     output: {
         filename: "bundle.js",
     },
+    plugins: [
+        new DefinePlugin({
+            __PACKAGE_NAME__: \`"\${require("./package.json").name}"\`,
+            __PACKAGE_VERSION__: \`"\${env.version ?? "development"}"\`,
+        })
+    ],
     resolve: {
         extensions: [".ts", ".tsx", ".js"],
-        plugins: [new TsconfigPathsPlugin()],
+        plugins: [
+            new TsconfigPathsPlugin(),
+        ]
     },
     module: {
         rules: [
             {
-                test: /\\.tsx?$/,
+                test: /\.tsx?$/,
                 loader: "ts-loader",
                 options: { configFile: "tsconfig.build.json" },
             },
@@ -92,7 +113,7 @@ module.exports = {
     optimization: {
         usedExports: false,
     }
-};
+});
         `);
     }
 }

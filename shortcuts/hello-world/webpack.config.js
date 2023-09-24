@@ -1,14 +1,23 @@
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
+const { DefinePlugin } = require("webpack");
 
-module.exports = {
+module.exports = (env) => ({
     entry: "./src/index.ts",
-    mode: "development",
+    mode: env.production ? "production" : "development",
     output: {
         filename: "bundle.js",
     },
+    plugins: [
+        new DefinePlugin({
+            __PACKAGE_NAME__: `"${require("./package.json").name}"`,
+            __PACKAGE_VERSION__: `"${env.version ?? "development"}"`,
+        })
+    ],
     resolve: {
         extensions: [".ts", ".tsx", ".js"],
-        plugins: [new TsconfigPathsPlugin()],
+        plugins: [
+            new TsconfigPathsPlugin(),
+        ]
     },
     module: {
         rules: [
@@ -22,4 +31,4 @@ module.exports = {
     optimization: {
         usedExports: false,
     }
-};
+});
