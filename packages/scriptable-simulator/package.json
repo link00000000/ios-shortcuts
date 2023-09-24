@@ -1,9 +1,14 @@
 {
     "name": "@ios-shortcuts/scriptable-simulator",
+    "private": true,
     "main": "./dist/index",
     "types": "./dist/index",
     "exports": {
-        ".": "./dist/index.js"
+        ".": {
+            "types": "./dist/index.d.ts",
+            "require": "./dist/index.js",
+            "default": "./dist/index.js"
+        }
     },
     "files": [
         "dist"

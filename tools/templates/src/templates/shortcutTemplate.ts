@@ -42,16 +42,21 @@ console.log("Hello, world!");
 
         await this.writeTemplateToFile("tsconfig.build.json", `
 {
-    "extends": "../../tsconfig.build.json"
+    "extends": "../../tsconfig.build.json",
+
+    "compilerOptions": {
+        "outDir": "./dist"
+    },
+
+    "include": [
+        "src/**/*"
+    ]
 }
        `);
 
         await this.writeTemplateToFile("tsconfig.json", `
 {
     "extends": "../../tsconfig.json",
-
-    "compilerOptions": {
-    },
 
     "include": [
         "src/**/*"

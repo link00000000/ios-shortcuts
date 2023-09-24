@@ -1,5 +1,6 @@
 {
     "name": "@ios-shortcuts/scriptable-environment",
+    "private": true,
     "main": "./dist/index",
     "types": "./dist/index",
     "exports": {

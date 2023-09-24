@@ -1,5 +1,6 @@
 {
     "name": "@ios-shortcuts/scriptable-doc-scraper",
+    "private": true,
     "main": "./dist/index",
     "types": "./dist/index",
     "files": [

@@ -1,5 +1,6 @@
 {
     "name": "@ios-shortcuts/templates",
+    "private": true,
     "main": "./dist/index",
     "types": "./dist/index",
     "files": [

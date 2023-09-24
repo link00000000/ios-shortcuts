@@ -21,6 +21,7 @@ export const greet = (name: string = "world") => {
         await this.writeTemplateToFile("package.json", `
 {
     "name": "@ios-shortcuts/${projectName}",
+    "private": true,
     "main": "./dist/index",
     "types": "./dist/index",
     "exports": {
