@@ -15,15 +15,24 @@ const ExitCode: Record<ExitStatus, number> = {
     [ExitStatus.Error]: 1,
 } as const;
 
-type ProjectType = "shortcut" | "package" | "tool";
+const ProjectTypes = ["shortcut", "package", "tool"] as const;
+type ProjectType = typeof ProjectTypes[number];
 
 async function main(): Promise<ExitStatus> {
     const args = arg({
-        "--cwd": String,
-        "-d": "--cwd"
+        "--cwd":    String,
+        "-d":       "--cwd",
+
+        "--project-type":   String,
+        "--type":           "--project-type",
+        "-t":               "--project-type",
+
+        "--name":   String,
+        "-n":       "--name"
     });
 
-    const { projectName, projectType } = await getProjectVariables();
+    const projectName = parseProjectName(args["--name"]) ?? await promptForProjectName();
+    const projectType = parseProjectType(args["--project-type"]) ?? parseProjectType(args._[0]) ?? await promptForProjectType();
     const workingDirectory = args["--cwd"] ?? process.cwd();
     const outputDirectory = getOutputDirectory(projectType, projectName, workingDirectory);
 
@@ -46,8 +55,34 @@ async function main(): Promise<ExitStatus> {
     return ExitStatus.Success;
 }
 
-async function getProjectVariables() {
-    const projectType = await select<ProjectType>({
+function parseProjectName(name: string | undefined): string | undefined {
+    if (name === undefined) {
+        return undefined;
+    }
+
+    const validation = validateProjectName(name);
+
+    if (validation === true) {
+        return name!;
+    }
+
+    if (validation === false) {
+        throw new Error("Project name invalid");
+    }
+
+    throw new Error(validation);
+}
+
+function parseProjectType(type: string | undefined): ProjectType | undefined {
+    if (type !== undefined && ProjectTypes.some(x => x === type)) {
+        return type as ProjectType;
+    }
+    
+    return undefined;
+}
+
+async function promptForProjectType() {
+    return await select<ProjectType>({
         message: "Project type",
         choices: [
             {
@@ -64,23 +99,29 @@ async function getProjectVariables() {
             }
         ]
     });
+}
 
-    const projectName = await input({
+async function promptForProjectName() {
+    return await input({
         message: "Project name",
-        validate: (value) => {
-            if (value.match(/[A-Z]/) !== null) {
-                return "Package name cannot contain uppercase letters";
-            }
-            
-            if (value.match(/\s/) !== null) {
-                return "Package name cannot contain spaces";
-            }
-
-            return true;
-        }
+        validate: validateProjectName
     });
+}
 
-    return { projectType, projectName };
+function validateProjectName(value: string | undefined): boolean | string  {
+    if (value === undefined || value.length === 0) {
+        return "Package name cannot be empty";
+    }
+
+    if (value.match(/[A-Z]/) !== null) {
+        return "Package name cannot contain uppercase letters";
+    }
+    
+    if (value.match(/\s/) !== null) {
+        return "Package name cannot contain spaces";
+    }
+
+    return true;
 }
 
 function getOutputDirectory(projectType: ProjectType, projectName: string, workingDirectory: string) {
