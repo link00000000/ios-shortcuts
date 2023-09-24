@@ -5,7 +5,7 @@
         ],
         "module": "Node16",
         "target": "ES6",
-        "sourceMap": true,
+        "types": [],
 
         "moduleResolution": "node",
         "esModuleInterop": true,
@@ -15,6 +15,7 @@
         "forceConsistentCasingInFileNames": true,
         "noUncheckedIndexedAccess": true,
 
+        "sourceMap": true,
         "declaration": true,
         "declarationMap": true,
         "noEmitOnError": true
