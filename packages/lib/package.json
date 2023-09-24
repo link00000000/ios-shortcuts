@@ -1,0 +1,27 @@
+{
+    "name": "@ios-shortcuts/lib",
+    "private": true,
+    "main": "./dist/index",
+    "types": "./dist/index",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "require": "./dist/index.js",
+            "default": "./dist/index.js"
+        }
+    },
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "tsc --project tsconfig.build.json",
+        "clean": "rimraf ./dist"
+    },
+    "devDependencies": {
+        "rimraf": "~5.0.0",
+        "typescript": "~4.9.0"
+    },
+    "dependencies": {
+        "@ios-shortcuts/scriptable-environment": "workspace:*"
+    }
+}

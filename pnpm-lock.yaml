@@ -14,6 +14,17 @@ importers:
       '@ios-shortcuts/templates': link:tools/templates
       typescript: 4.9.5
 
+  packages/lib:
+    specifiers:
+      '@ios-shortcuts/scriptable-environment': workspace:*
+      rimraf: ~5.0.0
+      typescript: ~4.9.0
+    dependencies:
+      '@ios-shortcuts/scriptable-environment': link:../scriptable-environment
+    devDependencies:
+      rimraf: 5.0.1
+      typescript: 4.9.5
+
   packages/scriptable-environment:
     specifiers:
       rimraf: ~5.0.0
