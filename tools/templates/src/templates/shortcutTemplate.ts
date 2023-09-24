@@ -73,7 +73,7 @@ declare global {
     "extends": "../../tsconfig.json",
 
     "include": [
-        "src/**/*"
+        "src/**/*",
         "@types/**/*"
     ]
 }
