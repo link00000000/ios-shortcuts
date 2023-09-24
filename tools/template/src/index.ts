@@ -65,7 +65,20 @@ async function getProjectVariables() {
         ]
     });
 
-    const projectName = await input({ message: "Project name" });
+    const projectName = await input({
+        message: "Project name",
+        validate: (value) => {
+            if (value.match(/[A-Z]/) !== null) {
+                return "Package name cannot contain uppercase letters";
+            }
+            
+            if (value.match(/\s/) !== null) {
+                return "Package name cannot contain spaces";
+            }
+
+            return true;
+        }
+    });
 
     return { projectType, projectName };
 }
