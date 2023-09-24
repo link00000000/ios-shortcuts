@@ -24,7 +24,7 @@ console.log("Hello, world!");
     "private": true,
     "scripts": {
         "clean": "rimraf dist",
-        "build": "webpack"
+        "build": "webpack",
         "repl": "node -r @ios-shortcuts/scriptable-simulator -i",
         "start": "node -r @ios-shortcuts/scriptable-simulator ./dist/bundle.js"
     },
