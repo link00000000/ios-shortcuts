@@ -23,21 +23,16 @@ export const greet = (name: string = "world") => {
     "name": "@ios-shortcuts/${projectName}",
     "main": "./dist/index",
     "types": "./dist/index",
-    "exports": {
-        ".": {
-            "types": "./dist/index.d.ts",
-            "require": "./dist/index.js",
-            "default": "./dist/index.js"
-        }
-    },
     "files": [
         "dist"
     ],
     "scripts": {
         "build": "tsc --project tsconfig.build.json",
-        "clean": "rimraf ./dist"
+        "clean": "rimraf ./dist",
+        "start": "node ./dist/index.js"
     },
     "devDependencies": {
+        "@types/node": "^20.4.9",
         "rimraf": "~5.0.0",
         "typescript": "~4.9.0"
     }
@@ -48,16 +43,25 @@ export const greet = (name: string = "world") => {
         await this.writeTemplateToFile("tsconfig.build.json", `
 {
     "extends": "../../tsconfig.build.json",
+
     "compilerOptions": {
-        "outDir": "dist"
+        "outDir": "./dist",
+        "types": ["node"]
     },
-    "include": ["src"]
+
+    "include": [
+        "src/**/*"
+    ]
 }
        `);
 
         await this.writeTemplateToFile("tsconfig.json", `
 {
-    "extends": "../../tsconfig.json"
+    "extends": "../../tsconfig.json",
+
+    "compilerOptions": {
+        "types": ["node"]
+    }
 }
        `);
     }

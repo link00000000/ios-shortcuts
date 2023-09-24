@@ -12,7 +12,9 @@ export class PackageTemplateRenderer extends TemplateRenderer<TemplateVariables>
     public async render({ projectName }: TemplateVariables): Promise<void> {
 
         await this.writeTemplateToFile("src/index.ts", `
-console.log("Hello, world!");
+export const greet = (name: string = "world") => {
+    console.log(\`Hello, \${name}!\`);
+}
         `);
 
 
@@ -21,13 +23,19 @@ console.log("Hello, world!");
     "name": "@ios-shortcuts/${projectName}",
     "main": "./dist/index",
     "types": "./dist/index",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "require": "./dist/index.js",
+            "default": "./dist/index.js"
+        }
+    },
     "files": [
         "dist"
     ],
     "scripts": {
         "build": "tsc --project tsconfig.build.json",
-        "clean": "rimraf ./dist",
-        "start": "node ./dist/index.js"
+        "clean": "rimraf ./dist"
     },
     "devDependencies": {
         "rimraf": "~5.0.0",
@@ -42,8 +50,7 @@ console.log("Hello, world!");
     "extends": "../../tsconfig.build.json",
 
     "compilerOptions": {
-        "outDir": "./dist",
-        "types": ["node"]
+        "outDir": "./dist"
     },
 
     "include": [
@@ -55,10 +62,6 @@ console.log("Hello, world!");
         await this.writeTemplateToFile("tsconfig.json", `
 {
     "extends": "../../tsconfig.json",
-
-    "compilerOptions": {
-        "types": ["node"]
-    }
 }
        `);
     }
