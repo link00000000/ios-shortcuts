@@ -5,10 +5,12 @@ importers:
   .:
     specifiers:
       '@ios-shortcuts/scriptable-doc-scraper': workspace:*
+      '@ios-shortcuts/scriptable-simulator': workspace:*
       '@ios-shortcuts/templates': workspace:*
       typescript: ~4.9.0
     devDependencies:
       '@ios-shortcuts/scriptable-doc-scraper': link:tools/scriptable-docs-scraper
+      '@ios-shortcuts/scriptable-simulator': link:packages/scriptable-simulator
       '@ios-shortcuts/templates': link:tools/templates
       typescript: 4.9.5
 
@@ -41,9 +43,10 @@ importers:
       rimraf: 5.0.1
       typescript: 4.9.5
 
-  shortcuts/save-to-linkding:
+  shortcuts/hello-world:
     specifiers:
       '@ios-shortcuts/scriptable-environment': workspace:^
+      '@ios-shortcuts/scriptable-simulator': workspace:*
       rimraf: ~5.0.0
       ts-loader: ~9.4.0
       ts-node: ^10.9.1
@@ -53,6 +56,29 @@ importers:
       webpack-cli: ~5.1.0
     devDependencies:
       '@ios-shortcuts/scriptable-environment': link:../../packages/scriptable-environment
+      '@ios-shortcuts/scriptable-simulator': link:../../packages/scriptable-simulator
+      rimraf: 5.0.1
+      ts-loader: 9.4.4_rggdtlzfqxxwxudp3onsqdyocm
+      ts-node: 10.9.1_3puo4rtspwl3idxgm5pkqjgczy
+      tsconfig-paths-webpack-plugin: 4.1.0
+      typescript: 4.9.5
+      webpack: 5.88.2_webpack-cli@5.1.4
+      webpack-cli: 5.1.4_webpack@5.88.2
+
+  shortcuts/save-to-linkding:
+    specifiers:
+      '@ios-shortcuts/scriptable-environment': workspace:^
+      '@ios-shortcuts/scriptable-simulator': workspace:*
+      rimraf: ~5.0.0
+      ts-loader: ~9.4.0
+      ts-node: ^10.9.1
+      tsconfig-paths-webpack-plugin: ~4.1.0
+      typescript: ~4.9.0
+      webpack: ~5.88.0
+      webpack-cli: ~5.1.0
+    devDependencies:
+      '@ios-shortcuts/scriptable-environment': link:../../packages/scriptable-environment
+      '@ios-shortcuts/scriptable-simulator': link:../../packages/scriptable-simulator
       rimraf: 5.0.1
       ts-loader: 9.4.4_rggdtlzfqxxwxudp3onsqdyocm
       ts-node: 10.9.1_3puo4rtspwl3idxgm5pkqjgczy

@@ -25,9 +25,12 @@ console.log("Hello, world!");
     "scripts": {
         "clean": "rimraf dist",
         "build": "webpack"
+        "repl": "node -r @ios-shortcuts/scriptable-simulator -i",
+        "start": "node -r @ios-shortcuts/scriptable-simulator ./dist/bundle.js"
     },
     "devDependencies": {
         "@ios-shortcuts/scriptable-environment": "workspace:^",
+        "@ios-shortcuts/scriptable-simulator": "workspace:^",
         "rimraf": "~5.0.0",
         "ts-loader": "~9.4.0",
         "ts-node": "^10.9.1",

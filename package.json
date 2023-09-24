@@ -10,12 +10,12 @@
         "clean": "pnpm -r clean",
         "new": "pnpm create-project",
         "preinstall": "npx only-allow pnpm",
-        "repl": "node -r ./packages/scriptable-simulator/dist -i",
-        "simulate": "node -r ./packages/scriptable-simulator/dist",
+        "repl": "node -r @ios-shortcuts/scriptable-simulator -i",
         "scrape-scriptable-docs": "scrape-scriptable-docs"
     },
     "devDependencies": {
         "@ios-shortcuts/scriptable-doc-scraper": "workspace:*",
+        "@ios-shortcuts/scriptable-simulator": "workspace:*",
         "@ios-shortcuts/templates": "workspace:*",
         "typescript": "~4.9.0"
     }
