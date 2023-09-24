@@ -3,6 +3,9 @@
     "private": true,
     "main": "./dist/index",
     "types": "./dist/index",
+    "bin": {
+        "scrape-scriptable-docs": "./dist/index.js"
+    },
     "files": [
         "dist"
     ],

@@ -8,11 +8,15 @@
         "build:shortcuts": "pnpm --filter ./shortcuts/* build",
         "build:tools": "pnpm --filter ./tools/* build",
         "clean": "pnpm -r clean",
+        "new": "pnpm create-project",
         "preinstall": "npx only-allow pnpm",
         "repl": "node -r ./packages/scriptable-simulator/dist -i",
-        "simulate": "node -r ./packages/scriptable-simulator/dist"
+        "simulate": "node -r ./packages/scriptable-simulator/dist",
+        "scrape-scriptable-docs": "scrape-scriptable-docs"
     },
     "devDependencies": {
+        "@ios-shortcuts/scriptable-doc-scraper": "workspace:*",
+        "@ios-shortcuts/templates": "workspace:*",
         "typescript": "~4.9.0"
     }
 }

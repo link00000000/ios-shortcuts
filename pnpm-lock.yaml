@@ -4,8 +4,12 @@ importers:
 
   .:
     specifiers:
+      '@ios-shortcuts/scriptable-doc-scraper': workspace:*
+      '@ios-shortcuts/templates': workspace:*
       typescript: ~4.9.0
     devDependencies:
+      '@ios-shortcuts/scriptable-doc-scraper': link:tools/scriptable-docs-scraper
+      '@ios-shortcuts/templates': link:tools/templates
       typescript: 4.9.5
 
   packages/scriptable-environment:
