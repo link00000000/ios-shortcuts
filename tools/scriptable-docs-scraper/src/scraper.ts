@@ -1,5 +1,5 @@
 import jsdom from "jsdom";
-import { ArrayUtils, assert, Assert, ObjectUtils, StringUtils } from "@ios-shortcuts/utils"
+import { ArrayUtils, assert, Assert, ObjectUtils, StringUtils } from "@ios-shortcuts/utils";
 
 export interface Class {
     name: string;
