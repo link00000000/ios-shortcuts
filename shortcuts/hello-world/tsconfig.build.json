@@ -1,4 +1,3 @@
-
 {
     "extends": "../../tsconfig.build.json",
 
@@ -10,4 +9,3 @@
         "src/**/*"
     ]
 }
-       

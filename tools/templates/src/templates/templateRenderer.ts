@@ -14,6 +14,6 @@ export abstract class TemplateRenderer<TTemplateVariables extends Record<string,
         const absoluteFilePath = path.resolve(this.outputDirectory, filePath);
 
         await fs.mkdir(path.resolve(absoluteFilePath, ".."), { recursive: true });
-        await fs.writeFile(absoluteFilePath, template);
+        await fs.writeFile(absoluteFilePath, template.trim());
     }
 }
