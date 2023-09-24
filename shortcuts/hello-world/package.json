@@ -1,11 +1,9 @@
 {
-    "name": "@ios-shortcuts/save-to-linkding",
+    "name": "@ios-shortcuts/hello-world",
     "private": true,
-    "version": "1.0.0",
     "scripts": {
         "clean": "rimraf dist",
-        "build": "webpack",
-        "dev": "ts-node src/index.ts"
+        "build": "webpack"
     },
     "devDependencies": {
         "@ios-shortcuts/scriptable-environment": "workspace:^",
