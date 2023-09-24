@@ -84,7 +84,7 @@ importers:
       ts-node: 10.9.1_3puo4rtspwl3idxgm5pkqjgczy
       typescript: 4.9.5
 
-  tools/template:
+  tools/templates:
     specifiers:
       '@inquirer/prompts': ^3.1.1
       arg: ^5.0.2

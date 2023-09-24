@@ -1,5 +1,5 @@
 {
-    "name": "@ios-shortcuts/test-package",
+    "name": "@ios-shortcuts/templates",
     "main": "./dist/index",
     "types": "./dist/index",
     "files": [
