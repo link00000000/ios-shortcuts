@@ -1,13 +1,12 @@
 {
     "extends": "./tsconfig.build.json",
+
     "compilerOptions": {
         "baseUrl": ".",
-        "noEmit": true,
-        "paths": {
-            "@ios/*": [
-                "packages/*/src"
-            ]
-        }
+        "noEmit": true
     },
-    "exclude": ["**/dist"]
+
+    "exclude": [
+        "**/dist"
+    ]
 }

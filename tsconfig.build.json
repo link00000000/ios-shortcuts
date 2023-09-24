@@ -20,9 +20,11 @@
         "declarationMap": true,
         "noEmitOnError": true
     },
+    
     "exclude": [
         "node_modules",
         "dist"
     ],
+
     "incremental": true
 }
