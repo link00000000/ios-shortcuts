@@ -3,10 +3,11 @@
     "private": true,
     "scripts": {
         "actions": "act",
-        "build": "pnpm build:shortcuts",
+        "build": "pnpm -r build",
         "build:packages": "pnpm --filter ./packages/* build",
         "build:shortcuts": "pnpm --filter ./shortcuts/* build",
         "build:tools": "pnpm --filter ./tools/* build",
+        "clean": "pnpm -r clean",
         "preinstall": "npx only-allow pnpm",
         "repl": "node -r ./packages/scriptable-simulator/dist -i",
         "simulate": "node -r ./packages/scriptable-simulator/dist"
