@@ -46,4 +46,4 @@ jobs:
       with:
         artifacts: "dist/*"
         commit: ${{ github.sha }}
-        tag: Commit ${{ github.sha }}
+        tag: commit-${{ github.sha }}
