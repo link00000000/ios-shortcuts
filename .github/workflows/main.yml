@@ -33,11 +33,15 @@ jobs:
         version: 7
         run_install: true
 
-    - run: pnpm build
+    - name: Build
+      run: |
+        pnpm build
+        mkdir dist
+        find shortcuts -wholename "*/dist/bundle.js" -type f | cut -d "/" -f 2 | xargs -I% mv ./shortcuts/%/dist/bundle.js ./dist/%.js
       
-    - name: Upload artifacts
-      uses: actions/upload-artifact@v3
+    - name: Publish release
+      uses: ncipollo/release-action@v1
       with:
-        name: shortcuts
-        path: shortcuts/*/dist/
-      
+        artifacts: "dist/*"
+        commit: ${{ GITHUB_SHA }}
+        tag: ${{ GITHUB_SHA }}
