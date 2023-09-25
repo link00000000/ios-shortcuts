@@ -96,7 +96,7 @@ export { type Rect } from "./components/rect";
 export { type RecurrenceRule } from "./components/recurrenceRule";
 export { type RelativeDateTimeFormatter } from "./components/relativeDateTimeFormatter";
 export { type Reminder } from "./components/reminder";
-export { type Request } from "./components/request";
+export { type Request, type Cookie, type Response } from "./components/request";
 export { type Safari } from "./components/safari";
 export { type Script } from "./components/script";
 export { type SFSymbol } from "./components/sfSymbol";

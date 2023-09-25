@@ -36,11 +36,15 @@ importers:
   packages/scriptable-simulator:
     specifiers:
       '@ios-shortcuts/scriptable-environment': workspace:*
+      '@ios-shortcuts/utils': workspace:*
       '@types/node': ^20.4.9
+      axios: ^1.5.0
       rimraf: ~5.0.0
       typescript: ~4.9.0
     dependencies:
       '@ios-shortcuts/scriptable-environment': link:../scriptable-environment
+      '@ios-shortcuts/utils': link:../utils
+      axios: 1.5.0
     devDependencies:
       '@types/node': 20.6.2
       rimraf: 5.0.1
@@ -48,8 +52,11 @@ importers:
 
   packages/utils:
     specifiers:
+      '@ios-shortcuts/utils': workspace:*
       rimraf: ~5.0.0
       typescript: ~4.9.0
+    dependencies:
+      '@ios-shortcuts/utils': 'link:'
     devDependencies:
       rimraf: 5.0.1
       typescript: 4.9.5

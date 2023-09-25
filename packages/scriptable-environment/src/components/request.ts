@@ -1,6 +1,24 @@
 import { Data } from "./data";
 import { Image } from "./image";
 
+export type Cookie = {
+    path: string;
+    httpOnly: boolean;
+    domain: string;
+    sessionOnly: boolean;
+    name: string;
+    value: string;
+}
+
+export type Response = {
+    url: string;
+    statusCode: number;
+    mimeType: string;
+    textEncodingName: string;
+    headers: Record<string, string>,
+    cookies: Cookie[]
+}
+
 /**
  * Performs HTTP requests.
  *
@@ -17,24 +35,24 @@ export declare class Request {
      *
      * Specifies the HTTP method to use when sending the request. The default is to sendthe request using the GET HTTP method.
      */
-    method: string;
+    method: "GET" | "POST" | "PUT" | "PATCH" | "DELETE" | "OPTION" | string & {};
 
     /**
      * HTTP headers to send with the request.
      *
      * Key value pairs where the key is the name of an HTTP header and the value will besent as the value for the HTTP header.
      */
-    headers: {string: string}/* TODO: Check type */;
+    headers: Record<string, string>
 
     /**
      * Body to send with the request.
      *
-     * The body will be send along the request. While this property can be any value, currentlyonly strings and Data is supported.
+     * The body will be send along the request. While this property can be any value, currently only strings and Data is supported.
      *
      * Be aware that this property is ignored if you convert the request to a multipartrequest using addParameterToMultipart,
      * addFileToMultipart or addFileDataToMultipart.
      */
-    body: any;
+    body: Data | string;
 
     /**
      * Timeout interval of the request.
@@ -52,7 +70,8 @@ export declare class Request {
      * allowed. When invoked the function is supplied with the request that we're about
      * to redirect to. The function can return the request to continue redirecting or it
      * can return another request to redirect to. Returning null will stop the redirect.
-     * Note that onRedirect will only be invoked on the initial request. Consecutive redirectsshould be handled on the initial request.
+     * Note that onRedirect will only be invoked on the initial request. Consecutive redirects
+     * should be handled on the initial request.
      */
     onRedirect: (request: Request) => Request;
 
@@ -80,7 +99,7 @@ export declare class Request {
      *   }]
      * }
      */
-    readonly response: {string: any}/* TODO: Check type */;
+    readonly response: Response | undefined;
 
     /**
      * Allow the request even if it is deemed insecure.
