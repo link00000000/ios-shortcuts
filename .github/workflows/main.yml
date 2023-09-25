@@ -43,5 +43,5 @@ jobs:
       uses: ncipollo/release-action@v1
       with:
         artifacts: "dist/*"
-        commit: ${{ GITHUB_SHA }}
-        tag: ${{ GITHUB_SHA }}
+        commit: ${{ github.sha }}
+        tag: ${{ github.sha }}
