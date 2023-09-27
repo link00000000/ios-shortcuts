@@ -19,3 +19,8 @@ class Shortcut extends ScriptableShortcut {
 const shortcut = new Shortcut();
 console.log(shortcut.name);
 console.log(shortcut.version);
+
+const alert = new Alert();
+alert.title = "This is the title";
+alert.message = "This is the message";
+alert.present();

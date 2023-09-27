@@ -5,7 +5,7 @@ export class SimulatedRequest implements Request {
     public url: string = "";
     public method: string = "GET";
     public headers: Record<string, string> = {};
-    public body: Data | string | undefined = undefined;
+    public body: Data | string = "";
     public timeoutInterval: number = 60;
     public onRedirect: (request: Request) => Request = (r) => r;
     public response: Response | undefined = undefined;
