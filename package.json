@@ -11,12 +11,15 @@
         "new": "pnpm create-project",
         "preinstall": "npx only-allow pnpm",
         "repl": "node -r @ios-shortcuts/scriptable-simulator -i",
-        "scrape-scriptable-docs": "scrape-scriptable-docs"
+        "scrape-scriptable-docs": "scrape-scriptable-docs",
+        "sync": "chokidar \"./shortcuts/*/dist/bundle.js\" -c \"pnpm sync:copy\"",
+        "sync:copy": "wsl --exec rsync -avz -e ssh --prune-empty-dirs --include=\"*/\" --include=\"bundle.js\" --exclude=\"*\" ./shortcuts ios:/root/ios-shortcuts"
     },
     "devDependencies": {
         "@ios-shortcuts/scriptable-doc-scraper": "workspace:*",
         "@ios-shortcuts/scriptable-simulator": "workspace:*",
         "@ios-shortcuts/templates": "workspace:*",
+        "chokidar-cli": "^3.0.0",
         "typescript": "~4.9.0"
     }
 }
